@@ -1,0 +1,443 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+.wrapper-two {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 970px;
+}
+.wrapper-two:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url(https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/bg.png) top center no-repeat;
+  z-index: -1;
+}
+.wrapper-two .header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.wrapper-two .header .logo {
+  width: 179px;
+  height: 110px;
+  margin: 30px 0;
+}
+.wrapper-two .header .logo a {
+  display: inline-block;
+}
+.wrapper-two .header .logo a img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper-two .header .nav {
+  display: flex;
+  align-items: center;
+}
+.wrapper-two .header .nav .menu {
+  position: relative;
+  height: 64px;
+  padding: 0 30px;
+  margin-top: 45px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.wrapper-two .header .nav .menu:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+  z-index: 1;
+}
+.wrapper-two .header .nav .menu ul {
+  display: flex;
+}
+.wrapper-two .header .nav .menu ul li {
+  height: 64px;
+  line-height: 64px;
+}
+.wrapper-two .header .nav .menu ul li a {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 0 28px;
+  font: bold 18px/64px 'Ubuntu', sans-serif;
+  color: #58585a;
+  overflow: hidden;
+}
+.wrapper-two .header .nav .menu ul li a:after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background-color: #13a89e;
+  border-radius: 50%;
+  z-index: 2;
+}
+.wrapper-two .header .nav .menu ul li a.active,
+.wrapper-two .header .nav .menu ul li a:hover {
+  color: #13a89e;
+}
+.wrapper-two .header .nav .menu ul li a.active:after,
+.wrapper-two .header .nav .menu ul li a:hover:after {
+  display: block;
+}
+.wrapper-two .header .nav .new-product {
+  width: 133px;
+  height: 130px;
+}
+.wrapper-two .header .nav .new-product a {
+  display: inline-block;
+}
+.wrapper-two .header .nav .new-product a img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper-two .promo-head {
+  position: absolute;
+  width: 100%;
+  height: 84px;
+  z-index: -2;
+}
+.wrapper-two .promo-head img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.wrapper-two .product-content {
+  width: 100%;
+  margin-top: 84px;
+  text-align: center;
+}
+.wrapper-two .product-content .product-title {
+  padding: 10px 0;
+  margin-bottom: 25px;
+  font: bold 25px/40px 'Ubuntu', sans-serif;
+  color: #222;
+  border-bottom: 1px solid #13a89e;
+}
+.wrapper-two .product-content .product-image-box {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 2%;
+  box-sizing: border-box;
+}
+.wrapper-two .product-content .product-image-box .img-small {
+  display: flex;
+  flex-wrap: wrap;
+  width: 220px;
+  min-width: 220px;
+}
+.wrapper-two .product-content .product-image-box .img-small > div {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  margin: 4px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.wrapper-two .product-content .product-image-box .img-small > div img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper-two .product-content .product-image-box .enlarge {
+  width: 110px;
+  min-width: 110px;
+  height: 48px;
+  margin: 30px 10px 0 5px;
+  padding: 5px 23px 0px 0px;
+  font-size: 14px;
+  color: #fff;
+  background: url(https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/icon-loop.png) center right no-repeat #58585a;
+  box-sizing: border-box;
+}
+.wrapper-two .product-content .product-image-box .img-big {
+  width: 700px;
+  border-radius: 2px;
+  border: 1px solid #58585a;
+}
+.wrapper-two .product-content .product-image-box .img-big > div img {
+  width: 100%;
+  display: block;
+}
+.wrapper-two .product-content .product-detail {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-top: 30px;
+  color: #222;
+}
+.wrapper-two .product-content .product-detail .detail-title {
+  height: auto;
+  padding: 30px 0;
+  font: bold 20px/30px 'Ubuntu', sans-serif;
+  text-align: left;
+  border-bottom: 1px solid #13a89e;
+  border-top: 1px solid #13a89e;
+}
+.wrapper-two .product-content .product-detail .specifications {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.wrapper-two .product-content .product-detail .specifications .detail-title {
+  padding-left: 10px;
+}
+.wrapper-two .product-content .product-detail .specifications .table .tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  border-bottom: 1px solid #fff;
+}
+.wrapper-two .product-content .product-detail .specifications .table .tr .td {
+  padding: 17px 3px;
+  font: 500 13px/16px 'Ubuntu', sans-serif;
+  text-align: left;
+}
+.wrapper-two .product-content .product-detail .specifications .table .tr .td:first-child {
+  flex: 1.5;
+}
+.wrapper-two .product-content .product-detail .specifications .table .tr .td:last-child {
+  flex: 2;
+  position: relative;
+}
+.wrapper-two .product-content .product-detail .specifications .table .tr .td:last-child:after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: -10px;
+  width: 3px;
+  height: 15px;
+  background-color: #13a89e;
+}
+.wrapper-two .product-content .product-detail .description {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper-two .product-content .product-detail .description .content {
+  height: 290px;
+  max-height: 290px;
+  margin-top: 10px;
+  font: 14px/20px 'Ubuntu', sans-serif;
+  text-align: left;
+  overflow-y: scroll;
+}
+.wrapper-two .product-content .product-detail .description .content p {
+  margin-bottom: 10px;
+}
+.wrapper-two .product-content .product-tab {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  color: #eee;
+  background-color: #000;
+}
+.wrapper-two .product-content .product-tab .hd {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #13a89e;
+}
+.wrapper-two .product-content .product-tab .hd span {
+  position: relative;
+  display: inline-block;
+  padding: 0 28px;
+  font: bold 20px/100px 'Ubuntu', sans-serif;
+  cursor: pointer;
+}
+.wrapper-two .product-content .product-tab .hd span:before,
+.wrapper-two .product-content .product-tab .hd span:after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #13a89e;
+}
+.wrapper-two .product-content .product-tab .hd span:before {
+  top: 80px;
+  width: 2px;
+  height: 36px;
+}
+.wrapper-two .product-content .product-tab .hd span:after {
+  top: 116px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.wrapper-two .product-content .product-tab .hd span.current:before,
+.wrapper-two .product-content .product-tab .hd span.current:after {
+  display: block;
+}
+.wrapper-two .product-content .product-tab .bd {
+  width: 100%;
+  margin-top: 50px;
+  padding: 0 0 260px 20px;
+  box-sizing: border-box;
+}
+.wrapper-two .product-content .product-tab .bd > div {
+  display: none;
+  font: 14px/20px 'Ubuntu', sans-serif;
+  text-align: left;
+}
+.wrapper-two .product-content .product-tab .bd > div p {
+  margin-bottom: 20px;
+}
+.wrapper-two .product-content .product-tab .bd > div .img {
+  width: 321px;
+  height: 109px;
+}
+.wrapper-two .product-content .product-tab .bd > div .img img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper-two .product-content .product-tab .bd > div.current {
+  display: block;
+}
+.wrapper-two .product-content .product-tab .promo-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.wrapper-two .product-content .product-tab .promo-bottom > div {
+  margin-right: 12px;
+}
+.wrapper-two .product-content .product-tab .promo-bottom > div:last-child {
+  margin-right: 0;
+}
+.wrapper-two .product-content .product-tab .promo-bottom > div img {
+  width: 100%;
+  display: block;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .w160 {
+  width: 160px;
+  height: 160px;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .w180 {
+  width: 180px;
+  height: 180px;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 260px;
+  padding: 15px;
+  border-radius: 50%;
+  color: #eee;
+  text-align: center;
+  background-color: #13a89e;
+  box-sizing: border-box;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .newsletter h4 {
+  margin: -20px 0 20px 0;
+  font-size: 20px;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .newsletter p {
+  font-size: 14px;
+}
+.wrapper-two .product-content .product-tab .promo-bottom .newsletter a {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #13a89e;
+  background-color: #eee;
+}
+.wrapper-two .product-content .cards {
+  width: 380px;
+  height: 80px;
+  margin: 80px auto 30px auto;
+}
+.wrapper-two .product-content .cards img {
+  width: 100%;
+  height: 100%;
+}
+.wrapper-two .picture-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.wrapper-two .picture-list a {
+  margin: 0 5px 5px 0;
+}
+.wrapper-two .picture-list a:hover {
+  opacity: 0.8;
+}
+.wrapper-two .picture-list a img {
+  height: 280px;
+  display: block;
+}
+.wrapper-two .picture-list a img.w412 {
+  width: 412px;
+}
+.wrapper-two .picture-list a img.w308 {
+  width: 308px;
+}
+.wrapper-two .footer {
+  width: 100%;
+  margin-top: 5px;
+  font: 12px/30px 'Ubuntu', sans-serif;
+  text-align: center;
+  color: #fff;
+  background-color: #5c5b5b;
+}
+.wrapper-two .footer .footer-nav {
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+}
+.wrapper-two .footer .footer-nav a {
+  padding: 0 25px;
+  font: bold 18px/60px 'Ubuntu', sans-serif;
+  color: #eee;
+}
+.wrapper-two .footer .footer-nav a:hover {
+  color: #13a89e;
+}
+.wrapper-two .footer .copyright {
+  padding: 10px 0 15px 0;
+}
+.wrapper-two .footer .copyright p {
+  margin-top: 5px;
+}

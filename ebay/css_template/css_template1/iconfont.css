@@ -1,0 +1,33 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1607667748222'); /* IE9 */
+  src: url('iconfont.eot?t=1607667748222#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPAAAsAAAAAB+QAAANxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDKgqDCIJvATYCJAMUCwwABCAFhG0HSRv0BsiuMSYy1L0IAZGK0lJityGvTfJ13L1u/jqIB3Du86VJe738I1CbAlQMGskB6wkNgG5qapKMOZ5H0v1fXfodIFSIyRduDV86x/h0KuLOy8ojwQQ4NhmWAk1tWr13oW6jAPr/a4B3+H09EONEO3H2LvMzdfjimLq0Bsu32VyiCiNChwMc5fluQBFhlaIbyIB8C+wc4hnszQRk01WTNo9OL0OEROsVEM4YTIGImF2SpFAtqHImpla4JlRdnC9e46r7/fDVwlBTKCNt4LZjIzr0fwgfDsezjTZtBH5/FkjTiFgAJMKpXNsRwb5/gWD50zzEcqBWK+grGD8cbibUIcFaZLVuo2j9x0uEipbcAdZjIPFBMpkUfAiWcuWbqBFQvoWCm5JcgowJp4EXoOFmsLYJ+tu6U2rv7AzVjOqcJGV7jmT2BXXG7dmyHA1r90VJrd1RUpbj3pX1zyPLo6Mr4+O+sTG5Io7PiXNyGocTPtRlduLmnRy1x6JcuDWwHNXw3v3BleXr929fHPatAOXuwyHZ97qzuyhb0R9vkbK15ciJ3NL3P0uaV/x+ZV8nL9tmjZfvTm1PHvj57mczX3949frp+Yfx/6n0QOQgOe0vfoiZr/nvp196pWt+ReJIvLChDwF9i7KGRnffM5sGX7ml4/kUkc3iS4pyMatsxzZ8eysRse1r/9/c4uhD/fvrmfnlFa+HL5ntmh4FaPYm9rvbFUeDFQDi4+IvGsVe3PsIf+Pl+qyuA/Hd/+sl8P5fM9DeSMC858CvzX9gtVI7IMlCTV+mN9+UL3d3F1BaJRwUyDIeVJg+e/0oBmsnE9QGQyi0mQZRbQYyYRdAqWUxVGrrIJtvbHpLPy5YSO2Y5xJA0OMWFLq8g6jHG2TC7kJpyHeo9IQI2Z6QvGDLrHAyaoijIlAn6jFiaK5DDaOI8lIXkR2yFB4VuhQZecBwkYba+mRoDB3kfQwJHGaNQlBCuWuTUdgOLcslHnd3UBO1fiG8zro6mnelWs21IcomHFIISEeojiEMGpeD2oWFqNTnFyHmEIuCl+T8sMoQF2DUTzSoVV8DOSZzauWcyz4BhzGNBIEiKM5lI0bBgizd7yK8/HY7kEao5W/h9XSqo3y0rqx2fIV9jasg0y5WhiLEkEIZKumEa2MoN5hfRHroCIVxxQ6xkAoAAAAA') format('woff2'),
+  url('iconfont.woff?t=1607667748222') format('woff'),
+  url('iconfont.ttf?t=1607667748222') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1607667748222#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e65c";
+}
+
+.icon-right:before {
+  content: "\e601";
+}
+
+.icon-pentagram:before {
+  content: "\e603";
+}
+
+.icon-left:before {
+  content: "\e65d";
+}
+

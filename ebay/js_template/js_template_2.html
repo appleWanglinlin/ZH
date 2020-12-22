@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js_template_2_all</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    li {
+      list-style: none;
+    }
+    .wrapper-two {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-width: 970px;
+    }
+    .wrapper-two:after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: url(https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/bg.png) top center no-repeat;
+      z-index: -1;
+    }
+    .wrapper-two .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .wrapper-two .header .logo {
+      width: 179px;
+      height: 110px;
+      margin: 30px 0;
+    }
+    .wrapper-two .header .logo a {
+      display: inline-block;
+    }
+    .wrapper-two .header .logo a img {
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper-two .header .nav {
+      display: flex;
+      align-items: center;
+    }
+    .wrapper-two .header .nav .menu {
+      position: relative;
+      height: 64px;
+      padding: 0 30px;
+      margin-top: 45px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .wrapper-two .header .nav .menu:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      width: 100%;
+      height: 1px;
+      background-color: #eee;
+      z-index: 1;
+    }
+    .wrapper-two .header .nav .menu ul {
+      display: flex;
+    }
+    .wrapper-two .header .nav .menu ul li {
+      height: 64px;
+      line-height: 64px;
+    }
+    .wrapper-two .header .nav .menu ul li a {
+      position: relative;
+      display: block;
+      height: 100%;
+      padding: 0 28px;
+      font: bold 18px/64px 'Ubuntu', sans-serif;
+      color: #58585a;
+      overflow: hidden;
+    }
+    .wrapper-two .header .nav .menu ul li a:after {
+      display: none;
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -7px;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background-color: #13a89e;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .wrapper-two .header .nav .menu ul li a.active,
+    .wrapper-two .header .nav .menu ul li a:hover {
+      color: #13a89e;
+    }
+    .wrapper-two .header .nav .menu ul li a.active:after,
+    .wrapper-two .header .nav .menu ul li a:hover:after {
+      display: block;
+    }
+    .wrapper-two .header .nav .new-product {
+      width: 133px;
+      height: 130px;
+    }
+    .wrapper-two .header .nav .new-product a {
+      display: inline-block;
+    }
+    .wrapper-two .header .nav .new-product a img {
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper-two .promo-head {
+      position: absolute;
+      width: 100%;
+      height: 84px;
+      z-index: -2;
+    }
+    .wrapper-two .promo-head img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .wrapper-two .product-content {
+      width: 100%;
+      margin-top: 84px;
+      text-align: center;
+    }
+    .wrapper-two .product-content .product-title {
+      padding: 10px 0;
+      margin-bottom: 25px;
+      font: bold 25px/40px 'Ubuntu', sans-serif;
+      color: #222;
+      border-bottom: 1px solid #13a89e;
+    }
+    .wrapper-two .product-content .product-image-box {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 2%;
+      box-sizing: border-box;
+    }
+    .wrapper-two .product-content .product-image-box .img-small {
+      display: flex;
+      flex-wrap: wrap;
+      width: 220px;
+      min-width: 220px;
+    }
+    .wrapper-two .product-content .product-image-box .img-small > div {
+      width: 100px;
+      height: 100px;
+      padding: 5px;
+      margin: 4px;
+      border-radius: 2px;
+      background-color: #fff;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .wrapper-two .product-content .product-image-box .img-small > div img {
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper-two .product-content .product-image-box .enlarge {
+      width: 110px;
+      min-width: 110px;
+      height: 48px;
+      margin: 30px 10px 0 5px;
+      padding: 5px 23px 0px 0px;
+      font-size: 14px;
+      color: #fff;
+      background: url(https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/icon-loop.png) center right no-repeat #58585a;
+      box-sizing: border-box;
+    }
+    .wrapper-two .product-content .product-image-box .img-big {
+      width: 700px;
+      border-radius: 2px;
+      border: 1px solid #58585a;
+    }
+    .wrapper-two .product-content .product-image-box .img-big > div img {
+      width: 100%;
+      display: block;
+    }
+    .wrapper-two .product-content .product-detail {
+      position: relative;
+      width: 100%;
+      display: flex;
+      margin-top: 30px;
+      color: #222;
+    }
+    .wrapper-two .product-content .product-detail .detail-title {
+      height: auto;
+      padding: 30px 0;
+      font: bold 20px/30px 'Ubuntu', sans-serif;
+      text-align: left;
+      border-bottom: 1px solid #13a89e;
+      border-top: 1px solid #13a89e;
+    }
+    .wrapper-two .product-content .product-detail .specifications {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+    }
+    .wrapper-two .product-content .product-detail .specifications .detail-title {
+      padding-left: 10px;
+    }
+    .wrapper-two .product-content .product-detail .specifications .table .tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 10px;
+      border-bottom: 1px solid #fff;
+    }
+    .wrapper-two .product-content .product-detail .specifications .table .tr .td {
+      padding: 17px 3px;
+      font: 500 13px/16px 'Ubuntu', sans-serif;
+      text-align: left;
+    }
+    .wrapper-two .product-content .product-detail .specifications .table .tr .td:first-child {
+      flex: 1.5;
+    }
+    .wrapper-two .product-content .product-detail .specifications .table .tr .td:last-child {
+      flex: 2;
+      position: relative;
+    }
+    .wrapper-two .product-content .product-detail .specifications .table .tr .td:last-child:after {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: -10px;
+      width: 3px;
+      height: 15px;
+      background-color: #13a89e;
+    }
+    .wrapper-two .product-content .product-detail .description {
+      width: 100%;
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper-two .product-content .product-detail .description .content {
+      height: 290px;
+      max-height: 290px;
+      margin-top: 10px;
+      font: 14px/20px 'Ubuntu', sans-serif;
+      text-align: left;
+      overflow-y: scroll;
+    }
+    .wrapper-two .product-content .product-detail .description .content p {
+      margin-bottom: 10px;
+    }
+    .wrapper-two .product-content .product-tab {
+      position: relative;
+      width: 100%;
+      margin-top: 50px;
+      color: #eee;
+      background-color: #000;
+    }
+    .wrapper-two .product-content .product-tab .hd {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #13a89e;
+    }
+    .wrapper-two .product-content .product-tab .hd span {
+      position: relative;
+      display: inline-block;
+      padding: 0 28px;
+      font: bold 20px/100px 'Ubuntu', sans-serif;
+      cursor: pointer;
+    }
+    .wrapper-two .product-content .product-tab .hd span:before,
+    .wrapper-two .product-content .product-tab .hd span:after {
+      display: none;
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #13a89e;
+    }
+    .wrapper-two .product-content .product-tab .hd span:before {
+      top: 80px;
+      width: 2px;
+      height: 36px;
+    }
+    .wrapper-two .product-content .product-tab .hd span:after {
+      top: 116px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .wrapper-two .product-content .product-tab .hd span.current:before,
+    .wrapper-two .product-content .product-tab .hd span.current:after {
+      display: block;
+    }
+    .wrapper-two .product-content .product-tab .bd {
+      width: 100%;
+      margin-top: 50px;
+      padding: 0 0 260px 20px;
+      box-sizing: border-box;
+    }
+    .wrapper-two .product-content .product-tab .bd > div {
+      display: none;
+      font: 14px/20px 'Ubuntu', sans-serif;
+      text-align: left;
+    }
+    .wrapper-two .product-content .product-tab .bd > div p {
+      margin-bottom: 20px;
+    }
+    .wrapper-two .product-content .product-tab .bd > div .img {
+      width: 321px;
+      height: 109px;
+    }
+    .wrapper-two .product-content .product-tab .bd > div .img img {
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper-two .product-content .product-tab .bd > div.current {
+      display: block;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom {
+      position: absolute;
+      left: 50%;
+      bottom: -50px;
+      transform: translateX(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom > div {
+      margin-right: 12px;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom > div:last-child {
+      margin-right: 0;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom > div img {
+      width: 100%;
+      display: block;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .w160 {
+      width: 160px;
+      height: 160px;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .w180 {
+      width: 180px;
+      height: 180px;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .newsletter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 260px;
+      height: 260px;
+      padding: 15px;
+      border-radius: 50%;
+      color: #eee;
+      text-align: center;
+      background-color: #13a89e;
+      box-sizing: border-box;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .newsletter h4 {
+      margin: -20px 0 20px 0;
+      font-size: 20px;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .newsletter p {
+      font-size: 14px;
+    }
+    .wrapper-two .product-content .product-tab .promo-bottom .newsletter a {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 30px;
+      margin-top: 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #13a89e;
+      background-color: #eee;
+    }
+    .wrapper-two .product-content .cards {
+      width: 380px;
+      height: 80px;
+      margin: 80px auto 30px auto;
+    }
+    .wrapper-two .product-content .cards img {
+      width: 100%;
+      height: 100%;
+    }
+    .wrapper-two .picture-list {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .wrapper-two .picture-list a {
+      margin: 0 5px 5px 0;
+    }
+    .wrapper-two .picture-list a:hover {
+      opacity: 0.8;
+    }
+    .wrapper-two .picture-list a img {
+      height: 280px;
+      display: block;
+    }
+    .wrapper-two .picture-list a img.w412 {
+      width: 412px;
+    }
+    .wrapper-two .picture-list a img.w308 {
+      width: 308px;
+    }
+    .wrapper-two .footer {
+      width: 100%;
+      margin-top: 5px;
+      font: 12px/30px 'Ubuntu', sans-serif;
+      text-align: center;
+      color: #fff;
+      background-color: #5c5b5b;
+    }
+    .wrapper-two .footer .footer-nav {
+      display: flex;
+      justify-content: center;
+      background-color: #000;
+    }
+    .wrapper-two .footer .footer-nav a {
+      padding: 0 25px;
+      font: bold 18px/60px 'Ubuntu', sans-serif;
+      color: #eee;
+    }
+    .wrapper-two .footer .footer-nav a:hover {
+      color: #13a89e;
+    }
+    .wrapper-two .footer .copyright {
+      padding: 10px 0 15px 0;
+    }
+    .wrapper-two .footer .copyright p {
+      margin-top: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper-two">
+    <div class="header">
+      <div class="logo">
+        <a target="_blank" href="https://www.baidu.com/" title="CozyArray">
+          <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/logo.png" alt="CozyArray" title="CozyArray" />
+        </a>
+      </div>
+      <div class="nav">
+        <div class="menu">
+          <ul>
+            <li><a target="_blank" class="active" href="https://stores.ebay.com/Cozy-Array">Home</a></li>
+            <li><a target="_blank" href="https://stores.ebay.com/Cozy-Array/_i.html?_sasi=1">View all listings</a></li>
+            <li><a target="_blank" href="https://contact.ebay.com/ws/eBayISAPI.dll?ContactUserNextGen&amp;recipient=cozyarray">Contact Us</a></li>
+            <li><a target="_blank" href="https://stores.ebay.com/Cozy-Array/Returns">Returns</a></li>
+          </ul>
+        </div>
+        <div class="new-product">
+          <a target="_blank" href="http://www.ebaystores.com/Cozy-Array/_i.html?_fsub=27221923017" title="Cozy-Array">
+            <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/bt-product.png" alt="Cozy-Array" title="Cozy-Array" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="promo-head">
+      <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f4761726d696e2f416c7068612d3130302d62616e6e65722e6a70673f76657273696f6e49643d575a5035473137414b77777a543072585a5f6332447a364d666f594b4e6c316b/auto/159.jpg">
+    </div>
+    <div class="product-content">
+      <div class="product-title">10 PIECE TOWEL SET ULTRA SOFT 100% COTTON TOWELS BATH HAND & WASHCLOTHS SET</div>
+      <div class="product-image-box">
+        <div class="img-small" id="img_small">
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714016.jpg">
+            <!-- <img src="./img/product-img1.jpg" alt=""> -->
+          </div>
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714028.jpg">
+            <!-- <img src="./img/product-img2.jpg" alt=""> -->
+          </div>
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714017.jpg">
+            <!-- <img src="./img/product-img3.jpg" alt=""> -->
+          </div>
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714029.jpg">
+            <!-- <img src="./img/product-img4.jpg" alt=""> -->
+          </div>
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714018.jpg">
+            <!-- <img src="./img/product-img5.jpg" alt=""> -->
+          </div>
+        </div>
+        <div class="enlarge">
+          CLICK TO ENLARGE
+        </div>
+        <div class="img-big" id="img_big">
+          <div>
+            <img src="https://snc.cwa.sellercloud.com/images/products/714016.jpg">
+            <!-- <img src="./img/product-img1.jpg" alt=""> -->
+          </div>
+          <div style="display: none;">
+            <img src="https://snc.cwa.sellercloud.com/images/products/714028.jpg">
+            <!-- <img src="./img/product-img2.jpg" alt=""> -->
+          </div>
+          <div style="display: none;">
+            <img src="https://snc.cwa.sellercloud.com/images/products/714017.jpg">
+            <!-- <img src="./img/product-img3.jpg" alt=""> -->
+          </div>
+          <div style="display: none;">
+            <img src="https://snc.cwa.sellercloud.com/images/products/714029.jpg">
+            <!-- <img src="./img/product-img4.jpg" alt=""> -->
+          </div>
+          <div style="display: none;">
+            <img src="https://snc.cwa.sellercloud.com/images/products/714018.jpg">
+            <!-- <img src="./img/product-img5.jpg" alt=""> -->
+          </div>
+        </div>
+      </div>
+      <div class="product-detail">
+        <div class="specifications">
+          <div class="detail-title">ITEMS SPECIFICATIONS</div>
+          <div class="table">
+            <div class="tr">
+              <div class="td">BRAND</div>
+              <div class="td">Hearth & Harbor</div>
+            </div>
+            <div class="tr">
+              <div class="td">MATERIAL</div>
+              <div class="td">100% Cotton</div>
+            </div>
+            <div class="tr">
+              <div class="td">CONDITION</div>
+              <div class="td">New with tags</div>
+            </div>
+            <div class="tr">
+              <div class="td">SIZE</div>
+              <div class="td">Bath 27" x 54" Hand 16" x 28" Washcloths 12" x 12"</div>
+            </div>
+            <div class="tr">
+              <div class="td">Pattern</div>
+              <div class="td">Solid</div>
+            </div>
+          </div>
+        </div>
+        <div class="description">
+          <div class="detail-title">DESCRIPTION</div>
+          <div class="content">
+            <p>A Complete Set For Your Bathroom: This Bath Towel Set includes 2 Body Towels, 2 Hand Towels and 6 Washcloths. The Body Towels measure 27 x 54 inches, the Hand Towels 16 x 28 inches, and the Washcloths 12 x 12 inches.</p>
+            <p>100% Combed Cotton Towels: Harbor &amp; Hearth’s towels are made of premium quality cotton that has a luxurious feel and are very durable.</p>
+            <p>Highly Absorbent 600 Gsm Towels: These 600GSM cotton towels have a dense consistency and a rich texture, which render them highly absorbent.</p>
+            <p>Easy Care &amp; Cleaning: Machine washable in warm water and tumble dry on low. Fade, stain, shrink and wrinkle resistant. The cotton towels will maintain their softness and color even after washing.</p>
+            <p>Hearth &amp; Harbor towel collection is based on quality, elegance and utility.</p>
+          </div>
+        </div>
+      </div>
+      <div class="product-tab">
+        <div class="hd" id="hd">
+          <span class="current">PAYMENTS</span>
+          <span>FEEDBACK</span>
+          <span>RETURNS</span>
+          <span>SHIPPING</span>
+        </div>
+        <div class="bd" id="bd">
+          <div class="current">
+            <p>For your convenience, we accept payments either via PayPal, or any U.S. issued, major credit or debit card.</p>
+            <div class="img">
+              <img src="https://sunandfuninoc.com/sites/jx/wissem/cozy/images/unnamed.png">
+            </div>
+          </div>
+          <div>
+            Please Click Here to see our Feedback
+          </div>
+          <div>
+            While we are confident that you will have no regrets for buying, we do understand that there may be exceptions! Therefore, we accept returns within 30 days of receiving your order. Due to hygiene reasons, all items must be in its original condition. To initiate a return, please contact us directly via eBay messages.
+          </div>
+          <div>
+            We know how anxious you are to receive your order! Therefore, we ship all orders within 1 business day of receiving cleared payment.
+          </div>
+        </div>
+        <div class="promo-bottom">
+          <div class="w160">
+            <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/pro_warranty.png" title="Warranty">
+          </div>
+          <div class="w180">
+            <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/pro_inter_shipping.png" title="International Shipping">
+          </div>
+          <div class="newsletter">
+            <h4>NEWSLETTER</h4>
+            <p>Add Our Store to your Favorites and receive our e-mail newsletters about new items and special promotions.</p>
+            <a href="https://www.baidu.com/" target="_blank" title="CLICK HERE">SIGN UP</a>
+          </div>
+          <div class="w180">
+            <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/pro_shipping.png" title="Combined Shipping">
+          </div>
+          <div class="w160">
+            <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/pro_returns.png" title="Returns">
+          </div>
+        </div>
+      </div>
+      <div class="cards">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/payment.png" alt="Payment" />
+      </div>
+    </div>
+    <div class="picture-list">
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Silver" class="x-first">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat01.jpg" alt="bed saheets">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=2492854017">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat02.jpg" alt="comforters">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=2492856017">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat03.jpg" alt="duvet covers">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163566017" class="x-first">
+        <img class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat04.jpg" alt="pillows">
+      </a>
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163568017">
+        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat05.jpg" alt="bed skirt">
+      </a>
+        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163565017">
+        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat06.jpg" alt=" mattress protectors">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Storage">
+        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat07.jpg" alt="storage products">
+      </a>
+        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=16285241017" class="x-first">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat08.jpg" alt="pillowcases">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Bath Rugs">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat09.jpg" alt="bath rugs">
+      </a> 
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Area Rugs">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat10.jpg" alt="area rugs">
+      </a>
+        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Cotton/flannel+sheets" class="x-first">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat11.jpg" alt=" cotton/flannelsheets">
+      </a>
+        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Bamboo+Product+line">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat12.jpg" alt="bamboo product line">
+      </a>
+        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Blankets">
+        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat13.jpg" alt="Blankets">
+      </a> 
+    </div>
+    <div class="footer">
+      <div class="footer-nav">
+        <a target="_blank" href="https://stores.ebay.com/Cozy-Array">Home</a>
+        <a target="_blank" href="https://stores.ebay.com/Cozy-Array/_i.html?_sasi=1">View all listings</a>
+        <a target="_blank" href="https://contact.ebay.com/ws/eBayISAPI.dll?ContactUserNextGen&amp;recipient=cozyarray">Contact Us</a>
+        <a target="_blank" href="https://stores.ebay.com/Cozy-Array/Returns">Returns</a>
+      </div>
+      <div class="copyright">
+        <p>COPYRIGHT © 2018 COZY ARRAY ALL RIGHTS RESERVED.</p>
+        <p>EBAY TEMPLATES BY OCDESIGNSONLINe</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(window){
+      function viewBigImg() {
+        let img_small = document.getElementById('img_small')
+        let img_big = document.getElementById('img_big')
+        let imgSmallList = img_small.getElementsByTagName('div')
+        let imgBigList = img_big.getElementsByTagName('div')
+        for(let i = 0; i < imgSmallList.length; i++) {
+          let smallItem = imgSmallList[i]
+          smallItem.onclick = function() {
+            for(let j = 0; j < imgBigList.length; j++) {
+              let bigItem = imgBigList[j]
+              bigItem.style = 'display: none'
+            }
+            imgBigList[i].style = 'display: block'
+          }
+        }
+      }
+
+      function changeTab() {
+        let hd = document.getElementById('hd')
+        let bd = document.getElementById('bd')
+        let spans = hd.getElementsByTagName('span')
+        let divs = bd.getElementsByTagName('div')
+        for(let i = 0; i < spans.length; i++) {
+          let span = spans[i]
+          span.index = i
+          span.onclick = function() {
+            for(let j = 0; j < spans.length; j++) {
+              spans[j].className = ''
+              divs[j].className = ''
+            }
+            this.className = 'current'
+            divs[this.index].className = 'current'
+          }
+        }
+      }
+
+      viewBigImg()
+      changeTab()
+    })(window)
+  </script>
+</body>
+</html>

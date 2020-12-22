@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js_template_1_all</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    .wrapper-one {
+      display: flex;
+      width: 100%;
+    }
+    .wrapper-one .category {
+      width: 210px;
+      min-width: 210px;
+      padding-right: 15px;
+    }
+    .wrapper-one .category .title {
+      font-size: 24px;
+      color: #333;
+    }
+    .wrapper-one .category ul {
+      padding: 0;
+      margin: 0;
+    }
+    .wrapper-one .category ul li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px 10px 0;
+      font-size: 14px;
+      font-weight: normal;
+      border-bottom: 1px solid #ddd;
+      list-style: none;
+    }
+    .wrapper-one .category ul li a {
+      display: block;
+      width: 210px;
+      padding: 10px 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .wrapper-one .category ul li a:link {
+      color: #000;
+    }
+    .wrapper-one .category ul li a:hover {
+      color: #0654ba;
+    }
+    .wrapper-one .category ul li a:visited {
+      color: #0654ba;
+    }
+    .wrapper-one .category ul li span {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .wrapper-one .content {
+      flex: 1;
+    }
+    .wrapper-one .content .header .nav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 42px;
+      padding: 0 40px;
+      background-color: #f48e03;
+    }
+    .wrapper-one .content .header .nav-top .home .icon {
+      color: #fff;
+      font-size: 28px;
+    }
+    .wrapper-one .content .header .nav-top .nav-list {
+      display: flex;
+    }
+    .wrapper-one .content .header .nav-top .nav-list a {
+      display: block;
+      margin: 0 10px;
+      font-weight: 600;
+      font-size: 12px;
+      color: #FFF;
+    }
+    .wrapper-one .content .header .nav-top .nav-list a:hover {
+      color: #000;
+    }
+    .wrapper-one .content .header img {
+      width: 100%;
+      height: 256px;
+      display: block;
+    }
+    .wrapper-one .content .header .nav-middle {
+      height: 40px;
+      line-height: 40px;
+      background-color: #000;
+    }
+    .wrapper-one .content .header .nav-middle ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    .wrapper-one .content .header .nav-middle ul li {
+      list-style: none;
+    }
+    .wrapper-one .content .header .nav-middle ul li a {
+      margin-right: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .wrapper-one .content .header .nav-middle ul li a:hover {
+      color: #F48E03;
+    }
+    .wrapper-one .content .header .nav-middle ul li a:last-child {
+      margin-right: 0;
+    }
+    .wrapper-one .content .header .nav-middle ul li .icon {
+      font-size: 20px;
+    }
+    .wrapper-one .content .header .slides {
+      width: 100%;
+      height: 385px;
+    }
+    .wrapper-one .content .header .slides img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .wrapper-one .content .middle {
+      width: 100%;
+      padding: 0 80px;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .middle .sku-title1 {
+      margin-top: 20px;
+      color: #535353;
+      font-size: 30px;
+      font-weight: 600;
+      font-style: normal;
+      text-align: center;
+      text-decoration: none;
+      font-family: Oswald;
+    }
+    .wrapper-one .content .middle .sku-title2 {
+      margin: 15px 0;
+      color: #535353;
+      font-size: 20px;
+      font-style: normal;
+      text-align: center;
+      text-decoration: none;
+      font-family: Orbitron;
+    }
+    .wrapper-one .content .middle .sku-img {
+      width: 100%;
+    }
+    .wrapper-one .content .middle .sku-img img {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .wrapper-one .content .middle .sku-desc {
+      margin: 10px 10px 20px;
+    }
+    .wrapper-one .content .middle .sku-desc i {
+      font-size: 14px;
+      color: #808080;
+    }
+    .wrapper-one .content .middle .rich-text {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .middle .rich-text .content {
+      width: 100%;
+      padding: 10px 20px 20px;
+      color: #fff;
+      border: 2px solid #fff;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .middle .rich-text .content .title {
+      margin-bottom: 5px;
+      font-size: 20px;
+    }
+    .wrapper-one .content .middle .rich-text .content ul {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+    .wrapper-one .content .middle .banner {
+      width: 100%;
+    }
+    .wrapper-one .content .middle .banner img {
+      display: block;
+      width: 100%;
+      height: 159px;
+      margin: 0 auto;
+    }
+    .wrapper-one .content .middle .guarantee {
+      position: relative;
+      width: 520px;
+      margin: 50px auto;
+      background-color: #ffa000;
+    }
+    .wrapper-one .content .middle .guarantee img {
+      position: absolute;
+      top: -16px;
+      left: 11px;
+      width: 99px;
+    }
+    .wrapper-one .content .middle .guarantee span {
+      display: block;
+      padding: 20px 5px;
+      margin-left: 115px;
+      font-size: 13px;
+      font-style: italic;
+      color: #fff;
+    }
+    .wrapper-one .content .swiper-content {
+      width: 100%;
+      margin-bottom: 120px;
+      text-align: center;
+    }
+    .wrapper-one .content .swiper-content .swiper {
+      width: 927px;
+      padding: 0 30px;
+      margin: 0 auto;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .swiper-content .swiper .title {
+      margin-bottom: 10px;
+      color: #616161;
+      font-size: 20px;
+    }
+    .wrapper-one .content .swiper-content .swiper .container {
+      position: relative;
+      width: 862px;
+      height: 240px;
+      overflow: hidden;
+    }
+    .wrapper-one .content .swiper-content .swiper .container .swiper-item {
+      text-align: center;
+      color: #EEEEEE;
+      position: absolute;
+      user-select: none;
+      transition: all 0.5s;
+    }
+    .wrapper-one .content .swiper-content .swiper .container .swiper-item:hover {
+      opacity: 1 !important;
+      box-shadow: 0px 3px 20px 5px #ccc;
+    }
+    .wrapper-one .content .swiper-content .swiper .container .swiper-item a {
+      display: inline-block;
+    }
+    .wrapper-one .content .swiper-content .swiper .container .swiper-item a img {
+      width: 100%;
+      height: 100%;
+      -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(85%, transparent), to(rgba(250, 250, 250, 0.5)));
+    }
+    .wrapper-one .content .swiper-content .swiper .desc {
+      position: absolute;
+      top: 280px;
+      left: 50%;
+      width: 100%;
+      transform: translateX(-50%);
+    }
+    .wrapper-one .content .swiper-content .swiper .desc .swiper-desc {
+      color: #616161;
+    }
+    .wrapper-one .content .swiper-content .swiper .desc .swiper-desc .price {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .wrapper-one .content .swiper-content .swiper .desc .swiper-desc p {
+      margin: 5px 0;
+      font-size: 20px;
+    }
+    .wrapper-one .content .swiper-content .swiper .desc .swiper-desc span {
+      font-size: 14px;
+    }
+    .wrapper-one .content .swiper-content .swiper .pre,
+    .wrapper-one .content .swiper-content .swiper .next {
+      position: absolute;
+      top: 50%;
+      font-size: 24px;
+    }
+    .wrapper-one .content .swiper-content .swiper .pre {
+      left: -5px;
+    }
+    .wrapper-one .content .swiper-content .swiper .next {
+      right: -5px;
+    }
+    .wrapper-one .content .tab-list {
+      width: 100%;
+      padding: 0 80px;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .tab-list .hd {
+      padding-top: 30px;
+      margin-bottom: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .wrapper-one .content .tab-list .hd span {
+      display: inline-block;
+      padding: 10px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #ff9800;
+      cursor: pointer;
+    }
+    .wrapper-one .content .tab-list .hd span.current {
+      background-color: #fff;
+      color: #000;
+    }
+    .wrapper-one .content .tab-list .bd {
+      width: 100%;
+      padding: 0 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .wrapper-one .content .tab-list .bd > div {
+      display: none;
+    }
+    .wrapper-one .content .tab-list .bd > div.current {
+      display: block;
+    }
+    .wrapper-one .content .tab-list .bd img {
+      display: block;
+      margin-top: 15px;
+    }
+    .wrapper-one .content .tab-list .bd ul {
+      margin: 15px 0 0 20px;
+    }
+    .wrapper-one .content .footer {
+      width: 100%;
+      margin-top: 80px;
+    }
+    .wrapper-one .content .footer .footer-top {
+      display: flex;
+      justify-content: space-between;
+      height: 180px;
+    }
+    .wrapper-one .content .footer .footer-top a {
+      flex: 1;
+    }
+    .wrapper-one .content .footer .footer-top img {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .wrapper-one .content .footer .footer-top img:nth-child(2) {
+      margin: 0 10px;
+    }
+    .wrapper-one .content .footer .footer-middle {
+      display: flex;
+      justify-content: space-around;
+      padding: 30px 0px 30px;
+      background-color: #000;
+    }
+    .wrapper-one .content .footer .footer-middle > div .title {
+      margin-bottom: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #FF8C00;
+    }
+    .wrapper-one .content .footer .footer-middle > div ul li {
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .wrapper-one .content .footer .footer-middle > div ul li a {
+      font-size: 13px;
+      color: #A9A9A9;
+    }
+    .wrapper-one .content .footer .footer-middle .payment img {
+      display: block;
+      width: 100%;
+      max-width: 493px;
+      height: 100%;
+    }
+    .wrapper-one .content .footer .footer-middle .payment .img1 {
+      height: 100px;
+      margin-bottom: 20px;
+    }
+    .wrapper-one .content .footer .footer-middle .payment .img2 {
+      width: 203px;
+      height: 31px;
+    }
+    .wrapper-one .content .footer .interval {
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+    }
+    .wrapper-one .content .footer .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 108px;
+      color: #969696;
+      background-color: #000;
+    }
+    .wrapper-one .content .footer .footer-bottom .svg-icon {
+      display: flex;
+    }
+    .wrapper-one .content .footer .footer-bottom .svg-icon > div {
+      width: 24px;
+      height: 24px;
+      padding: 3px;
+      margin-right: 10px;
+      border: 1px solid #969696;
+    }
+    .wrapper-one .content .footer .footer-bottom .copyright {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .wrapper-one .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper-one">
+    <div class="category">
+      <div class="title">类别</div>
+      <ul>
+        <li>
+          <a href="https://www.baidu.com/">Batteries & Accessories</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+        <li>
+          <a href="https://www.baidu.com/2">Bark Control Collars</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+        <li>
+          <a href="https://www.baidu.com/3">Bowls & Feeders</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+        <li>
+          <a href="https://www.baidu.com/4">Cooling & Heating</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+        <li>
+          <a href="https://www.baidu.com/5">Cooling & Heating</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+        <li>
+          <a href="https://www.baidu.com/6">超出省略超出省略超出省略超出省略超出省略</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-arr-right"></use>
+          </svg>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="header">
+        <div class="nav-top">
+          <div class="home">
+            <a href="https://www.baidu.com/" target="_blank">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-shouye"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="nav-list">
+            <a href="https://www.baidu.com/" target="_blank">STORE</a>
+            <a href="https://www.baidu.com/" target="_blank">ABOUT</a>
+            <a href="https://www.baidu.com/" target="_blank">NEWSLETTER</a>
+            <a href="https://www.baidu.com/" target="_blank">CONTACT</a>
+          </div>
+        </div>
+        <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f5065744d6f6f64732f654261792d4865616465722d4164732e6a70673f76657273696f6e49643d6a324c717759415937654b566c4b5469364a786f72323973656b2e6a32574d46/auto/256.jpg">
+        <div class="nav-middle">
+          <ul>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">Garmin</a>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xingzhuang60kaobei2-copy"></use>
+              </svg>
+            </li>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">SportDOG</a>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xingzhuang60kaobei2-copy"></use>
+              </svg>
+            </li>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">Dogtra</a>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xingzhuang60kaobei2-copy"></use>
+              </svg>
+            </li>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">DT Systems</a>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xingzhuang60kaobei2-copy"></use>
+              </svg>
+            </li>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">PetSafe </a>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xingzhuang60kaobei2-copy"></use>
+              </svg>
+            </li>
+            <li>
+              <a href="https://www.baidu.com/" target="_blank">More... </a>
+            </li>
+          </ul>
+        </div>
+        <div class="slides">
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f5065744d6f6f64732f7069635f342e6a70673f76657273696f6e49643d424f71506555664a3764443258753335756c5f316c3170467a4150716e574b6d/auto/385.jpg">
+        </div>
+      </div>
+      <div class="middle">
+        <div class="sku-title1">TT 15 Mini Dog Device by Garmin</div>
+        <div class="sku-title2">Build A Better Dog</div>
+        <div class="sku-img">
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f4761726d696e2f416c7068612d545431352d4d696e692d446f672d4465766963652d46726f6e742d426f782e6a70673f76657273696f6e49643d34334a4e4e70484b66494a3831425954626f6e5169717a6a3644572e46315737/auto/784.jpg" width="100%" height="100%" title="Garmin 010-01486-00 Dog Device Collar TT 15 Mini">
+        </div>
+        <div class="sku-desc">
+          Garmin TT15 Mini Dog Collar GPS Tracking and Training!<br><br>
+          Lighter and smaller than the TT 15 with a 3/4 inch polyurethane-coated collar strap, the Garmin TT 15 Mini Dog Device Collar is designed for smaller hunting dogs like beagles and lets you add more dogs to your existing Tracking & Training Sytem Alpha 100 GPS transmitter (up to 20 dogs). The TT 15 mini is also compatible with Astro 430 and 320 for tracking mode only.
+        </div>
+        <div class="rich-text" style="background-color: rgba(255, 160, 0, 1);">
+          <div class="content">
+            <div class="title">Features:</div>
+            <ul>
+              <li>
+                Range up to 4 Mile
+              </li>
+              <li>
+                For smaller dogs 10 pounds and up and perfect for all breeds and coat thickness,For smaller dogs 10 pounds and up and perfect for all breeds and coat thickness
+              </li>
+              <li style="font-weight: bold;">
+                High-sensitivity GPS/GLONASS receiver
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="banner">
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f4761726d696e2f416c7068612d3130302d62616e6e65722e6a70673f76657273696f6e49643d575a5035473137414b77777a543072585a5f6332447a364d666f594b4e6c316b/auto/159.jpg" title="Garmin Petmoods eBay Store">
+        </div>
+        <div class="sku-desc">
+          <i>
+            *If you purchase Garmin product(s) via the internet from anyone not displaying this Authorized Reseller Logo, Garmin will have the right to declare all of its warranties applicable to those product(s) null and void. To obtain warranty service, an original or copy of the sales receipt from the original retailer is required. Buy Garmin products with confidence from an Authorized Online Retailer.
+          </i>
+        </div>
+        <div class="rich-text" style="background-color: rgba(150, 150, 150, 1)">
+          <div class="content">
+            <div class="title">Contents:</div>
+            <ul>
+              <li>
+                Garmin TT15 mini Dog Device Collar Receiver
+              </li>
+              <li>
+                Red Collar strap 3/4 inch
+              </li>
+              <li style="font-weight: bold;">
+                FREE Shipping to all 48 continental States
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="banner">
+          <a href="https://www.baidu.com/" target="_blank">
+            <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f4761726d696e2f416c7068612d3130302d62616e6e65722e6a70673f76657273696f6e49643d575a5035473137414b77777a543072585a5f6332447a364d666f594b4e6c316b/auto/159.jpg" title="Garmin Petmoods eBay Store">
+          </a>
+        </div>
+        <div class="guarantee">
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f61757468656e7469632e706e673f76657273696f6e49643d766e664e3343446e58352e41686a543762386f4273414e4b7855504e6c693066/auto/103.png" title="authentic">
+          <span>We guarantee that Petmoods is authorized to sell this product and that every brand we sell is authentic with warranties</span>
+        </div>
+      </div>
+      <div class="swiper-content">
+        <div class="swiper">
+          <div class="title">See our other items</div>
+          <div class="container" id="container">
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/5RsAAOSwc9RdrHRH/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/C2oAAOSwxipfHdgU/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/7pwAAOSwB8NdkzrZ/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/PEQAAOSwxj5c20HZ/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/X4MAAOSwKtxfHu9R/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/jR0AAOSwip5cN8PE/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/kAUAAOSwBWJbWiKD/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/qzkAAOSwo1Janxk4/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+            <div class="swiper-item">
+              <a href="https://www.baidu.com/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/RJ4AAOSw7vBc5WHT/s-l1600.jpg?set_id=8800005007">
+              </a>
+            </div>
+          </div>
+          <div class="desc" id="detail">
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 1 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 2 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 3 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 4 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 5 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 6 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 7 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 8 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+            <a href="https://www.baidu.com/" target="_blank" class="swiper-desc" style="display: none;">
+              <div class="price">Buy it now: 9 USD</div>
+              <p>3 Perimeter IFA-001 Batteries - Invisible Fence Dog Collar R21 R22 R51 MicroLite</p>
+              <span>SOLD OUT</span>
+            </a>
+          </div>
+          <div class="pre" id="pre">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-right-copy"></use>
+            </svg>
+          </div>
+          <div class="next" id="next">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-right"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="tab-list">
+        <div class="hd" id="hd">
+          <span class="current">ABOUT US</span>
+          <span>PAYMENT</span>
+          <span>SHIPPING</span>
+          <span>RETURNS</span>
+          <span>WARRANTY</span>
+          <span>CONTACT US</span>
+        </div>
+        <div class="bd" id="bd">
+          <div class="current">
+            PetMoods is specializing in pet products and dog training supplies, gun dog, upland and waterfowl hunting equipment. PetMoods is an Authorized Online Retailer for major brands including Garmin, SportDog Brand, Dogtra, DT Systems, PetSafe, Akoma Dog Products and many more... PetMoods carries some of the best crafted dog gear from companies who manufacture the highest quality pet products made in the USA and around the world.
+          </div>
+          <div>
+            Immediate payment required. We accept all forms of PayPal and all major Credit Cards or debit cards:
+            <img alt="" src="https://img.crazylister.com/1924/images/AM_mc_vs_dc_ae.png" style="height:65px; width:189px">
+          </div>
+          <div>
+            <p>
+              ​​​​​​​Petmoods has been selling online since 2005 and we are committed to customer satisfaction. There is nothing more important to us than you!  We want happy customers.
+            </p>
+            <ul>
+              <li>Most orders are shipped the same day before 2:00 PM EST with </li>
+              <li>Extra shipping cost may be added for Alaska, Hawaii and Puerto Rico for heavy package.</li>
+              <li>All our international shipments are sent through eBay Global Shipping.</li>
+            </ul>
+          </div>
+          <div>
+            RETURNS
+          </div>
+          <div>
+            WARRANTY
+          </div>
+          <div>
+            CONTACT US
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-top">
+          <a href="https://www.baidu.com/" target="_blank">
+            <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f73686f702831292e706e673f76657273696f6e49643d6c376f7831326f6e59784477636c4d4653776f35734f34674a6a326d756d6235/auto/180.png" title="Petmoods_store_banner">
+          </a>
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f62616e6e65725f77617272616e74792e706e673f76657273696f6e49643d3847385f734465487a766a5862366c597263434845634a5161395f4262335172/auto/180.png" title="Petmoods_warranty_banner">
+          <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f736869702e706e673f76657273696f6e49643d657653356c4f665f696f32474332734258536c444a696f61444766466763434f/auto/180.png" title="Petmoods_shipping_banner">
+        </div>
+        <div class="footer-middle">
+          <div class="payment">
+            <div class="title">PAYMENT</div>
+            <div class="img1">
+              <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f6372656469742d63617264732d6c6f676f732e706e673f76657273696f6e49643d3148525a2e546263534e572e787558505f3348707956392e62514f625967544d/auto/31.png" title="Petmoods_credit_cards_logo">
+            </div>
+            <div class="img2">
+              <img src="https://resized-images.crazylister.com/68747470733a2f2f696d672e6372617a796c69737465722e636f6d2f313932342f696d616765732f6372656469742d63617264732d6c6f676f732e706e673f76657273696f6e49643d3148525a2e546263534e572e787558505f3348707956392e62514f625967544d/auto/31.png" title="Petmoods_credit_cards_logo">
+            </div>
+          </div>
+          <div class="information">
+            <div class="title">INFORMATION</div>
+            <ul>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  STORE
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  ABOUT US
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  NEWSLETTER
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  CONTACT US
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="brads">
+            <div class="title">BRANDS</div>
+            <ul>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  GARMIN
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  SPORTDOG
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  DOGTRA
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  D.T. SYSTEMS
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  PETSAFE
+                </a>
+              </li>
+              <li>
+                <a href="https://www.baidu.com/" target="_blank">
+                  AND MORE...
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="interval"></div>
+        <div class="footer-bottom">
+          <div class="svg-icon">
+            <div>
+              <svg viewBox="0 0 100 100" style="height: 100%; width: 100%"><path d="M38.078 22.43v12.392H29v15.152h9.078V95h18.65V49.975H69.24s1.172-7.265 1.74-15.21H56.797v-10.36c0-1.547 2.033-3.63 4.043-3.63H71V5H57.186c-19.57 0-19.108 15.167-19.108 17.43z" fill="rgba(150, 150, 150, 1)"></path></svg>
+            </div>
+            <div>
+              <svg viewBox="0 0 100 100" style="height: 100%; width: 100%"><path d="M84.803 46.564c5.055-.417 8.483-2.715 9.803-5.833-1.824 1.12-7.484 2.342-10.61 1.18a38.64 38.64 0 0 0-.492-2.063c-2.382-8.746-10.537-15.792-19.082-14.94.69-.28 1.392-.54 2.092-.773.94-.337 6.46-1.235 5.59-3.183-.733-1.712-7.475 1.296-8.744 1.69 1.675-.63 4.447-1.715 4.743-3.64-2.567.35-5.087 1.565-7.034 3.33.702-.757 1.235-1.68 1.348-2.672-6.848 4.375-10.848 13.195-14.085 21.75-2.542-2.463-4.795-4.403-6.816-5.48-5.67-3.04-12.45-6.213-23.09-10.164-.328 3.52 1.74 8.203 7.7 11.316-1.292-.173-3.653.213-5.54.665.768 4.034 3.28 7.357 10.078 8.964-3.107.204-4.713.91-6.168 2.435 1.415 2.805 4.868 6.107 11.08 5.43-6.906 2.976-2.816 8.49 2.804 7.666-9.586 9.903-24.7 9.176-33.38.894 22.66 30.88 71.92 18.262 79.262-11.48 5.5.046 8.733-1.906 10.738-4.058-3.17.538-7.76-.018-10.197-1.032z" fill="rgba(150, 150, 150, 1)"></path></svg>
+            </div>
+            <div>
+              <svg viewBox="0 0 100 100" style="height: 100%; width: 100%"><path d="M27.336 9.274C15.76 13.86 7.893 22.694 5.696 34.596c-1.35 7.313-.836 15.284 2.39 22.11a24.46 24.46 0 0 0 2.608 4.33c.497.66 1.03 1.29 1.61 1.887a18.848 18.848 0 0 0 2.966-1.36c3.913-2.208 6.8-5.612 10.152-8.472-11.202-12.978.67-29.06 15.52-32.646C54.77 17.11 73.507 22.864 77.7 37.09c1.734 5.89.598 12.403-4.206 16.67-2.513 2.23-5.7 3.708-9.073 4.31-1.968.348-3.99.403-5.98.207-1.108-.11-2.21-.3-3.296-.554-1.84-.434-3.477-.37-3.477-2.353V39.816 32.04c0-1.59.156-1.29-1.162-1.455-1.04-.127-2.08-.23-3.123-.31-3.668-.288-7.502-.485-11.14.142-1.362.234-1.448.016-1.448 1.492V44.21c0 8.686.654 17.475.295 26.146-.105 2.584-.177 8.786-3.07 10.066-3.35 1.482-6.314-1.652-9.407-2.306.424 4.354-2.3 12.98 2.776 15.176C30.04 95.31 35.395 96.06 40.3 94.396c10.277-3.486 13.6-14.924 12.3-24.322 15.864 4.74 32.99-3.19 39.774-17.517 4.83-10.2 2.79-22.873-4.482-31.547C74.27 4.76 46.616 1.642 27.336 9.274z" fill="rgba(150, 150, 150, 1)"></path></svg>
+            </div>
+            <div>
+              <svg viewBox="0 0 100 100" style="height: 100%; width: 100%"><path d="M75.94 70.832H71l.023-2.87a2.33 2.33 0 0 1 2.327-2.317h.315a2.332 2.332 0 0 1 2.332 2.318l-.057 2.87zm-18.527-6.148c-1.253 0-2.278.842-2.278 1.873V80.51c0 1.03 1.025 1.87 2.278 1.87 1.258 0 2.284-.84 2.284-1.87V66.557c0-1.032-1.026-1.873-2.284-1.873zM87.5 56.88v26.543C87.5 89.79 81.978 95 75.23 95H24.77c-6.75 0-12.27-5.21-12.27-11.577V56.88c0-6.368 5.52-11.58 12.27-11.58h50.46c6.748 0 12.27 5.212 12.27 11.58zM28.137 86.304l-.004-27.96h6.255v-4.142l-16.674-.025v4.073l5.205.016v28.04h5.217zm18.75-23.796h-5.215v14.93c0 2.16.13 3.24-.008 3.62-.424 1.16-2.33 2.388-3.073.126-.125-.396-.014-1.59-.016-3.643l-.02-15.034h-5.187l.016 14.796c.004 2.268-.05 3.96.018 4.73.128 1.356.083 2.94 1.342 3.842 2.346 1.69 6.843-.252 7.968-2.668l-.01 3.083 4.188.005v-23.79zM63.57 79.606l-.01-12.427c-.005-4.736-3.548-7.573-8.358-3.74l.02-9.24-5.21.008-.024 31.89 4.283-.063.39-1.986c5.477 5.022 8.918 1.58 8.91-4.443zm16.32-1.647l-3.91.02-.01.53v2.182c0 1.167-.964 2.118-2.136 2.118h-.766c-1.174 0-2.138-.95-2.138-2.118v-5.739h8.954v-3.37c0-2.463-.063-4.925-.267-6.333-.64-4.454-6.892-5.16-10.05-2.88a5.882 5.882 0 0 0-2.19 2.945c-.444 1.28-.664 3.03-.664 5.254v7.408c0 12.318 14.963 10.577 13.178-.018zM59.834 37.732a3.55 3.55 0 0 0 1.254 1.584c.56.394 1.277.592 2.134.592.753 0 1.42-.203 2-.622.577-.417 1.064-1.04 1.46-1.87l-.097 2.045h5.813V14.74H67.82v19.24a1.907 1.907 0 0 1-3.81 0V14.74h-4.777v16.674c0 2.124.038 3.54.1 4.258.068.713.23 1.397.5 2.06zM42.217 23.77c0-2.373.198-4.226.59-5.562.397-1.33 1.108-2.4 2.138-3.208 1.027-.81 2.342-1.217 3.94-1.217 1.346 0 2.498.264 3.46.78.968.52 1.713 1.196 2.23 2.03a8 8 0 0 1 1.077 2.573c.195.89.29 2.235.29 4.048v6.252c0 2.293-.09 3.98-.27 5.05a8.02 8.02 0 0 1-1.144 3.005c-.58.925-1.33 1.616-2.238 2.057-.918.445-1.968.663-3.154.663-1.325 0-2.44-.183-3.36-.565-.924-.38-1.637-.953-2.145-1.714-.512-.76-.873-1.69-1.09-2.77-.22-1.082-.324-2.708-.324-4.875V23.77zm4.553 9.82c0 1.4 1.042 2.543 2.31 2.543 1.27 0 2.308-1.143 2.308-2.543V20.43c0-1.398-1.037-2.54-2.307-2.54-1.268 0-2.31 1.142-2.31 2.54v13.16zm-16.088 6.645h5.484l.006-18.96 6.48-16.242h-5.998L33.21 17.097 29.714 5H23.78l6.893 16.284.01 18.95z" fill="rgba(150, 150, 150, 1)"></path></svg>
+            </div>
+          </div>
+          <div class="copyright">
+            DESIGN & CONTENTS © COPYRIGHT PETMOODS
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    !function(e){var t,n,o,i,l,c,d='<svg><symbol id="icon-shouye" viewBox="0 0 1024 1024"><path d="M704.247001 305.321824l0.128937 0 0-20.352537-79.426981 0 0 19.330254-0.149403 0 0 34.025954L504.50377 214.265992 219.133348 508.555551l13.621229 17.137309 47.062875-48.185442 0 293.00838 444.782086 0L724.599538 472.809419l51.652404 52.882418 13.622252-17.137309-85.626169-88.304162L704.248024 305.327964 704.248024 305.321824zM645.152091 305.321824l38.741349 0 0 93.936439-38.741349-39.946804L645.152091 305.321824 645.152091 305.321824zM593.888544 750.161215 443.239452 750.161215 443.239452 531.573801l150.649092 0L593.888544 750.161215 593.888544 750.161215zM704.247001 750.161215l-90.004897 0L614.242104 511.221264 422.881798 511.221264l0 238.940974L300.169989 750.162238l0-293.494451L504.50377 247.471254l199.74323 204.501604L704.247001 750.161215 704.247001 750.161215zM509.924223 64.652486c-246.37734 0-446.101127 199.722764-446.101127 446.100104 0 246.376317 199.723787 446.099081 446.101127 446.099081 246.37427 0 446.098058-199.723787 446.098058-446.099081C956.021258 264.376273 756.29747 64.652486 509.924223 64.652486L509.924223 64.652486zM509.92013 936.970878c-235.393171 0-426.215218-190.82307-426.215218-426.218288S274.526959 84.535325 509.92013 84.535325c235.397265 0 426.219311 190.827163 426.219311 426.218288C936.138418 746.148831 745.317395 936.970878 509.92013 936.970878L509.92013 936.970878zM509.92013 936.970878"  ></path></symbol><symbol id="icon-right-copy" viewBox="0 0 1024 1024"><path d="M348.99379407 517.68945384l422.93654668-422.9437849c17.77417782-17.76259666 17.77417782-46.59388232 1e-8-64.35792663-17.76259666-17.77417782-46.59388232-17.77417782-64.35792664 0l-455.12057675 455.12347204c-17.77852076 17.76259666-17.77852076 46.59388232 0 64.35792662l455.1220244 455.12202442c8.88419362 8.88853654 20.53194038 13.33425247 32.17823949 13.33425246s23.29549351-4.44571592 32.17823949-13.33425246c17.77852076-17.76259666 17.77852076-46.59388232 0-64.35792664l-422.93944197-422.94523255z" fill="#d2d0ce" ></path></symbol><symbol id="icon-arr-right" viewBox="0 0 1024 1024"><path d="M290.54293333 101.75541097l68.3091437-70.70727585 478.16521955 475.76830103-478.16521955 475.76830104-68.3091437-70.70727587 402.6653203-405.0622388z" fill="#cccccc" ></path></symbol><symbol id="icon-right" viewBox="0 0 1024 1024"><path d="M675.00620593 506.31054616l-422.93654668 422.9437849c-17.77417782 17.76259666-17.77417782 46.59388232 0 64.35792663 17.76259666 17.77417782 46.59388232 17.77417782 64.35792663 0l455.12057675-455.12347204c17.77852076-17.76259666 17.77852076-46.59388232 0-64.35792663l-455.1220244-455.12202441c-8.88419362-8.88853654-20.53194038-13.33425247-32.17823949-13.33425246s-23.29549352 4.44571592-32.17823949 13.33425246c-17.77852076 17.76259666-17.77852076 46.59388232 0 64.35792664l422.93944197 422.94523255z" fill="#d2d0ce" ></path></symbol><symbol id="icon-xingzhuang60kaobei2-copy" viewBox="0 0 1080 1024"><path d="M921.55419014 422.34900626C917.59619954 410.27462974 906.33346184 402.15824382 893.6578712 402.15824382L638.70315078 402.15824382 559.91408603 161.36210755C556.0863581 149.3278117 544.86370105 141.21142578 532.10794911 141.21142578 519.43235848 141.21142578 508.16962077 149.3278117 504.30181218 161.27192554L425.42256471 402.15824382 170.51794564 402.15824382C157.80227435 402.15824382 146.5695966 410.27462974 142.66170736 422.34900626 138.70371675 434.30314008 143.04247608 447.51982276 153.29317098 454.87467122L359.55959593 603.63499941 280.81061186 844.56139834C276.81254061 856.55561355 281.15129993 869.65205356 291.4420755 877.08706333 301.6025884 884.48199316 315.6309099 884.48199316 325.84152343 877.08706333L532.10794911 728.23655385 738.41445471 877.08706333C743.47467084 880.75446793 749.51686909 882.65831156 755.59914871 882.65831156 761.63132698 882.65831156 767.71360661 880.75446793 772.81390338 877.08706333 783.06459756 869.65205356 787.40335762 856.55561355 783.40528563 844.56139834L704.73646358 603.63499941 910.88264586 454.87467122C921.12332079 447.51982276 925.42199946 434.30314008 921.55419014 422.34900626Z" fill="#FF892A" ></path></symbol></svg>',s=(s=document.getElementsByTagName("script"))[s.length-1].getAttribute("data-injectcss");if(s&&!e.__iconfont__svg__cssinject__){e.__iconfont__svg__cssinject__=!0;try{document.write("<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</style>")}catch(e){console&&console.log(e)}}function a(){l||(l=!0,o())}t=function(){var e,t,n,o;(o=document.createElement("div")).innerHTML=d,d=null,(n=o.getElementsByTagName("svg")[0])&&(n.setAttribute("aria-hidden","true"),n.style.position="absolute",n.style.width=0,n.style.height=0,n.style.overflow="hidden",e=n,(t=document.body).firstChild?(o=e,(n=t.firstChild).parentNode.insertBefore(o,n)):t.appendChild(e))},document.addEventListener?~["complete","loaded","interactive"].indexOf(document.readyState)?setTimeout(t,0):(n=function(){document.removeEventListener("DOMContentLoaded",n,!1),t()},document.addEventListener("DOMContentLoaded",n,!1)):document.attachEvent&&(o=t,i=e.document,l=!1,(c=function(){try{i.documentElement.doScroll("left")}catch(e){return void setTimeout(c,50)}a()})(),i.onreadystatechange=function(){"complete"==i.readyState&&(i.onreadystatechange=null,a())})}(window);
+  </script>
+  <script>
+    (function(window) {
+      // tab栏切换
+      function tabChange() {
+        let hd = document.getElementById('hd')
+        let bd = document.getElementById('bd')
+        let spans = hd.getElementsByTagName('span')
+        let divs = bd.getElementsByTagName('div')
+        for(let i = 0; i < spans.length; i++) {
+          let span = spans[i]
+          span.index = i
+          span.onclick = function() {
+            for (let j = 0; j < spans.length; j++) {
+              spans[j].className = ''
+              divs[j].className = ''
+            }
+            this.className = 'current'
+            divs[this.index].className = 'current'
+          }
+        }
+      }
+      // 轮播图
+      function swiper() {
+        let container = document.getElementById('container')
+        let detail = document.getElementById('detail')
+        let containerHeight = container.clientHeight
+        let contents = container.getElementsByClassName('swiper-item')
+        let details = detail.getElementsByClassName('swiper-desc')
+        let mid = Math.floor(contents.length / 2)
+        let pre = document.getElementById('pre')
+        let next = document.getElementById('next')
+        let rate = 0.8,
+        distance = 210,
+        midWidth = 190,
+        midHeight = 190,
+        midLeft = 335,
+        currentIndex = mid
+        let midStyle = 'width: 190px;height: 190px;line-height: 200px;top: 25px;left: 335px;opacity : 1;z-index: 20'
+        function order() {
+          contents = container.getElementsByClassName('swiper-item')
+          contents[mid].style = midStyle
+          details[mid].style = 'display: block'
+          for (let i = 0; i < contents.length; i++) {
+            let value = contents[i]
+            let n = Math.abs(mid-i),
+            r = Math.pow(rate,n).toFixed(1),
+            posLeft = 0
+            if (i !== mid) {
+              let valueHeight = Math.round( r * midHeight ),
+              valueWidth = Math.round( r * midWidth )
+              if (i < mid) {
+                posLeft = midLeft - n * (distance - n * 22)
+
+              } else if(i > mid) {
+                posLeft = midLeft + midWidth + n * (distance - n * 22) - valueWidth
+              }
+              let style = 'width:' + valueWidth + 'px;height:' + valueHeight + 'px;line-height:' + valueHeight + 'px;' +
+              'left:' + posLeft + 'px;top:' + (containerHeight - valueHeight) / 2 + 'px;' +
+              'z-Index:' + ( i > mid ? 20 - i : i ) + ';opacity:' + ( r-0.2 ).toFixed(1)
+              value.setAttribute('style', style)
+            }
+          }
+        }
+
+        function changeDetail() {
+          for(let i = 0; i < details.length; i++) {
+            let item = details[i]
+            item.style = 'display: none'
+          }
+          details[currentIndex].style = 'display: block'
+        }
+
+        pre.onclick = function handlePre() {
+          container.insertBefore(contents[contents.length-1], contents[0]);
+          --currentIndex
+          if (currentIndex < 0) {
+            currentIndex = details.length - 1
+          }
+          order()
+          changeDetail()
+        }
+        next.onclick = function handleNext() {
+          container.appendChild(contents[0]);
+          ++currentIndex
+          if (currentIndex >= details.length) {
+            currentIndex = 0
+          }
+          order()
+          changeDetail()
+        }
+        order()
+      }
+
+      tabChange()
+      swiper()
+    })(window)
+  </script>
+</body>
+</html>
