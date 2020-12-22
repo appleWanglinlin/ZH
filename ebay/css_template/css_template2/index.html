@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./index.css">
-  <title>js_template_2</title>
+  <title>css_template_2</title>
 </head>
 <body>
   <div class="wrapper-two">
@@ -36,51 +36,56 @@
     <div class="product-content">
       <div class="product-title">10 PIECE TOWEL SET ULTRA SOFT 100% COTTON TOWELS BATH HAND & WASHCLOTHS SET</div>
       <div class="product-image-box">
-        <div class="img-small" id="img_small">
-          <div>
+        <input class="img-tab-input" id="img-tab-label1" type="radio" name="img-tab" checked>
+        <input class="img-tab-input" id="img-tab-label2" type="radio" name="img-tab">
+        <input class="img-tab-input" id="img-tab-label3" type="radio" name="img-tab">
+        <input class="img-tab-input" id="img-tab-label4" type="radio" name="img-tab">
+        <input class="img-tab-input" id="img-tab-label5" type="radio" name="img-tab">
+        <div class="img-small">
+          <label for="img-tab-label1">
             <img src="https://snc.cwa.sellercloud.com/images/products/714016.jpg">
             <!-- <img src="../../images/product-img1.jpg" alt=""> -->
-          </div>
-          <div>
+          </label>
+          <label for="img-tab-label2">
             <img src="https://snc.cwa.sellercloud.com/images/products/714028.jpg">
-            <!-- <img src="./img/product-img2.jpg" alt=""> -->
-          </div>
-          <div>
+            <!-- <img src="../../images/product-img2.jpg" alt=""> -->
+          </label>
+          <label for="img-tab-label3">
             <img src="https://snc.cwa.sellercloud.com/images/products/714017.jpg">
-            <!-- <img src="./img/product-img3.jpg" alt=""> -->
-          </div>
-          <div>
+            <!-- <img src="../../images/product-img3.jpg" alt=""> -->
+          </label>
+          <label for="img-tab-label4">
             <img src="https://snc.cwa.sellercloud.com/images/products/714029.jpg">
-            <!-- <img src="./img/product-img4.jpg" alt=""> -->
-          </div>
-          <div>
+            <!-- <img src="../../images/product-img4.jpg" alt=""> -->
+          </label>
+          <label for="img-tab-label5">
             <img src="https://snc.cwa.sellercloud.com/images/products/714018.jpg">
-            <!-- <img src="./img/product-img5.jpg" alt=""> -->
-          </div>
+            <!-- <img src="../../images/product-img5.jpg" alt=""> -->
+          </label>
         </div>
         <div class="enlarge">
           CLICK TO ENLARGE
         </div>
-        <div class="img-big" id="img_big">
-          <div>
+        <div class="img-big">
+          <div class="big-img1">
             <img src="https://snc.cwa.sellercloud.com/images/products/714016.jpg">
-            <!-- <img src="./img/product-img1.jpg" alt=""> -->
+            <!-- <img src="../../images/product-img1.jpg" alt=""> -->
           </div>
-          <div style="display: none;">
+          <div class="big-img2">
             <img src="https://snc.cwa.sellercloud.com/images/products/714028.jpg">
-            <!-- <img src="./img/product-img2.jpg" alt=""> -->
+            <!-- <img src="../../images/product-img2.jpg" alt=""> -->
           </div>
-          <div style="display: none;">
+          <div class="big-img3">
             <img src="https://snc.cwa.sellercloud.com/images/products/714017.jpg">
-            <!-- <img src="./img/product-img3.jpg" alt=""> -->
+            <!-- <img src="../../images/product-img3.jpg" alt=""> -->
           </div>
-          <div style="display: none;">
+          <div class="big-img4">
             <img src="https://snc.cwa.sellercloud.com/images/products/714029.jpg">
-            <!-- <img src="./img/product-img4.jpg" alt=""> -->
+            <!-- <img src="../../images/product-img4.jpg" alt=""> -->
           </div>
-          <div style="display: none;">
+          <div class="big-img5">
             <img src="https://snc.cwa.sellercloud.com/images/products/714018.jpg">
-            <!-- <img src="./img/product-img5.jpg" alt=""> -->
+            <!-- <img src="../../images/product-img5.jpg" alt=""> -->
           </div>
         </div>
       </div>
@@ -122,26 +127,30 @@
         </div>
       </div>
       <div class="product-tab">
+        <input class="tab-input" id="tab-label1" type="radio" name="tab" checked>
+        <input class="tab-input" id="tab-label2" type="radio" name="tab">
+        <input class="tab-input" id="tab-label3" type="radio" name="tab">
+        <input class="tab-input" id="tab-label4" type="radio" name="tab">
         <div class="hd" id="hd">
-          <span class="current">PAYMENTS</span>
-          <span>FEEDBACK</span>
-          <span>RETURNS</span>
-          <span>SHIPPING</span>
+          <label for="tab-label1" class="tab-label1">PAYMENTS</label>
+          <label for="tab-label2" class="tab-label2">FEEDBACK</label>
+          <label for="tab-label3" class="tab-label3">RETURNS</label>
+          <label for="tab-label4" class="tab-label4">SHIPPING</label>
         </div>
         <div class="bd" id="bd">
-          <div class="current">
+          <div class="tab-content1">
             <p>For your convenience, we accept payments either via PayPal, or any U.S. issued, major credit or debit card.</p>
             <div class="img">
               <img src="https://sunandfuninoc.com/sites/jx/wissem/cozy/images/unnamed.png">
             </div>
           </div>
-          <div>
+          <div class="tab-content2">
             Please Click Here to see our Feedback
           </div>
-          <div>
+          <div class="tab-content3">
             While we are confident that you will have no regrets for buying, we do understand that there may be exceptions! Therefore, we accept returns within 30 days of receiving your order. Due to hygiene reasons, all items must be in its original condition. To initiate a return, please contact us directly via eBay messages.
           </div>
-          <div>
+          <div class="tab-content4">
             We know how anxious you are to receive your order! Therefore, we ship all orders within 1 business day of receiving cleared payment.
           </div>
         </div>
@@ -223,6 +232,5 @@
       </div>
     </div>
   </div>
-  <script src="./index.js"></script>
 </body>
 </html>
