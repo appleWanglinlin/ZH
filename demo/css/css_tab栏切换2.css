@@ -1,0 +1,36 @@
+.tab-container {
+  margin-top: 80px;
+  border: 1px solid #ccc;
+}
+.tab-container .tab-input {
+  display: none;
+}
+.tab-container #tab-label1:checked ~ .tab-head .tab-li1,
+.tab-container #tab-label2:checked ~ .tab-head .tab-li2,
+.tab-container #tab-label3:checked ~ .tab-head .tab-li3 {
+  background-color: lightblue;
+}
+.tab-container #tab-label1:checked ~ .tab-body .tab-content1,
+.tab-container #tab-label2:checked ~ .tab-body .tab-content2,
+.tab-container #tab-label3:checked ~ .tab-body .tab-content3 {
+  display: block;
+}
+.tab-container .tab-head {
+  display: flex;
+  padding-left: 0;
+  margin: 0;
+}
+.tab-container .tab-head li {
+  padding: 10px;
+  list-style: none;
+  background-color: lavender;
+}
+.tab-container .tab-head li:hover {
+  cursor: pointer;
+}
+.tab-container .tab-head li label:hover {
+  cursor: pointer;
+}
+.tab-container .tab-body > div {
+  display: none;
+}

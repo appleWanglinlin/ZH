@@ -1,0 +1,40 @@
+.tab-container {
+  width: 200px;
+  height: 80px;
+  margin-top: 80px;
+  border: 1px solid #ccc;
+  .tab-box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      flex: 1;
+      margin-right: 10px;
+      text-align: center;
+      &:last-child {
+        margin-right: 0;
+      }
+      .tab-input {
+        display: none;
+      }
+      label {
+        display: block;
+        cursor: pointer;
+        background-color: peachpuff;
+      }
+      .tab-input:checked + label {
+        background-color: lavender;
+      }
+      .tab-content {
+        position: absolute;
+        left: 0;
+        display: none;
+        text-align: left;
+      }
+      .tab-input:checked ~ .tab-content {
+        display: block;
+      }
+    }
+  }
+}

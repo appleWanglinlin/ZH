@@ -1,0 +1,40 @@
+.tab-container {
+  margin-top: 80px;
+  border: 1px solid #ccc;
+  .tab-input {
+    display: none;
+  }
+  #tab-label1:checked ~ .tab-head .tab-li1,
+  #tab-label2:checked ~ .tab-head .tab-li2,
+  #tab-label3:checked ~ .tab-head .tab-li3 {
+    background-color: lightblue;
+  }
+  #tab-label1:checked ~ .tab-body .tab-content1,
+  #tab-label2:checked ~ .tab-body .tab-content2,
+  #tab-label3:checked ~ .tab-body .tab-content3 {
+    display: block;
+  }
+  .tab-head {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+    li {
+      padding: 10px;
+      list-style: none;
+      background-color: lavender;
+      &:hover {
+        cursor: pointer;
+      }
+      label {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .tab-body {
+    > div {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.tab-container {
+  width: 200px;
+  height: 80px;
+  margin-top: 80px;
+  border: 1px solid #ccc;
+}
+.tab-container .tab-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.tab-container .tab-box > div {
+  flex: 1;
+  margin-right: 10px;
+  text-align: center;
+}
+.tab-container .tab-box > div:last-child {
+  margin-right: 0;
+}
+.tab-container .tab-box > div .tab-input {
+  display: none;
+}
+.tab-container .tab-box > div label {
+  display: block;
+  cursor: pointer;
+  background-color: peachpuff;
+}
+.tab-container .tab-box > div .tab-input:checked + label {
+  background-color: lavender;
+}
+.tab-container .tab-box > div .tab-content {
+  position: absolute;
+  left: 0;
+  display: none;
+  text-align: left;
+}
+.tab-container .tab-box > div .tab-input:checked ~ .tab-content {
+  display: block;
+}

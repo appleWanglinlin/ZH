@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .warp {            
+      width: 800px;           
+      height: 400px;            
+      position: relative;        
+    }
+    .list {            
+      width: 800px;            
+      height: 400px;           
+      position: relative;           
+      list-style: none;            
+      padding: 0;        
+      }
+    .list-item {           
+      width: 100%;           
+      height: 100%;            
+      position: absolute;            
+      color: #fff;            
+      font-size: 28px;            
+      text-align: center;            
+      line-height: 400px;            
+      opacity: 0;
+      /*渐变特效*/            
+      transition: all 0.8s;
+    }
+    .list-item:nth-child(1) {           
+      background-color: black;       
+      }
+    .list-item:nth-child(2) {           
+      background-color: red;        
+    }
+    .list-item:nth-child(3) {           
+        background-color: rgb(161, 161, 31);       
+      }
+    .list-item:nth-child(4) {           
+      background-color: blue;       
+      }
+    .list-item:nth-child(5) {            
+      background-color: pink;       
+    }
+    .btn {            
+      width: 50px;           
+      height: 80px;           
+      position: absolute;           
+      top: 150px;
+      /*切换按钮层级性应最高*/            
+      z-index: 100;        
+      }       
+    #goNext {            
+      right: 0;        
+    }       
+    .active {
+      /*当前活跃轮播图层级行较其他高，所以显示出来*/           
+      z-index: 10;           
+        opacity: 1;       
+    }
+            
+    #point-list{           
+      padding: 0;            
+      position: absolute;            
+      list-style: none;            
+      right:10px;            
+      top:350px;            
+      z-index: 100;        
+    }        
+    .point{            
+      width:6px;            
+      height: 6px;            
+      background-color: rgba(0,0,0,.5);            
+      border: 2px solid #fff;            
+      border-radius: 100%;
+      /*开启浮动，变为行内块级*/            
+      float: left;            
+      margin:4px;            
+      cursor: pointer;            
+      transition: all .8s;        
+    }        
+    .point.active{            
+      background-color: rgba(255,255,255,1);       
+    }
+  </style>
+</head>
+<body>
+  <div class="warp" id="main">
+    <!--轮播图列表-->        
+    <ul class="list">            
+      <li class="list-item active">0</li>            
+      <li class="list-item">1</li>            
+      <li class="list-item">2</li>            
+      <li class="list-item">3</li>            
+      <li class="list-item">4</li>        
+    </ul>
+    <!--上一张下一张切换-->        
+    <button class="btn" id="goPre">< </button>        
+    <button class="btn" id="goNext">></button>        
+    <ul id="point-list">           
+       <li class="point active" data-index="0"></li>            
+       <li class="point" data-index="1"></li>           
+       <li class="point" data-index="2"></li>            
+       <li class="point" data-index="3"></li>            
+       <li class="point" data-index="4"></li>        
+    </ul>    
+  </div>
+  <script>
+    var main = document.getElementById('main')    
+    var lists = document.getElementsByClassName('list-item')    
+    var goPreBtn = document.getElementById('goPre')    
+    var goNextBtn = document.getElementById('goNext')
+    var points = document.getElementsByClassName('point')    
+    var pointList = document.getElementById('point-list')    
+    var index = 0//记录当前轮播图显示的索引    
+    var timer = null //定时器    
+    //每一次切换列表时，将之前添加的active去除    
+    var clearActive = function () {
+      //此处的5可以使用一个变量代替，根据目前轮播图的个数而动态设定        
+            for (var i = 0; i < 5; i++) {            
+        lists[i].className = 'list-item'            
+        points[i].className = 'point'        	
+      }   
+    }
+    //切换列表    
+    var goIndex = function () {        
+      clearActive()        
+      points[index].className = "point active"        
+      //添加当前触发是轮播图        
+      lists[index].className = 'list-item active'    
+    }
+    //前一张    
+    var goPre = function () {
+      //同理，此处的4 可抽取为变量，根据目前轮播图的个数而动态设定        
+      index == 0 ? index =4 : index--        
+      goIndex()    
+    }    
+    //后一张    
+    var goNext = function() {        
+      index < 4 ? index++ : index = 0        
+      goIndex()    
+    }
+    //开始自动播放    
+    var startAutoPlay = function(){
+              timer = setInterval(function(){            
+              goNext()        
+            },2000)    
+    }    
+    //停止自动播放    
+    var stopAutoPlay = function(){        
+      clearTimeout(timer)    
+    }    
+    //绑定事件    
+    goPreBtn.addEventListener("click", function () {        
+      goPre()    
+    })    
+    //绑定事件    
+    goNextBtn.addEventListener("click", function(){        
+      goNext()    
+    })    
+    //事件委托    
+    pointList.addEventListener("click", function(e){        
+      index = e.target.getAttribute('data-index')        
+      goIndex()  
+    })    
+    //鼠标移入轮播图区域时，定时器关闭    
+    main.addEventListener("mouseenter",function(){        
+      stopAutoPlay()    
+    })    
+    //鼠标移出轮播图区域时，开启定时器    
+    main.addEventListener("mouseleave",function(){        
+      startAutoPlay()    
+    })   
+    //开启自动播放    
+    startAutoPlay()
+  </script>
+</body>
+</html>

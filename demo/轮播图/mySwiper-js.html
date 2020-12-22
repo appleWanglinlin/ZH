@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>中间对齐层叠轮播图</title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				background-color: #EEEEEE;
+			}
+			.container{
+				width: 850px;
+				height: 500px;
+				border: 1px solid crimson;
+				position: relative;
+        overflow: hidden;
+			}
+			.content{
+				font-size: 100px;
+				text-align: center;
+				color: #EEEEEE;
+				position: absolute;
+				user-select: none;
+				transition: all 0.5s;
+			}
+      .content a {
+        text-decoration: none;
+      }
+      .box {
+        width: 852px;
+        padding: 0 30px;
+				margin: 50px auto;
+        position: relative;
+        border: 1px solid #ccc;
+      }
+      .pre,
+      .next{
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: lightcoral;
+        transform: translateY(-50%);
+        z-index: 999;
+      }
+      .pre {
+        left: 0;
+      }
+      .next {
+        right: 0;
+      }
+      .middle {
+        width: 150px;
+        height: 200px;
+        line-height: 200px;
+        top: 150px;
+        left: 350px;
+        opacity : 1;
+        z-index: 20;
+        background-color: indigo
+      }
+
+		</style>
+	</head>
+	<body>
+    <div class="box">
+      <div class="container" id="container">
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">1</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">2</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">3</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">4</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">5</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">6</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">7</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">8</a>
+        </div>
+        <div class="content">
+          <a href="https://www.baidu.com/" target="_blank">9</a>
+        </div>
+      </div>
+      <div class="pre" id="pre"></div>
+      <div class="next" id="next"></div>
+    </div>
+		<script type="text/javascript">
+		  (function(window) {
+        let container = document.getElementById('container')
+        let containerHeight = container.clientHeight
+        let contents = container.getElementsByClassName('content')
+        let mid = Math.floor(contents.length / 2)
+        let pre = document.getElementById('pre')
+        let next = document.getElementById('next')
+        let rate = 0.9,
+        distance = 175,
+        midWidth = 150,
+        midHeight = 200,
+        midLeft = 350
+        let midStyle = 'width: 150px;height: 200px;line-height: 200px;top: 150px;left: 350px;opacity : 1;z-index: 20;background-color: indigo'
+        function order() {
+          contents = container.getElementsByClassName('content')
+          contents[mid].style = midStyle
+          for (let i = 0; i < contents.length; i++) {
+            let value = contents[i]
+            let n = Math.abs(mid-i),
+            r = Math.pow(rate,n).toFixed(2),
+            posLeft = 0
+            if (i !== mid) {
+              let valueHeight = Math.round( r * midHeight ),
+              valueWidth = Math.round( r * midWidth )
+              if (i < mid) {
+                posLeft = midLeft - n * distance
+              } else if(i > mid) {
+                posLeft = midLeft + midWidth + n * distance - valueWidth
+              }
+              let style = 'width:' + valueWidth + 'px;height:' + valueHeight + 'px;line-height:' + valueHeight + 'px;' +
+              'left:' + posLeft + 'px;top:' + (containerHeight - valueHeight) / 2 + 'px;' +
+              'z-Index:' + (i > mid ? 20 - i : i) + ';opacity:' + Math.pow(r,n).toFixed(2) +
+              ';background-color:#' + Math.floor(Math.random()*100000+900000)
+              value.setAttribute('style', style)
+            }
+          }
+        }
+        pre.onclick = function handlePre() {
+          container.insertBefore(contents[contents.length-1], contents[0]);
+          order();
+        }
+        next.onclick = function handleNext() {
+          container.appendChild(contents[0]);
+          order();
+        }
+        order()
+      }(window));
+		</script>
+	</body>
+</html>

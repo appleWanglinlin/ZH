@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/css_tab栏切换2.css">
+  <title>CSS3-Tab栏2</title>
+</head>
+<body>
+  <!-- tab-input与tab-body平级时或与tab-content平级时，才可通过checked改变样式 -->
+  <div class="tab-container">
+    <input class="tab-input" id="tab-label1" type="radio" name="tab" checked>
+    <input class="tab-input" id="tab-label2" type="radio" name="tab">
+    <input class="tab-input" id="tab-label3" type="radio" name="tab">
+    <ul class='tab-head'>
+      <li class='tab-li1'>
+        <label for="tab-label1">列表1</label>
+      </li>
+      <li class='tab-li2'>
+        <label for="tab-label2">列表2</label>
+      </li>
+      <li class='tab-li3'>
+        <label for="tab-label3">列表3</label>
+      </li>
+    </ul>
+    <div class="tab-body">
+      <div class="tab-content1">列表1内容</div>
+      <div class="tab-content2">列表2内容</div>
+      <div class="tab-content3">列表3内容</div>
+    </div>   
+  </div>
+</body>
+</html>
