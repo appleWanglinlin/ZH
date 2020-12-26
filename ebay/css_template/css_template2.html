@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
   <title>css_template_2_all</title>
   <style>
     * {
@@ -428,18 +429,52 @@
       height: 100%;
     }
     .wrapper-two .picture-list {
-      width: 100%;
+      width: 1140px;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      box-sizing: border-box;
     }
     .wrapper-two .picture-list a {
+      position: relative;
       margin: 0 5px 5px 0;
     }
     .wrapper-two .picture-list a:hover {
       opacity: 0.8;
     }
+    .wrapper-two .picture-list a:nth-child(4n) {
+      margin-right: 0;
+    }
+    .wrapper-two .picture-list a .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .wrapper-two .picture-list a .mask .text {
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-family: Orbitron;
+      font-weight: bold;
+      text-align: center;
+    }
+    .wrapper-two .picture-list a .mask .btn {
+      padding: 5px 15px;
+      font-size: 16px;
+      font-family: Orbitron;
+      background-color: #13a89e;
+      border-radius: 15px;
+    }
     .wrapper-two .picture-list a img {
+      width: 280px;
       height: 280px;
       display: block;
     }
@@ -651,44 +686,37 @@
       </div>
     </div>
     <div class="picture-list">
-      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Silver" class="x-first">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat01.jpg" alt="bed saheets">
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Silver">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F0.rc.xiniu.com%2Fg1%2FM00%2F70%2F9C%2FCgAGS1gj76SADWGeAAMHx_EjWCA353.jpg&refer=http%3A%2F%2F0.rc.xiniu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611566038&t=319a86d1b3fc79d18a07ffb73e1b796f" alt="bed saheets">
+        <div class="mask">
+          <span class="text">BED SHEETS</span>
+          <div class="btn">VIEW All</div>
+        </div>
       </a> 
       <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=2492854017">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat02.jpg" alt="comforters">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.szthks.com%2Flocalimg%2F687474703a2f2f6777312e616c6963646e2e636f6d2f62616f2f75706c6f616465642f69372f54314e6534515841706158585858585858585f2121302d6974656d5f7069632e6a7067.jpg&refer=http%3A%2F%2Fwww.szthks.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611566038&t=a5e5bbcff3d608d849743be2eb11c2fc" alt="comforters">
+        <div class="mask">
+          <span class="text">MATTRESS PROTECTORS</span>
+          <div class="btn">VIEW All</div>
+        </div>
       </a> 
       <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=2492856017">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat03.jpg" alt="duvet covers">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat03.jpg" alt="duvet covers">
       </a> 
-      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163566017" class="x-first">
-        <img class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat04.jpg" alt="pillows">
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163566017">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat04.jpg" alt="pillows">
       </a>
       <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163568017">
-        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat05.jpg" alt="bed skirt">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat05.jpg" alt="bed skirt">
       </a>
-        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163565017">
-        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat06.jpg" alt=" mattress protectors">
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=7163565017">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat06.jpg" alt=" mattress protectors">
       </a> 
       <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Storage">
-        <img  class="w308" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat07.jpg" alt="storage products">
+        <img  src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat07.jpg" alt="storage products">
       </a>
-        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=16285241017" class="x-first">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat08.jpg" alt="pillowcases">
-      </a> 
-      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Bath Rugs">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat09.jpg" alt="bath rugs">
-      </a> 
-      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Area Rugs">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat10.jpg" alt="area rugs">
-      </a>
-        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Cotton/flannel+sheets" class="x-first">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat11.jpg" alt=" cotton/flannelsheets">
-      </a>
-        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Bamboo+Product+line">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat12.jpg" alt="bamboo product line">
-      </a>
-        <a target="_blank" href="https://www.ebaystores.com/Cozy-Array_i.html?_nkw=Blankets">
-        <img class="w412" src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat13.jpg" alt="Blankets">
+      <a target="_blank" href="https://www.ebaystores.com/Cozy-Array/_i.html?_fsub=16285241017">
+        <img src="https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/cat08.jpg" alt="pillowcases">
       </a> 
     </div>
     <div class="footer">
