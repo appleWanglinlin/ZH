@@ -43,21 +43,24 @@ a {
   display: block;
 }
 .wrapper-one .content .header .nav-middle {
-  height: 40px;
-  line-height: 40px;
   background-color: #000;
 }
 .wrapper-one .content .header .nav-middle ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 10px 20px;
 }
 .wrapper-one .content .header .nav-middle ul li {
+  margin-right: 20px;
+  text-align: center;
+  word-break: break-all;
   list-style: none;
 }
+.wrapper-one .content .header .nav-middle ul li:last-child {
+  margin-right: 0;
+}
 .wrapper-one .content .header .nav-middle ul li a {
-  margin-right: 20px;
   font-size: 18px;
   font-weight: 500;
   font-family: 'Oswald', sans-serif;
@@ -65,9 +68,6 @@ a {
 }
 .wrapper-one .content .header .nav-middle ul li a:hover {
   color: #f48e03;
-}
-.wrapper-one .content .header .nav-middle ul li a:last-child {
-  margin-right: 0;
 }
 .wrapper-one .content .header .nav-middle ul li .icon-pentagram {
   font-size: 20px;

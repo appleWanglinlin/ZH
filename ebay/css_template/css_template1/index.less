@@ -46,27 +46,27 @@ a {
         display: block;
       }
       .nav-middle {
-        height: 40px;
-        line-height: 40px;
         background-color: #000;
         ul {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 40px;
+          padding: 10px 20px;
           li {
+            margin-right: 20px;
+            text-align: center;
+            word-break: break-all;
             list-style: none;
+            &:last-child {
+              margin-right: 0;
+            }
             a {
-              margin-right: 20px;
               font-size: 18px;
               font-weight: 500;
               font-family: 'Oswald', sans-serif;
               color: #fff;
               &:hover {
                 color: #f48e03;
-              }
-              &:last-child {
-                margin-right: 0;
               }
             }
             .icon-pentagram {
