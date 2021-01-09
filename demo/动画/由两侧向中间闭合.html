@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box, .box1, .box2 {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      text-align: center;
+      background-color: peachpuff;
+    }
+    .box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: plum;
+      transform: scaleX(1);
+      transform-origin: 50%;
+      transition-duration: .3s;
+      transition-timing-function: ease-out;
+    }
+    .box:hover {
+      cursor: pointer;
+    }
+    .box:hover:before {
+      transform:scaleX(0)
+    }
+    .box1 .content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: plum;
+      transform: scaleX(1);
+      transform-origin: 50%;
+      transition-duration: .3s;
+      transition-timing-function: ease-out;
+    }
+    .box1:hover .content{
+      transform:scaleX(0);
+    }
+    .box2 .content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: plum;
+      transform: scaleX(1);
+      transform-origin: 50%;
+      /* transition-duration: .3s; */
+      /* transition-timing-function: ease-out; */
+      animation: move .3s;
+    }
+    @keyframes move {
+      from {
+        transform: scaleX(1);
+      }
+      to {
+        transform: scaleX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <br>
+  <div class="box1">
+    box1
+    <div class="content">
+      内容1
+    </div>
+  </div>
+  <br>
+  <div class="box2">
+    box2
+    <div class="content">
+      内容2
+    </div>
+  </div>
+</body>
+</html>
