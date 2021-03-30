@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./element-ui@2.15.1.css">
+    <style>
+        div {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-button type="success">成功按钮</el-button>
+        <i class="el-icon-edit"></i>
+        <i class="el-icon-share"></i>
+    </div>
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+    <!-- <script type="text/babel">
+        // import demo1 from './demo1.js'
+        require('./demo1.js')
+        // console.log(demo1)
+    </script>
+    <script>
+        console.log('this', this)
+        let a = 1
+        const b = 2
+        let fn = () => {
+            console.log('3333')
+        }
+        fn()
+        let arr1 = [1,2,3]
+        arr1.map(item => item*2)
+        let arr2 = [4,5,6]
+        let arr3 = [...arr1,...arr2]
+        console.log(arr3)
+        console.log(a)
+        console.log(b)
+    </script> -->
+    <!-- <script>
+        window.onload = function (){
+            PDFObject.embed("http://dev-els.izehui.com/server/storage/5fa90b7e656e6.pdf","div");
+        };
+    </script>
+    <script src="./pdfobject.min.js"></script> -->
+
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="./element-ui@2.15.1.js"></script>
+<script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</html>
