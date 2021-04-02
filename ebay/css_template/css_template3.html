@@ -1,1757 +1,284 @@
-<!-- Begin Description -->
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, minimum-scale=0.1,maximum-scale=10, user-scalable=1"
-/>
-<style>
-  body {
-  	font: 12px/18px Verdana, Simsun, Helvetica, Arial, sans-serif;
-  	color: #666;
-  }
-  html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td {
-  	margin: 0;
-  	padding: 0;
-  }
-  img {
-  	border: 0 none;
-  	vertical-align: top;
-  }
-  ul, li {
-  	list-style-type: none;
-  }
-  a {
-  	text-decoration: none;
-  }
-  .clear {
-  	diplay: block!important;
-  	float: none!important;
-  	clear: both;
-  	overflow: hidden;
-  	width: auto!important;
-  	height: 0!important;
-  	margin: 0 auto!important;
-  	padding: 0!important;
-  	font-size: 0;
-  	line-height: 0;
-  }
-  .blank10 {
-  	clear: both;
-  	height: 10px;
-  	overflow: hidden;
-  	display: block;
-  }
-  /************ZeHui_Style************/
-  @media (max-width: 375px) {
-  	.templet {
-  		width: 375px;
-  		margin: auto;
-  	}
-  	.templet_bg {
-  		width: 375px;
-  		float: left;
-  		/*background: url(https://pic.elinkmall.com/zhoufang/images/ebay_bg5_03.jpg) repeat-y;*/
-  	}
-  	.con {
-  		width: 375px;
-  		margin: 0 auto;
-  		float: left;
-  		/*margin-left: 70px;*/
-  	}
-  	.pic {
-  		float: left;
-  		width: 224px;
-  		overflow: hidden;
-  	}
-  	.nav {
-  		float: left;
-  		margin-top: 15px;
-  		width: 100%;
-  		height: 35px;
-  		background: url(https://pic.elinkmall.com/zhoufang/images/nva_10.jpg) repeat-x;
-  	}
-  	.nav ul li {
-  		float: left;
-  		font-size: 12px;
-  		line-height: 35px;
-  		font: Arial, Helvetica, sans-serif;
-  	}
-  	.nav ul li a {
-  		float: left;
-  		color: #fff;
-  		font-weight: bold;
-  		margin-left: 11px;
-  		margin-right: 11px;
-  		text-decoration: none;
-  	}
-  	.nav ul li a:hover {
-  		display: block;
-  	}
-  	.pro {
-  		margin-top: 10px;
-  		width: 100%;
-  		text-align: center
-  	}
-  	.pro img {
-  		margin-top: 10px;
-  	}
-  	.qiehuan_dt {
-  		float: left;
-  	}
-  	.qiehuan_xtju {
-  		float: left;
-  		margin-top: -2px;
-  	}
-  	.qiehuan_dt img {
-  		width: 172px;
-  		height: 172px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img {
-  		width: 54px;
-  		height: 120px;
-  		margin-bottom: 10px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img:hover {
-  		border: 1px solid #666;
-  	}
-  	.qiehuan_xt {
-  		/*float: left;*/
-  		width: 49px;
-  	}
-  	.des {
-  		float: left;
-  		width: 100%;
-  		margin-top: 10px;
-  	}
-  	.dh {
-  		float: left;
-  		width: 100%;
-  		height: 35px;
-  		background: url(https://pic.elinkmall.com/zhoufang/images/des_bg_03.jpg) no-repeat;
-  	}
-  	.bt {
-  		float: left;
-  		width: 100px;
-  		margin-left: 35px;
-  		height: 35px;
-  		background-color: #d80202;
-  	}
-  	.des_wen {
-  		/*width: 600px;*/
-  		float: left;
-  		font: 14px Arial, Helvetica, sans-serif;
-  		color: 444;
-  		line-height: 24px;
-  		margin-left: 40px;
-  	}
-  	/*切换部分 */
-  	.nr04 {
-  		float: left;
-  		width: 100%;
-  		margin-top: 10px;
-  	}
-  	.z_bt3 .center {
-  		background: url(https://pic.elinkmall.com/zhoufang/images/des_bg_03.jpg) repeat-x;
-  		width: 100%;
-  		height: 35px;
-  		float: left;
-  	}
-  	.Menubox {
-  		width: 100%;
-  		height: 35px;
-  		line-height: 35px;
-  		font-size: 12px;
-  		font: Arial, Helvetica, sans-serif;
-  		font-weight: bold;
-  	}
-  	.Menubox li {
-  		float: left;
-  		margin-left: 5px;
-  		padding: 0px 10px;
-  		color: #000;
-  		height: 34px;
-  		line-height: 34px;
-  		font-weight: bold;
-  		text-align: center;
-  		display: block;
-  	}
-  	.Menubox li#one1.hover {
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one2.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one3.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one4.hover {
-  		no-repeat 87px center;
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one5.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Contentbox {
-  		padding: 10px 0 0 0px;
-  		margin-top: 10px;
-  		margin-left: 10px;
-  	}
-  	.Contentbox #con_one_1 {
-  		width: 100%;
-  		float: left;
-  	}
-  	.Contentbox #con_one_2 {
-  		width: 920px;
-  		float: left;
-  	}
-  	.Contentbox #con_one_3 {
-  		width: 313px;
-  		float: left;
-  	}
-  	.Contentbox #con_one_4 {
-  		width: 313px;
-  		float: left;
-  	}
-  	#con_one_1 ul {
-  		margin-bottom: 20px;
-  		margin-top: 10px;
-  	}
-  	#con_one_1 ul li {
-  		padding-left: 10px;
-  		background: url(https://pic.elinkmall.com/lichuan/web04/images/moban_72_.gif) no-repeat bottom left;
-  		line-height: 30px;
-  		font-weight: bold;
-  	}
-  	#con_one_1 table {
-  		text-align: center;
-  		line-height: 30px;
-  		color: #000;
-  		margin-bottom: 20px;
-  	}
-  	.Contentbox p {
-  		background: url(https://pic.elinkmall.com/lichuan/web04/images/moban_72_.gif) no-repeat left bottom;
-  		line-height: 30px;
-  		font-weight: bold;
-  	}
-  	.Contentbox span {
-  		float: left;
-  		margin-top: 10px;
-  		margin-bottom: 20px;
-  		margin-left: 10px;
-  		width: 309px;
-  	}
-  	.qiehuan_dt {
-  		float: left;
-  	}
-  	.qiehuan_xtju {
-  		margin-left: 20px;
-  		float: left;
-  		margin-top: -2px;
-  	}
-  	.qiehuan_dt img {
-  		width: 204px;
-  		height: 172px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img {
-  		width: 39px;
-  		height: 39px;
-  		margin-bottom: 10px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img:hover {
-  		border: 1px solid #666;
-  	}
-  	.qiehuan_xt1 {
-  		float: left;
-  		width: 47px;
-  	}
-  	.tu {
-  		text-align: center;
-  	}
-  	.preview{width:280px;height:280px;}
-  	.payment{width:280px;height:280px;}
-  	.tab_content
-  	{
-  		width: 100%;
-  		height: 600px;
-  		overflow: hidden;
-  	}
-  	.con_style{width: auto;height: 600px;margin: 0 auto}
-  }
-  @media (min-width: 321px) and (max-width: 1920px) {
-  	.templet {
-  		width: 1101px;
-  		margin: auto;
-  	}
-  	.templet_bg {
-  		width: 1101px;
-  		float: left;
-  		background: url(https://pic.elinkmall.com/zhoufang/images/ebay_bg5_03.jpg) repeat-y;
-  	}
-  	.con {
-  		width: 960px;
-  		float: left;
-  		margin-left: 70px;
-  	}
-  	.pic {
-  		float: left;
-  		width: 660px;
-  		overflow: hidden;
-  	}
-  	.nav {
-  		float: left;
-  		margin-top: 15px;
-  		width: 960px;
-  		height: 35px;
-  		background: url(https://pic.elinkmall.com/zhoufang/images/nva_10.jpg) repeat-x;
-  	}
-  	.nav ul li {
-  		float: left;
-  		font-size: 16px;
-  		line-height: 35px;
-  		font: Arial, Helvetica, sans-serif;
-  	}
-  	.nav ul li a {
-  		float: left;
-  		color: #fff;
-  		font-weight: bold;
-  		margin-left: 59px;
-  		margin-right: 50px;
-  		text-decoration: none;
-  	}
-  	.nav ul li a:hover {
-  		display: block;
-  	}
-  	.pro {
-  		margin-top: 10px;
-  		width: 960px;
-  		text-align: center
-  	}
-  	.pro img {
-  		margin-top: 10px;
-  	}
-  	.qiehuan_dt {
-  		float: left;
-  	}
-  	.qiehuan_xtju {
-  		float: left;
-  		margin-top: -2px;
-  	}
-  	.qiehuan_dt img {
-  		width: 508px;
-  		height: 508px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img {
-  		width: 160px;
-  		height: 120px;
-  		margin-bottom: 10px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img:hover {
-  		border: 1px solid #666;
-  	}
-  	.qiehuan_xt {
-  		/*float: left;*/
-  		width: 146px;
-  	}
-  	.des {
-  		float: left;
-  		width: 960px;
-  		margin-top: 10px;
-  	}
-  	.dh {
-  		float: left;
-  		width: 960px;
-  		height: 35px;
-  		background: url(https://pic.elinkmall.com/zhoufang/images/des_bg_03.jpg) no-repeat;
-  	}
-  	.bt {
-  		float: left;
-  		width: 119px;
-  		margin-left: 35px;
-  		height: 35px;
-  		background-color: #d80202;
-  	}
-  	.des_wen {
-  		/*width: 600px;*/
-  		float: left;
-  		font: 14px Arial, Helvetica, sans-serif;
-  		color: 444;
-  		line-height: 24px;
-  		margin-left: 40px;
-  	}
-  	/*切换部分 */
-  	.nr04 {
-  		float: left;
-  		width: 960px;
-  		margin-top: 10px;
-  	}
-  	.z_bt3 .center {
-  		background: url(https://pic.elinkmall.com/zhoufang/images/des_bg_03.jpg) repeat-x;
-  		width: 960px;
-  		height: 35px;
-  		float: left;
-  	}
-  	.Menubox {
-  		height: 35px;
-  		line-height: 35px;
-  		font-size: 16px;
-  		font: Arial, Helvetica, sans-serif;
-  		font-weight: bold;
-  	}
-  	.Menubox li {
-  		float: left;
-  		margin-left: 35px;
-  		padding: 0px 40px;
-  		color: #000;
-  		height: 34px;
-  		line-height: 34px;
-  		font-weight: bold;
-  		text-align: center;
-  		display: block;
-  	}
-  	.Menubox li#one1.hover {
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one2.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one3.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one4.hover {
-  		no-repeat 87px center;
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Menubox li#one5.hover {
-  		margin-right: 10px;
-  		background-color: #f00;
-  		display: block;
-  		height: 34px;
-  		margin-top: 2px;
-  		color: #fff;
-  	}
-  	.Contentbox {
-  		padding: 10px 0 0 0px;
-  		margin-top: 10px;
-  		margin-left: 10px;
-  	}
-  	.Contentbox #con_one_1 {
-  		width: 920px;
-  		float: left;
-  	}
-  	.Contentbox #con_one_2 {
-  		width: 920px;
-  		float: left;
-  	}
-  	.Contentbox #con_one_3 {
-  		width: 920px;
-  		float: left;
-  	}
-  	.Contentbox #con_one_4 {
-  		width: 920px;
-  		float: left;
-  	}
-  	#con_one_1 ul {
-  		margin-bottom: 20px;
-  		margin-top: 10px;
-  	}
-  	#con_one_1 ul li {
-  		padding-left: 10px;
-  		background: url(https://pic.elinkmall.com/lichuan/web04/images/moban_72_.gif) no-repeat bottom left;
-  		line-height: 30px;
-  		font-weight: bold;
-  	}
-  	#con_one_1 table {
-  		text-align: center;
-  		line-height: 30px;
-  		color: #000;
-  		margin-bottom: 20px;
-  	}
-  	.Contentbox p {
-  		background: url(https://pic.elinkmall.com/lichuan/web04/images/moban_72_.gif) no-repeat left bottom;
-  		line-height: 30px;
-  		font-weight: bold;
-  	}
-  	.Contentbox span {
-  		float: left;
-  		margin-top: 10px;
-  		margin-bottom: 20px;
-  		margin-left: 10px;
-  		width: 910px;
-  	}
-  	.qiehuan_dt {
-  		float: left;
-  	}
-  	.qiehuan_xtju {
-  		margin-left: 20px;
-  		float: left;
-  		margin-top: -2px;
-  	}
-  	.qiehuan_dt img {
-  		width: 600px;
-  		height: 506px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img {
-  		width: 116px;
-  		height: 116px;
-  		margin-bottom: 10px;
-  		padding: 1px;
-  		border: 1px solid #ccc;
-  	}
-  	.qiehuan_xt img:hover {
-  		border: 1px solid #666;
-  	}
-  	.qiehuan_xt1 {
-  		float: left;
-  		width: 140px;
-  	}
-  	.tu {
-  		text-align: center;
-  	}
-  	.tab_content
-  	{
-  		width: 100%;
-  		height: 600px;
-  		overflow: hidden;
-  	}
-  	.con_style{width: auto;height: 600px;margin: 0 auto}
-  }
-</style>
-<style>
-  .blank-div .eazylogo--blank-div {
-    display: block;
-  }
-  .showcase-container {
-    padding: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 5px;
-    background-color: #ffffff;
-    border: 2px solid #ff5656;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  .blank-div {
-    position: relative;
-    background: url() 0 0 / auto 100%;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    padding: 10px;
-    text-align: left;
-    color: #999999;
-    font-size: 18px;
-    font-family: Arial;
-  }
-
-  @media (max-width: 786px) {
-    .blank-div {
-      min-width: initial;
-      width: initial;
-    }
-  }
-  .blank-div:before {
-    display: none;
-    content: "";
-  }
-  #product-1 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-1:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-1 {
-      width: 45%;
-    }
-  }
-  #product-1 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-  #product-1 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  #product-1 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-  @media (max-width: 320px) {
-    #product-1 {
-      width: 100%;
-    }
-    #product-1 .image {
-      width: 100%;
-    }
-  }
-  #product-1 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-  #product-1 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-1 .item-id:before {
-    content: "351746843090";
-  }
-  #product-1 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-  #product-1 .price:after {
-    content: "USD 7.19";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-2 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-2:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-2 {
-      width: 45%;
-    }
-  }
-  #product-2 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-  #product-2 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  #product-2 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-  @media (max-width: 320px) {
-    #product-2 {
-      width: 100%;
-    }
-    #product-2 .image {
-      width: 100%;
-    }
-  }
-  #product-2 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-  #product-2 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-2 .item-id:before {
-    content: "272801662065";
-  }
-  #product-2 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-  #product-2 .price:after {
-    content: "USD 10.07";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-3 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-3:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-3 {
-      width: 45%;
-    }
-  }
-  #product-3 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-  #product-3 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  #product-3 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-  @media (max-width: 320px) {
-    #product-3 {
-      width: 100%;
-    }
-    #product-3 .image {
-      width: 100%;
-    }
-  }
-
-  #product-3 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-3 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-3 .item-id:before {
-    content: "273424138035";
-  }
-
-  #product-3 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-3 .price:after {
-    content: "USD 9.59";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-4 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-4:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-4 {
-      width: 45%;
-    }
-  }
-
-  #product-4 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  #product-4 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  #product-4 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-
-  @media (max-width: 320px) {
-    #product-4 {
-      width: 100%;
-    }
-
-    #product-4 .image {
-      width: 100%;
-    }
-  }
-
-  #product-4 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-4 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-4 .item-id:before {
-    content: "283168234887";
-  }
-
-  #product-4 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-4 .price:after {
-    content: "USD 19.19";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-5 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-5:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-5 {
-      width: 45%;
-    }
-  }
-
-  #product-5 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  #product-5 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  #product-5 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-
-  @media (max-width: 320px) {
-    #product-5 {
-      width: 100%;
-    }
-
-    #product-5 .image {
-      width: 100%;
-    }
-  }
-
-  #product-5 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-5 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-5 .item-id:before {
-    content: "273424131738";
-  }
-
-  #product-5 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-5 .price:after {
-    content: "USD 7.67";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-6 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-6:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-6 {
-      width: 45%;
-    }
-  }
-
-  #product-6 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  #product-6 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  #product-6 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-
-  @media (max-width: 320px) {
-    #product-6 {
-      width: 100%;
-    }
-
-    #product-6 .image {
-      width: 100%;
-    }
-  }
-
-  #product-6 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-6 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-6 .item-id:before {
-    content: "282252029704";
-  }
-
-  #product-6 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-6 .price:after {
-    content: "USD 7.19";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-7 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-7:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-7 {
-      width: 45%;
-    }
-  }
-
-  #product-7 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  #product-7 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  #product-7 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-
-  @media (max-width: 320px) {
-    #product-7 {
-      width: 100%;
-    }
-
-    #product-7 .image {
-      width: 100%;
-    }
-  }
-
-  #product-7 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-7 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-7 .item-id:before {
-    content: "283121324838";
-  }
-
-  #product-7 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-7 .price:after {
-    content: "USD 7.19";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-  #product-8 {
-    border: solid 1px transparent;
-    width: 22.5%;
-    height: 240px;
-    overflow: hidden;
-    margin: 4px;
-    text-decoration: none;
-    position: relative;
-  }
-  #product-8:hover {
-    border: solid 1px #9c9c9c;
-    border-radius: 6px;
-    background: #9c9c9c;
-    transition: background 0.5s;
-    -webkit-transition: background 0.5s; /* Safari */
-  }
-  @media (max-width: 992px) {
-    #product-8 {
-      width: 45%;
-    }
-  }
-
-  #product-8 .image {
-    margin: 10px auto 0;
-    text-align: center;
-  }
-
-  #product-8 .image:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  #product-8 .image img {
-    width: 85%;
-    height: 160px;
-    display: inline-block;
-  }
-
-  @media (max-width: 320px) {
-    #product-8 {
-      width: 100%;
-    }
-
-    #product-8 .image {
-      width: 100%;
-    }
-  }
-
-  #product-8 .title {
-    margin: auto;
-    width: 85%;
-    font-size: 11px;
-    font-family: Arial;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    height: 2em;
-    overflow: hidden;
-    text-align: center;
-    color: #191919;
-    padding-top: 4px;
-  }
-
-  #product-8 .item-id {
-    font-size: 11px;
-    line-height: 12px;
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    color: #191919;
-  }
-  #product-8 .item-id:before {
-    content: "274206817320";
-  }
-
-  #product-8 .price {
-    display: block;
-    color: bf0000;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 600;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-
-  #product-8 .price:after {
-    content: "USD 10.67";
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #c7c7c7;
-    font-weight: 100;
-    display: none;
-  }
-</style>
-<div vocab="https://schema.org/" typeof="Product" style="display: none">
-  <span property="description">Click here to see description </span>
-</div>
-<div class="templet">
-  <div class="templet_top"></div>
-  <div class="templet_bg">
-    <div class="con">
-      <div>
-        <div class="dh">
-          <div class="bt">
-            <h2
-              style="
-                font: 16px Arial, Helvetica, sans-serif;
-                color: #fff;
-                line-height: 35px;
-                text-align: center;
-                font-weight: bold;
-              "
-            >
-              Hot Selling
-            </h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>t3</title>
+  <style>
+    body{font-family:Verdana, Simsun, Helvetica, Arial, sans-serif;color:#666}html,body,div,p,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input,select,button,textarea,iframe,table,th,td{margin:0;padding:0}img{border:0 none;vertical-align:top}ul,li{list-style-type:none}a{text-decoration:none}.templet .templet_bg{width:100%;margin:0 auto;background:url(https://pic.elinkmall.com/zhoufang/images/ebay_bg5_03.jpg) repeat-y;background-size:contain}.templet .templet_bg .content{width:100%;padding:0 2.5rem;box-sizing:border-box}.templet .templet_bg .content .card{margin-bottom:10px}.templet .templet_bg .content .card .card-title{width:100%;height:2.1875rem;background-image:linear-gradient(#f9f9f9, #d5d5d5)}.templet .templet_bg .content .card .card-title span{width:9.375rem;height:2.1875rem;margin-left:0;display:flex;justify-content:center;align-items:center;font:1rem Arial,Helvetica,sans-serif;font-weight:bold;color:#fff;background-color:#d80202}.templet .templet_bg .content .hot-selling{padding:10px 0;display:flex;flex-wrap:wrap;justify-content:center;margin-bottom:5px;background-color:#ffffff;border:2px solid #ff5656;border-bottom-right-radius:8px;border-bottom-left-radius:8px;box-sizing:border-box}.templet .templet_bg .content .hot-selling a{display:block;width:12.5rem;min-width:200px;padding:10px;margin:4px;text-align:center;border-radius:6px;border:1px solid #d0d0d0;overflow:hidden;-webkit-tap-highlight-color:transparent;box-sizing:border-box}.templet .templet_bg .content .hot-selling a:hover{border:1px solid #d0d0d0;border-radius:6px;background:#e6e3e3;transition:background 0.5s;-webkit-transition:background 0.5s}.templet .templet_bg .content .hot-selling a .product .image{text-align:center}.templet .templet_bg .content .hot-selling a .product .image img{width:100%;height:100%;display:inline-block}.templet .templet_bg .content .hot-selling a .product .title{margin:5px 0;font-size:.875rem;font-family:Arial;text-align:center;color:#191919;display:-webkit-box;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;box-sizing:border-box}.templet .templet_bg .content .hot-selling a .product .price{color:#bf0000;font-size:1rem;font-family:Arial;font-weight:600;-webkit-text-size-adjust:none;box-sizing:border-box}.templet .templet_bg .content .details img{display:block;width:100%;height:100%;margin:0 auto;margin-top:10px}.templet .templet_bg .content .description{margin-top:10px;margin-left:0;font:.875rem Arial,Helvetica,sans-serif;color:#444;line-height:24px}.templet .templet_bg .content .tab-list .tab-input{display:none}.templet .templet_bg .content .tab-list #tab-label1:checked ~ .tab-head .tab-li1,.templet .templet_bg .content .tab-list #tab-label2:checked ~ .tab-head .tab-li2,.templet .templet_bg .content .tab-list #tab-label3:checked ~ .tab-head .tab-li3,.templet .templet_bg .content .tab-list #tab-label4:checked ~ .tab-head .tab-li4{color:red}.templet .templet_bg .content .tab-list #tab-label1:checked ~ .tab-body .tab-content1,.templet .templet_bg .content .tab-list #tab-label2:checked ~ .tab-body .tab-content2,.templet .templet_bg .content .tab-list #tab-label3:checked ~ .tab-body .tab-content3,.templet .templet_bg .content .tab-list #tab-label4:checked ~ .tab-body .tab-content4{display:block}.templet .templet_bg .content .tab-list .tab-head{width:100%;font-size:1rem}.templet .templet_bg .content .tab-list .tab-head ul{display:flex;justify-content:space-evenly;flex-wrap:wrap}.templet .templet_bg .content .tab-list .tab-head ul li{width:100%;height:34px;line-height:34px;font-weight:bold;text-align:center;background-image:linear-gradient(#f9f9f9, #d5d5d5)}.templet .templet_bg .content .tab-list .tab-head ul li label{display:block;width:100%;height:34px;cursor:pointer;-webkit-tap-highlight-color:transparent}.templet .templet_bg .content .tab-list .tab-body{width:100%;font-size:.875rem;overflow:hidden}.templet .templet_bg .content .tab-list .tab-body>div{display:none}.templet .templet_bg .content .tab-list .tab-body>div img{width:100%;height:100%;margin:0 auto}
+    html{font-size:1.5625vw}@media only screen and (max-width: 480px){html{font-size:12px}}@media only screen and (min-width: 1024px){html{font-size:16px}}@media only screen and (min-width: 480px){.templet .templet_bg .content{padding:0 4.375rem}.templet .templet_bg .content .hot-selling a{border-color:transparent}.templet .templet_bg .content .details img{width:37.5rem;height:37.5rem}.templet .templet_bg .content .tab-list .tab-head ul li{width:25%}}@media only screen and (min-width: 1024px){.templet .templet_bg{width:1000px}.templet .templet_bg .content .card .card-title span{margin-left:35px}.templet .templet_bg .content .card .description{margin-left:40px}}
+  </style>
+</head>
+<body>
+  <div class="templet">
+    <div class="templet_bg">
+      <div class="content">
+        <div class="card">
+          <div class="card-title">
+            <span>Hot Selling</span>
+          </div>
+          <div class="hot-selling">
+            <a href="https://www.ebay.com/itm/184582337565" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/pic/2020_12_16/2012160112109306.jpg" alt="" />
+                </div>
+                <div class="title">
+                  Wooden&gt; Mirror Jewelry Box Treasure Storage Cabinet
+                  Organizer Case Holder White
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/114578074349" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(12).jpg" alt="" />
+                </div>
+                <div class="title">
+                  Macrame\'\' Wall&lt; Hanging Tapestry Woven Handmade Boho
+                  Living Room Decor Gift USA
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/Macrame-Woven-Wall-Hanging-Tapestry-Boho-Chic-Bohemian-Home-Art-Decor-Handmade/114490204857?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D6aaf1b5ece0047a786bb5efd6a3eefad%26pid%3D100008%26rk%3D2%26rkt%3D12%26sd%3D114578074349%26itm%3D114490204857%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault%26brand%3DUnbranded&amp;_trksid=p2047675.c100008.m2219" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/pic/2020_12_15/2012150112081244.jpg" alt="" />
+                </div>
+                <div class="title">
+                  Artistic\' style Home Art Decor Moon Handmade Macrame
+                  Woven Wall Hanging
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/303812767661" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(3).jpg" alt="" />
+                </div>
+                <div class="title">
+                  4x Plastic&gt; w/Feeder Clip For Pet Bird Drinker Green
+                  Aviary Water Bottle Budgie
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/JL/JL1517/JL1517A4.jpg" alt="" />
+                </div>
+                <div class="title">
+                  Bird Perch For Budgie, Canary, Parrot Stick On Wooden
+                  Perch With Droppings Tray
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+              <a href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(6).jpg" alt="" />
+                </div>
+                <div class="title">
+                  1L Hydration Pack Water Bladder Bag Protable Reservoir
+                  Pouch Fits for Camelback
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/pic/2020_12_16/2012160112142242.jpg" alt="" />
+                </div>
+                <div class="title">
+                  Parrot Play Stand Bird Playground Wood Perch Gym Playpen
+                  Ladder With Feeder Gift
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
+            <a href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219" target="_blank">
+              <div class="product">
+                <div class="image">
+                  <img src="https://pic.elinkmall.com/pic/2020_12_16/2012160212032504.jpg" alt="" />
+                </div>
+                <div class="title">
+                  Kids Dustproof Anti Spitting Protective Visor Hat Kids
+                  Face Cover Fisherman Cap
+                </div>
+                <div class="price">See Price</div>
+              </div>
+            </a>
           </div>
         </div>
-        <div class="recomendation">
-          <div style="padding-bottom: 6px">
-            <div class="showcase">
-              <div class="blank-div">
-                <span class="eazylogo eazylogo--blank-div"></span>
-              </div>
-              <div class="showcase-container">
+        <div class="card">
+          <div class="card-title">
+            <span>Details</span>
+          </div>
+          <div class="details">
+            <img src="https://pic.elinkmall.com/HW/HW215/HW215%20(6).jpg" />
+            <img src="https://pic.elinkmall.com/HW/HW215/HW215%20(7).jpg" />
+            <img src="https://pic.elinkmall.com/HW/HW215/HW215B.jpg" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <span>Description</span>
+          </div>
+          <div class="description">
+            <b>Best practices for optimizing listings across all devices</b>
+            <br><br>
+            <ul>
+              <li>
+                Use basic HTML, CSS or text-only descriptions that are no longer
+                than 800 characters
+              </li>
+              <li>
+                Upload up to 12 free photos with the eBay&nbsp;
                 <a
-                  href="https://www.ebay.com/itm/184582337565"
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_photo"
+                  href="https://pages.ebay.com/help/sell/pictures.html#standard"
+                  id="Photo-uploader"
                   target="_blank"
-                  id="product-1"
+                  title="Photo Uploader opens in new window"
+                  >photo uploader</a
                 >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/pic/2020_12_16/2012160112109306.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Wooden&gt; Mirror Jewelry Box Treasure Storage Cabinet
-                      Organizer Case Holder White
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/114578074349"
+              </li>
+              <li>
+                Use item specifics (e.g., size, color, UPC/EANs and brand names)
+              </li>
+              <li>
+                Enable shoppers to see store categories and search your eBay store
+                with the&nbsp;
+                <a
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_shoppers"
+                  href="https://pages.ebay.com/help/sell/creating-your-store.html#setting"
+                  id="listing-frame"
                   target="_blank"
-                  id="product-2"
+                  title="Listing Frame Feature opens in new window"
+                  >listing frame feature</a
                 >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(12).jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Macrame\'\' Wall&lt; Hanging Tapestry Woven Handmade Boho
-                      Living Room Decor Gift USA
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/Macrame-Woven-Wall-Hanging-Tapestry-Boho-Chic-Bohemian-Home-Art-Decor-Handmade/114490204857?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D6aaf1b5ece0047a786bb5efd6a3eefad%26pid%3D100008%26rk%3D2%26rkt%3D12%26sd%3D114578074349%26itm%3D114490204857%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault%26brand%3DUnbranded&amp;_trksid=p2047675.c100008.m2219"
+              </li>
+              <li>
+                Use&nbsp;
+                <a
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_manager"
+                  href="https://cgi1.ebay.com/ws/eBayISAPI.dll?SellerDiscountCampaignDashboard"
+                  id="promotions-manager"
                   target="_blank"
-                  id="product-3"
+                  title="Promotions Manager opens in new window"
+                  >Promotions Manager</a
                 >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/pic/2020_12_15/2012150112081244.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Artistic\' style Home Art Decor Moon Handmade Macrame
-                      Woven Wall Hanging
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/303812767661"
-                  target="_blank"
-                  id="product-4"
-                >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(3).jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      4x Plastic&gt; w/Feeder Clip For Pet Bird Drinker Green
-                      Aviary Water Bottle Budgie
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219"
-                  target="_blank"
-                  id="product-5"
-                >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/JL/JL1517/JL1517A4.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Bird Perch For Budgie, Canary, Parrot Stick On Wooden
-                      Perch With Droppings Tray
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219"
-                  target="_blank"
-                  id="product-6"
-                >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/JL/JL1517/JL1517%20(6).jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      1L Hydration Pack Water Bladder Bag Protable Reservoir
-                      Pouch Fits for Camelback
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219"
-                  target="_blank"
-                  id="product-7"
-                >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/pic/2020_12_16/2012160112142242.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Parrot Play Stand Bird Playground Wood Perch Gym Playpen
-                      Ladder With Feeder Gift
-                    </div>
-                    <div class="price">See Price</div>
-                  </div> </a
-                ><a
-                  href="https://www.ebay.com/itm/Bird-Perch-For-Budgie-Canary-Parrot-Stick-On-Wooden-Perch-With-Droppings-Tray/174367850941?_trkparms=aid%3D1110009%26algo%3DSPLICE.COMPLISTINGS%26ao%3D1%26asc%3D225074%26meid%3D26417b9345a24587a5ed981fce89d976%26pid%3D100008%26rk%3D1%26rkt%3D12%26mehot%3Dpp%26sd%3D303812767661%26itm%3D174367850941%26pmt%3D1%26noa%3D0%26pg%3D2047675%26algv%3Ddefault&amp;_trksid=p2047675.c100008.m2219"
-                  target="_blank"
-                  id="product-8"
-                >
-                  <div class="product">
-                    <div class="image">
-                      <img
-                        src="https://pic.elinkmall.com/pic/2020_12_16/2012160212032504.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="title">
-                      Kids Dustproof Anti Spitting Protective Visor Hat Kids
-                      Face Cover Fisherman Cap
-                    </div>
-                    <div class="price">See Price</div>
-                  </div>
+                &nbsp;for add-on merchandising or to show other promotional items
+              </li>
+              <li>
+                Use eBay’s fields for payment, shipping and returns rather than
+                repeating the information in an interactive tab widget on the item
+                description
+              </li>
+              <li>
+                Let buyers know more about you with your&nbsp;
+                <a
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_store"
+                  href="https://pages.ebay.com/sellerinformation/stores/Subscriptions.html"
+                  title="eBay Store"
+                  >eBay Store
                 </a>
-              </div>
+                  ,&nbsp;
+                <a
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_profile"
+                  href="https://pages.ebay.com/sellerinformation/build-your-business-online/grow-your-sales/followingonebay/profile.html"
+                  title="eBay Profile"
+                  >eBay Profile
+                </a>
+                  &nbsp;and&nbsp;
+                <a
+                  class="ebayLVTracking_clickthru"
+                  clickid="sr161_vi_collection"
+                  href="https://pages.ebay.com/sellerinformation/build-your-business-online/grow-your-sales/followingonebay/collections.html"
+                  title="Collections"
+                  >collections
+                </a>
+              </li>
+            </ul>
+            <br>
+            <p>
+              eBay will provide you with tools to view your listings with and
+              without active content in coming weeks.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="tab-list">
+          <input class="tab-input" id="tab-label1" type="radio" name="tab" checked />
+          <input class="tab-input" id="tab-label2" type="radio" name="tab" />
+          <input class="tab-input" id="tab-label3" type="radio" name="tab" />
+          <input class="tab-input" id="tab-label4" type="radio" name="tab" />
+          <div class="tab-head">
+            <ul>
+              <li class="tab-li1">
+                <label for="tab-label1">Payment</label>
+              </li>
+              <li class="tab-li2">
+                <label for="tab-label2">Shipping</label>
+              </li>
+              <li class="tab-li3">
+                <label for="tab-label3">Return</label>
+              </li>
+              <li class="tab-li4">
+                <label for="tab-label4">Feedback</label>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-body">
+            <div class="tab-content1">
+              <img src="https://pic.elinkmall.com/zhoufang/ebay2/paym_25.jpg" />
+            </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="dh">
-        <div class="bt">
-          <h2
-            style="
-              font: 16px Arial, Helvetica, sans-serif;
-              color: #fff;
-              line-height: 35px;
-              text-align: center;
-              font-weight: bold;
-            "
-          >
-            Details
-          </h2>
-        </div>
-      </div>
-      <div class="pro">
-        <img
-          class="preview"
-          src="https://pic.elinkmall.com/HW/HW215/HW215%20(6).jpg"
-          width="600"
-          height="600"
-        /><br /><img
-          class="preview"
-          src="https://pic.elinkmall.com/HW/HW215/HW215%20(7).jpg"
-          width="600"
-          height="600"
-        /><br /><img
-          class="preview"
-          src="https://pic.elinkmall.com/HW/HW215/HW215B.jpg"
-          width="600"
-          height="600"
-        /><br />
-      </div>
-      <div class="clear"></div>
-      <div class="des">
-        <div class="dh">
-          <div class="bt">
-            <h2
-              style="
-                font: 16px Arial, Helvetica, sans-serif;
-                color: #fff;
-                line-height: 35px;
-                text-align: center;
-                font-weight: bold;
-              "
-            >
-              Description
-            </h2>
-          </div>
-        </div>
-        <div class="des_wen">
-          <b>Best practices for optimizing listings across all devices</b><br />
-          &nbsp;
-          <ul>
-            <li>
-              Use basic HTML, CSS or text-only descriptions that are no longer
-              than 800 characters
-            </li>
-            <li>
-              Upload up to 12 free photos with the eBay&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_photo"
-                href="https://pages.ebay.com/help/sell/pictures.html#standard"
-                id="Photo-uploader"
-                target="_blank"
-                title="Photo Uploader opens in new window"
-                >photo uploader</a
+            <div class="tab-content2">
+              <span style="line-height: 30px">
+                We are not responsible for any custom duty or import fees.
+                Items will be shipped within 1 business day on payment
+                received.<br />
+                Items are shipped from using Airmail , reach most of the
+                place within 3 to 8 business days usually. Delivery time
+                depends on destination and other factors; our item is
+                located in USA,we will ship it to you with USPS or FEDEX.it
+                is very fast.<br />
+                1. The other countries We ship by USPS Mail , On average
+                take 7 to 15 business days in delivery .
+                <br />
+                2. We guarantee orders will be shipped out within 24 hours
+                after payment received.
+                <br />
+                3. Item will be packed safely
+                <br />
+                4. Only ship to the confirmed address provided by eBay.
+                Please make sure that your address in Paypal matches the
+                address you would like us to ship to.</span
               >
-            </li>
-            <li>
-              Use item specifics (e.g., size, color, UPC/EANs and brand names)
-            </li>
-            <li>
-              Enable shoppers to see store categories and search your eBay store
-              with the&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_shoppers"
-                href="https://pages.ebay.com/help/sell/creating-your-store.html#setting"
-                id="listing-frame"
-                target="_blank"
-                title="Listing Frame Feature opens in new window"
-                >listing frame feature</a
-              >
-            </li>
-            <li>
-              Use&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_manager"
-                href="https://cgi1.ebay.com/ws/eBayISAPI.dll?SellerDiscountCampaignDashboard"
-                id="promotions-manager"
-                target="_blank"
-                title="Promotions Manager opens in new window"
-                >Promotions Manager</a
-              >&nbsp;for add-on merchandising or to show other promotional items
-            </li>
-            <li>
-              Use eBay’s fields for payment, shipping and returns rather than
-              repeating the information in an interactive tab widget on the item
-              description
-            </li>
-            <li>
-              Let buyers know more about you with your&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_store"
-                href="https://pages.ebay.com/sellerinformation/stores/Subscriptions.html"
-                title="eBay Store"
-                >eBay Store</a
-              >,&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_profile"
-                href="https://pages.ebay.com/sellerinformation/build-your-business-online/grow-your-sales/followingonebay/profile.html"
-                title="eBay Profile"
-                >eBay Profile</a
-              >&nbsp;and&nbsp;<a
-                class="ebayLVTracking_clickthru"
-                clickid="sr161_vi_collection"
-                href="https://pages.ebay.com/sellerinformation/build-your-business-online/grow-your-sales/followingonebay/collections.html"
-                title="Collections"
-                >collections</a
-              >
-            </li>
-          </ul>
-          &nbsp;
-          <p>
-            eBay will provide you with tools to view your listings with and
-            without active content in coming weeks.
-          </p>
-        </div>
-        <div class="clear"></div>
-        <div class="nr04" id="nr04">
-          <div class="z_bt3">
-            <div class="left">&nbsp;</div>
-
-            <div class="center">
-              <div class="Menubox">
-                <ul>
-                  <li id="one1"><a href="#con_1">Payment</a></li>
-                  <li id="one2"><a href="#con_2">Shipping</a></li>
-                  <li id="one3"><a href="#con_3">Return</a></li>
-                  <li id="one4"><a href="#con_4">Feedback</a></li>
-                </ul>
-              </div>
             </div>
-          </div>
-
-          <div>
-            <div class="con4_content">
-              <div class="tab_content">
-                <div id="con_1" class="con_style">
-                  <span style="margin: 0 auto"
-                    ><img
-                      class="payment"
-                      src="https://pic.elinkmall.com/zhoufang/ebay2/paym_25.jpg"
-                      width="708"
-                      height="592"
-                  /></span>
-                </div>
-
-                <div id="con_2" class="con_style">
-                  <span style="line-height: 30px">
-                    We are not responsible for any custom duty or import fees.
-                    Items will be shipped within 1 business day on payment
-                    received.<br />
-                    Items are shipped from using Airmail , reach most of the
-                    place within 3 to 8 business days usually. Delivery time
-                    depends on destination and other factors; our item is
-                    located in USA,we will ship it to you with USPS or FEDEX.it
-                    is very fast.<br />
-                    1. The other countries We ship by USPS Mail , On average
-                    take 7 to 15 business days in delivery .
-                    <br />
-                    2. We guarantee orders will be shipped out within 24 hours
-                    after payment received.
-                    <br />
-                    3. Item will be packed safely
-                    <br />
-                    4. Only ship to the confirmed address provided by eBay.
-                    Please make sure that your address in Paypal matches the
-                    address you would like us to ship to.</span
-                  >
-                </div>
-
-                <div id="con_3" class="con_style">
-                  <span style="margin: 0 auto"
-                    ><img
-                      class="payment"
-                      src="https://pic.elinkmall.com/zhoufang/ebay2/retu_25.jpg"
-                      width="708"
-                      height="478"
-                    />
-                  </span>
-                </div>
-
-                <div id="con_4" class="con_style">
-                  <span style="margin: 0 auto"
-                    ><img
-                      class="payment"
-                      src="https://pic.elinkmall.com/zhoufang/ebay2/feed_25.jpg"
-                      width="708"
-                      height="587"
-                    />
-                  </span>
-                </div>
-              </div>
+            <div class="tab-content3">
+              <img src="https://pic.elinkmall.com/zhoufang/ebay2/retu_25.jpg" />
+            </div>
+            <div class="tab-content4">
+              <img src="https://pic.elinkmall.com/zhoufang/ebay2/feed_25.jpg" />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- End Description -->
+</body>
+</html>

@@ -1,0 +1,60 @@
+@function rem($px) {
+  @return ($px / 16) * 1rem
+}
+html {
+  font-size: (16 / 1024) * 100vw;
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .templet {
+    .templet_bg {
+      .content {
+        padding: 0 rem(70);
+        .hot-selling {
+          a {
+            border-color: transparent;
+          }
+        }
+        .details {
+          img {
+            width: rem(600);
+            height: rem(600);
+          }
+        }
+        .tab-list {
+          .tab-head {
+            ul {
+              li {
+                width: 25%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .templet {
+    .templet_bg {
+      width: 1000px;
+      .content {
+        .card {
+          .card-title {
+            span {
+              margin-left: 35px;
+            }
+          }
+          .description{
+            margin-left: 40px;
+          }
+        }
+      }
+    }
+  }
+}
