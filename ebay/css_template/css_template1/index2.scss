@@ -1,0 +1,114 @@
+@function rem($px) {
+  @return ($px / 16) * 1rem
+}
+html {
+  font-size: (16 / 1024) * 100vw;
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 950px) {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 950px) { // < 950
+  .wrapper-one {
+    .content {
+      width: auto;
+    }
+  }
+}
+@media only screen and (max-width: 700px) { // < 700
+  .wrapper-one {
+    .content {
+      .header {
+        .nav-middle {
+          display: none;
+        }
+      }
+      .middle {
+        .guarantee {
+          width: 100%;
+        }
+      }
+      .tab-container {
+        .tab-head {
+          flex-wrap: wrap;
+          flex-direction: column;
+          li {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .wrapper-one {
+    .content {
+      .header {
+        .slides {
+          height: rem(200);
+        }
+      }
+      .middle {
+        padding: 0 rem(30);
+        .sku-img {
+          img {
+            width: rem(368);
+          }
+        }
+        .banner {
+          img {
+            height: rem(75);
+          }
+        }
+      }
+      .swiper-container {
+        .swiper-box {
+          .swiper-img {
+            width: rem(400);
+            height: rem(340);
+            li {
+              a {
+                img {
+                  width: rem(300);
+                }
+              }
+              label {
+                &:first-child {
+                margin-right: 5px;
+              }
+                &:last-child {
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .tab-container {
+        padding: 0 rem(38);
+      }
+      .footer {
+        margin-top: rem(36);
+        .footer-top {
+          flex-direction: column;
+          img {
+            height: auto;
+            &:nth-child(2) {
+              margin: 0;
+            }
+          }
+        }
+        .footer-middle {
+          flex-direction: column;
+          > div {
+            margin: 0 auto 10px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
