@@ -6,11 +6,11 @@ html {
   @media only screen and (max-width: 480px) {
     font-size: 12px;
   }
-  @media only screen and (min-width: 950px) {
+  @media only screen and (min-width: 970px) {
     font-size: 16px;
   }
 }
-@media only screen and (max-width: 950px) { // < 950
+@media only screen and (max-width: 970px) { // < 950
   .wrapper-one {
     .content {
       width: auto;
@@ -30,14 +30,11 @@ html {
           width: 100%;
         }
       }
-      .tab-container {
-        .tab-head {
-          flex-wrap: wrap;
-          flex-direction: column;
-          li {
-            flex: 1;
-          }
-        }
+      .tab-container-pc {
+        display: none;
+      }
+      .tab-container-phone {
+        display: block;
       }
     }
   }
@@ -86,7 +83,7 @@ html {
           }
         }
       }
-      .tab-container {
+      .tab-container-phone {
         padding: 0 rem(38);
       }
       .footer {

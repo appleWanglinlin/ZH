@@ -38,3 +38,40 @@
     }
   }
 }
+
+.tab-container2 {
+  width: 200px;
+  margin-top: 80px;
+  border: 1px solid #ccc;
+  .tab-box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    > div {
+      flex: 1;
+      text-align: center;
+      .tab-input {
+        display: none;
+      }
+      label {
+        display: block;
+        cursor: pointer;
+        background-color: peachpuff;
+      }
+      .tab-input:checked + label {
+        background-color: lavender;
+      }
+      .tab-content {
+        height: 0;
+        text-align: left;
+        overflow: auto; // 注意放的位置，放在:checked里使最后一个tab-content会显示
+        transition: all .3s ease-in-out;
+      }
+      .tab-input:checked ~ .tab-content {
+        display: block;
+        height: 100px;
+      }
+    }
+  }
+}

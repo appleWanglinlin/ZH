@@ -38,3 +38,39 @@
 .tab-container .tab-box > div .tab-input:checked ~ .tab-content {
   display: block;
 }
+.tab-container2 {
+  width: 200px;
+  margin-top: 80px;
+  border: 1px solid #ccc;
+}
+.tab-container2 .tab-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.tab-container2 .tab-box > div {
+  flex: 1;
+  text-align: center;
+}
+.tab-container2 .tab-box > div .tab-input {
+  display: none;
+}
+.tab-container2 .tab-box > div label {
+  display: block;
+  cursor: pointer;
+  background-color: peachpuff;
+}
+.tab-container2 .tab-box > div .tab-input:checked + label {
+  background-color: lavender;
+}
+.tab-container2 .tab-box > div .tab-content {
+  height: 0;
+  text-align: left;
+  overflow: auto;
+  transition: all 0.3s ease-in-out;
+}
+.tab-container2 .tab-box > div .tab-input:checked ~ .tab-content {
+  display: block;
+  height: 100px;
+}
