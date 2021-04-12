@@ -27,19 +27,23 @@ html {
 }
 @media only screen and (max-width: 900px) {
   .wrapper-two {
+    &::after {
+      background-position: center 353px;
+    }
     .header {
       display: block;
       .logo {
         margin: rem(30) auto;
       }
       .nav {
-        display: block;
+        flex-wrap: wrap-reverse;
         .menu {
-          width: 300px;
+          width: 100%;
           min-width: 300px;
           height: auto;
-          margin: rem(45) auto 0;
+          margin: rem(20) auto 0;
           text-align: center;
+          box-sizing: border-box;
           ul {
             display: block;
             li {
@@ -83,13 +87,17 @@ html {
     }
     .product-content {
       .product-image-box {
-        display: block;
+        flex-wrap: wrap-reverse;
+        align-items: center;
         .img-small {
-          width: auto;
+          width: 100%;
           justify-content: center;
         }
         .enlarge {
-          margin: 0 auto;
+          width: 100%;
+          div {
+            margin: 0 auto;
+          }
         }
         .img-big {
           margin: 0 auto;
@@ -97,12 +105,14 @@ html {
       }
       .promo-bottom {
         flex-wrap: wrap;
-      }
-    }
-    .picture-list {
-      a {
-        img {
-
+        background-color: #000;
+        .newsletter {
+          p {
+            font-size: 12px;
+          }
+          a {
+            font-size: 12px;
+          }
         }
       }
     }
@@ -123,10 +133,17 @@ html {
           display: block;
           .tab-item {
             label {
+              position: relative;
               height: rem(50);
-              &:before,
-              &:after {
+              &::before,
+              &::after {
                 background-color: transparent;
+              }
+              .iconfont {
+                display: block;
+                position: absolute;
+                right: 10px;
+                transition: all .3s ease-in-out;
               }
             }
             .tab-content {
@@ -136,7 +153,10 @@ html {
               padding: 0;
               margin-top: 10px;
               transition: all .3s ease-in-out;
-              overflow-y: scroll;
+              overflow-y: auto;
+            }
+            .tab-input:checked + label .iconfont {
+              transform: rotate(180deg);
             }
             .tab-input:checked ~ .tab-content {
               height: rem(200);

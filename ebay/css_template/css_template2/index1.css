@@ -19,7 +19,7 @@ li {
   margin: 0 auto;
 }
 
-.wrapper-two:after {
+.wrapper-two::after {
   position: absolute;
   content: "";
   width: 100%;
@@ -190,6 +190,7 @@ li {
   align-items: center;
   justify-content: center;
   width: 60px;
+  min-width: 60px;
   height: 60px;
   margin-right: 20px;
   font-size: 26px;
@@ -260,15 +261,16 @@ li {
   height: 100%;
 }
 
-.wrapper-two .product-content .product-image-box .enlarge {
-  width: 110px;
+.wrapper-two .product-content .product-image-box .enlarge div {
+  display: flex;
+  align-items: center;
+  width: 150px;
   min-width: 110px;
   height: 48px;
   margin: 30px 10px 0 5px;
-  padding: 5px 23px 0px 0px;
   font-size: 14px;
   color: #fff;
-  background: url(https://sunandfuninoc.com/sites/jx/wissem/CozyArray/img/icon-loop.png) center right no-repeat #58585a;
+  background-color: #000;
   box-sizing: border-box;
 }
 
@@ -434,6 +436,10 @@ li {
   border-radius: 50%;
 }
 
+.wrapper-two .product-content .product-tab .tab-list .tab-item label .iconfont {
+  display: none;
+}
+
 .wrapper-two .product-content .product-tab .tab-list .tab-item .tab-content {
   position: absolute;
   left: 0;
@@ -445,7 +451,7 @@ li {
   font: 0.77778rem "Ubuntu", sans-serif;
   text-align: left;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .wrapper-two .product-content .product-tab .tab-list .tab-item .tab-content p {
@@ -494,16 +500,16 @@ li {
 
 .wrapper-two .product-content .promo-bottom .w160 {
   width: 8.88889rem;
-  min-width: 115px;
+  min-width: 120px;
   height: 8.88889rem;
-  min-height: 115px;
+  min-height: 120px;
 }
 
 .wrapper-two .product-content .promo-bottom .w180 {
   width: 10rem;
-  min-width: 130px;
+  min-width: 140px;
   height: 10rem;
-  min-height: 130px;
+  min-height: 140px;
 }
 
 .wrapper-two .product-content .promo-bottom .newsletter {
@@ -513,9 +519,9 @@ li {
   justify-content: center;
   width: 14.44444rem;
   height: 14.44444rem;
-  min-width: 190px;
-  min-height: 190px;
-  padding: 15px;
+  min-width: 200px;
+  min-height: 200px;
+  padding: 0.83333rem;
   border-radius: 50%;
   color: #eee;
   text-align: center;

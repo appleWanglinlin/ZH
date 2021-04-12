@@ -21,6 +21,9 @@ html {
 }
 
 @media only screen and (max-width: 900px) {
+  .wrapper-two::after {
+    background-position: center 353px;
+  }
   .wrapper-two .header {
     display: block;
   }
@@ -28,14 +31,15 @@ html {
     margin: 1.66667rem auto;
   }
   .wrapper-two .header .nav {
-    display: block;
+    flex-wrap: wrap-reverse;
   }
   .wrapper-two .header .nav .menu {
-    width: 300px;
+    width: 100%;
     min-width: 300px;
     height: auto;
-    margin: 2.5rem auto 0;
+    margin: 1.11111rem auto 0;
     text-align: center;
+    box-sizing: border-box;
   }
   .wrapper-two .header .nav .menu ul {
     display: block;
@@ -72,13 +76,17 @@ html {
     display: none;
   }
   .wrapper-two .product-content .product-image-box {
-    display: block;
+    flex-wrap: wrap-reverse;
+    align-items: center;
   }
   .wrapper-two .product-content .product-image-box .img-small {
-    width: auto;
+    width: 100%;
     justify-content: center;
   }
   .wrapper-two .product-content .product-image-box .enlarge {
+    width: 100%;
+  }
+  .wrapper-two .product-content .product-image-box .enlarge div {
     margin: 0 auto;
   }
   .wrapper-two .product-content .product-image-box .img-big {
@@ -86,6 +94,13 @@ html {
   }
   .wrapper-two .product-content .promo-bottom {
     flex-wrap: wrap;
+    background-color: #000;
+  }
+  .wrapper-two .product-content .promo-bottom .newsletter p {
+    font-size: 12px;
+  }
+  .wrapper-two .product-content .promo-bottom .newsletter a {
+    font-size: 12px;
   }
   .wrapper-two .footer .footer-nav {
     flex-direction: column;
@@ -99,10 +114,17 @@ html {
     display: block;
   }
   .wrapper-two .product-content .product-tab .tab-list .tab-item label {
+    position: relative;
     height: 2.77778rem;
   }
-  .wrapper-two .product-content .product-tab .tab-list .tab-item label:before, .wrapper-two .product-content .product-tab .tab-list .tab-item label:after {
+  .wrapper-two .product-content .product-tab .tab-list .tab-item label::before, .wrapper-two .product-content .product-tab .tab-list .tab-item label::after {
     background-color: transparent;
+  }
+  .wrapper-two .product-content .product-tab .tab-list .tab-item label .iconfont {
+    display: block;
+    position: absolute;
+    right: 10px;
+    transition: all .3s ease-in-out;
   }
   .wrapper-two .product-content .product-tab .tab-list .tab-item .tab-content {
     position: relative;
@@ -111,7 +133,10 @@ html {
     padding: 0;
     margin-top: 10px;
     transition: all .3s ease-in-out;
-    overflow-y: scroll;
+    overflow-y: auto;
+  }
+  .wrapper-two .product-content .product-tab .tab-list .tab-item .tab-input:checked + label .iconfont {
+    transform: rotate(180deg);
   }
   .wrapper-two .product-content .product-tab .tab-list .tab-item .tab-input:checked ~ .tab-content {
     height: 11.11111rem;
