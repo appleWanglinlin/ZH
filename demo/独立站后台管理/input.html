@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .input-item {
+      width: 200px;
+    }
+    .input-wrapper {
+      position: relative;
+      padding: 33px 5px 7px;
+      border: 1px solid #E9E9E9;
+    }
+    input {
+      width: 100%;
+      display: block;
+      font-size: 26px;
+      transition: border 0.2s ease;
+      border: 0;
+      outline: none;
+      overflow: hidden;
+    }
+    label {
+      position: absolute;
+      font-size: 20px;
+      top: 40px;
+      display: block;
+      cursor: text;
+      transition: top 0.2s ease;
+      color: #8B8B8B;
+    }
+    .move {
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="input-item">
+      <div class="input-wrapper">
+        <input type="text" @focus="focus" @blur="blur">
+        <label :class="{move: visible}">Name</label>
+      </div>
+    </div>
+  </div>
+</body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      },
+      methods: {
+        focus() {
+          console.log('focus')
+          this.visible = true
+        },
+        blur(e) {
+          let val = e.currentTarget.value
+          console.log('val', e.currentTarget.value)
+          this.visible = val !== ''
+        }
+      }
+    })
+  </script>
+</html>

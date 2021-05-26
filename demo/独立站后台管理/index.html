@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="app">
-        <el-button type="success">成功按钮</el-button>
+        <el-button type="success" @click="click">click</el-button>
         <i class="el-icon-edit"></i>
         <i class="el-icon-share"></i>
     </div>
@@ -52,10 +52,39 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="./element-ui@2.15.1.js"></script>
 <script>
+    sessionStorage.setItem('a', 1)
     new Vue({
       el: '#app',
       data: function() {
         return { visible: false }
+      },
+      methods: {
+				click() {
+					function debounce(fn, delay) {
+						let a = 1
+						console.log('a', a)
+						return function() {
+							if (a) {
+								a++
+								console.log('a1', a)
+							}
+						}
+					}
+					debounce(this.fn, 1000)()
+				},
+				debounce(fn, delay) {
+					let a = 1
+					console.log('a', a)
+					return function() {
+						if (a) {
+							a++
+							console.log('a1', a)
+						}
+					}
+				},
+				fn() {
+					console.log('fn')
+				}
       }
     })
   </script>
