@@ -727,6 +727,146 @@
 - [x] break
 
   **break 语句**中止当前循环，[`switch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch)语句或[`label`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label) 语句，并把程序控制流转到紧接着被中止语句后面的语句。
+  
+- [x] 闭包
+
+  一个函数和对其周围状态（**lexical environment，词法环境**）的引用捆绑在一起（或者说函数被引用包围），这样的组合就是**闭包**（**closure**）。也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域。在 JavaScript 中，每当创建一个函数，闭包就会在函数创建的同时被创建出来。
+
+  词法作用域：
+
+  词法（lexical）一词指的是，**词法作用域根据源代码中声明变量的位置来确定该变量在何处可用**。
+
+- [x] 原始数据
+
+  **基本类型**（基本数值、基本数据类型）是一种既非[对象](https://developer.mozilla.org/zh-CN/docs/Glossary/Object)也无[方法](https://developer.mozilla.org/zh-CN/docs/Glossary/Method)的数据。在 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) 中，共有7种基本类型：[string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)，[number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number)，[bigint](https://developer.mozilla.org/zh-CN/docs/Glossary/BigInt)，[boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean)，[null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null)，[undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/undefined)，[symbol](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol) ([ECMAScript](https://developer.mozilla.org/zh-CN/docs/Glossary/ECMAScript) 2016新增)。
+
+  多数情况下，基本类型直接代表了最底层的语言实现。
+
+  所有基本类型的值都是**不可改变**的。但需要注意的是，基本类型本身和一个赋值为基本类型的变量的区别。变量会被赋予一个新值，而原值不能像数组、对象以及函数那样被改变。
+
+  这个示例会帮助你了解基本类型**不可改变**的事实。
+
+  示例1：
+
+  ```js
+  // 使用字符串方法不会改变一个字符串
+  var bar = "baz";
+  console.log(bar);               // baz
+  bar.toUpperCase();
+  console.log(bar);               // baz
+  
+  // 使用数组方法可以改变一个数组
+  var foo = [];
+  console.log(foo);               // []
+  foo.push("plugh");
+  console.log(foo);               // ["plugh"]
+  
+  // 赋值行为可以给基本类型一个新值，而不是改变它
+  bar = bar.toUpperCase();       // BAZ
+  ```
+
+  **基本类型值可以被替换，但不能被改变。**
+
+  示例2：
+
+  下面的示例将让你体会到JavaScript是如何处理基本类型的。
+
+  ```js
+  // 基本类型
+  let foo = 5;
+  
+  // 定义一个貌似可以改变基本类型值的函数
+  function addTwo(num) {
+     num += 2;
+  }
+  // 和前面的函数一样
+  function addTwo_v2(foo) {
+     foo += 2;
+  }
+  
+  // 调用第一个函数，并传入基本类型值作为参数
+  addTwo(foo);
+  // Getting the current Primitive value
+  console.log(foo);   // 5
+  
+  // 尝试调用第二个函数...
+  addTwo_v2(foo);
+  console.log(foo);   // 5
+  ```
+
+  你是否认为会得到`7`，而不是`5`？如果是，请看看代码是如何运行的：
+  
+  - `addTwo`和`addTwo_v2`函数调用时，JavaScript会检查标识符`foo`的值，从而准确无误的找到第一行实例化变量的声明语句。
+  - 找到以后，JavaScript将其作为参数传递给函数的形参。
+  - 在执行函数体内语句之前，**JavaScript会将传递进来的参数（基本类型的值）复制一份**，**创建一个本地副本。这个副本只存在于该函数的作用域中**，我们能够通过指定在函数中的标识符访问到它（`addTwo`中的`num`，`addTwo_v2`中的`foo`）。
+  - 接下来，函数体中的语句开始执行：
+    - 第一个函数中，创建了本地`num`参数，`num`的值加2，但这个值并不是原来的`foo`的值。
+    - 第二个函数中，创建了本地参数`foo`，并将它的值加2，这个值不是外部foo的值。在这种情况下，外部的`foo`变量不能以**任何**方式被访问到（疑问：因为没形成闭包吗？）。这是因为JavaScript的词法作用域（lexical scoping）所导致的变量覆盖，本地的变量`foo`覆盖了外部的变量`foo`。欲知详情，请参阅[闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)。
+  - 综上所述，函数中的任何操作都**不会**影响到最初的`foo`，我们操作的只不过是它的**副本**。
+  
+  这就是为什么说**所有基本类型的值都是无法改变的**。
+  
+- [x] Function.length
+
+  `length` 属性指明函数的形参个数。
+  
+- [x] isNaN()
+
+  `isNaN()` 函数用来确定一个值是否为[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 。注：`isNaN`函数内包含一些非常有趣的[规则](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN#Description)；你也可以使用 ECMAScript 2015 中定义的 [`Number.isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) 来判断。
+
+  - isNaN函数的必要性
+
+    与 JavaScript 中其他的值不同，[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)不能通过相等操作符（== 和 ===）来判断 ，因为 `NaN == NaN` 和 `NaN === NaN` 都会返回 `false`。 因此，`isNaN` 就很有必要了。
+
+  - NaN值得产生
+
+    当算术运算返回一个未定义的或无法表示的值时，`NaN`就产生了。但是，`NaN`并不一定用于表示某些值超出表示范围的情况。将某些不能强制转换为数值的非数值转换为数值的时候，也会得到`NaN`。
+
+    例如，0 除以0会返回`NaN `—— 但是其他数除以0则不会返回`NaN`。
+
+  - 令人费解的怪异行为
+
+    如果`isNaN`函数的参数不是`Number`类型， `isNaN`函数会首先尝试将这个参数转换为数值，然后才会对转换后的结果是否是[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)进行判断。
+
+    下一个版本的ECMAScript (ES2015)包含[`Number.isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN)函数。通过`Number.isNaN(x)`来检测变量`x`是否是一个`NaN`将会是一种可靠的做法。然而，在缺少`Number.isNaN`函数的情况下, 通过表达式`(x != x)` 来检测`变量x`是否是`NaN`会更加可靠。
+
+    一个`isNaN`的 polyfill 可以理解为（这个polyfill利用了`NaN`自身永不相等于自身这一特征 ）：
+
+    ```js
+    var isNaN = function(value) {
+        var n = Number(value);
+        return n !== n;
+    };
+    ```
+
+  示例：
+
+  ```js
+  isNaN(NaN);       // true
+  isNaN(undefined); // true
+  isNaN({});        // true
+  
+  isNaN(true);      // false
+  isNaN(null);      // false
+  isNaN(37);        // false
+  
+  // strings
+  isNaN("37");      // false: 可以被转换成数值37
+  isNaN("37.37");   // false: 可以被转换成数值37.37
+  isNaN("37,5");    // true
+  isNaN('123ABC');  // true:  parseInt("123ABC")的结果是 123, 但是Number("123ABC")结果是 NaN
+  isNaN("");        // false: 空字符串被转换成0
+  isNaN(" ");       // false: 包含空格的字符串被转换成0
+  
+  // dates
+  isNaN(new Date());                // false
+  isNaN(new Date().toString());     // true
+  
+  isNaN("blabla")   // true: "blabla"不能转换成数值
+                    // 转换成数值失败， 返回NaN
+  ```
+
+- [ ] 
 
 
 
