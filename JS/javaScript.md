@@ -689,7 +689,7 @@
   >
   >constructor：某个构造函数
   >
-  >描述：`instanceof`运算符用来检测`constructor.prototype`是否存在于`object`的原型链上
+  >描述：`instanceof`运算符用来检测`constructor.prototype`是否存在于`object`的原型链上，即构造函数的prototype是否存在于实例对象的原型链上
   >
   >```js
   >// 定义构造函数
@@ -818,11 +818,11 @@
 
     与 JavaScript 中其他的值不同，[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)不能通过相等操作符（== 和 ===）来判断 ，因为 `NaN == NaN` 和 `NaN === NaN` 都会返回 `false`。 因此，`isNaN` 就很有必要了。
 
-  - NaN值得产生
+  - NaN值的产生
 
     当算术运算返回一个未定义的或无法表示的值时，`NaN`就产生了。但是，`NaN`并不一定用于表示某些值超出表示范围的情况。将某些不能强制转换为数值的非数值转换为数值的时候，也会得到`NaN`。
 
-    例如，0 除以0会返回`NaN `—— 但是其他数除以0则不会返回`NaN`。
+    例如，0 除以0会返回`NaN `—— 但是其他数除以0则不会返回`NaN`。（其他数除以0返回`Infinity`）
 
   - 令人费解的怪异行为
 
