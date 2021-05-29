@@ -6,7 +6,7 @@
   <title>JS Bin</title>
 </head>
 <body>
-  <iframe src="javascript: alert('iframe')"></iframe>
+  <!-- <iframe src="javascript: alert('iframe')"></iframe> -->
   <!-- <img src='' onerror="alert('img')" /> -->
 <user-card
   image="https://semantic-ui.com/images/avatar2/large/kristy.png"
@@ -100,7 +100,13 @@
   }
   window.onscroll = debounce()
 
-  
+  function list() {
+    console.log(arguments)
+    return Array.prototype.slice.call(arguments);
+  }
+
+  var list1 = list(1, 2, 3); // [1, 2, 3]
+
 </script>
 </body>
 </html>

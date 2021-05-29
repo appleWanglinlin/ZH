@@ -18,6 +18,7 @@
         <el-button type="success" @click="click">click</el-button>
         <i class="el-icon-edit"></i>
         <i class="el-icon-share"></i>
+        <div>{{arr}}</div>
     </div>
     <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
     <!-- <script type="text/babel">
@@ -56,35 +57,43 @@
     new Vue({
       el: '#app',
       data: function() {
-        return { visible: false }
+        return { 
+            visible: false,
+            arr: []
+        }
+      },
+      created () {
+          this.arr['a'] = 1
+          this.arr['b'] = 2
+          console.log(this.arr)
       },
       methods: {
-				click() {
-					function debounce(fn, delay) {
-						let a = 1
-						console.log('a', a)
-						return function() {
-							if (a) {
-								a++
-								console.log('a1', a)
-							}
-						}
-					}
-					debounce(this.fn, 1000)()
-				},
-				debounce(fn, delay) {
-					let a = 1
-					console.log('a', a)
-					return function() {
-						if (a) {
-							a++
-							console.log('a1', a)
-						}
-					}
-				},
-				fn() {
-					console.log('fn')
-				}
+        click() {
+            function debounce(fn, delay) {
+                let a = 1
+                console.log('a', a)
+                return function() {
+                    if (a) {
+                        a++
+                        console.log('a1', a)
+                    }
+                }
+            }
+            debounce(this.fn, 1000)()
+        },
+        debounce(fn, delay) {
+            let a = 1
+            console.log('a', a)
+            return function() {
+                if (a) {
+                    a++
+                    console.log('a1', a)
+                }
+            }
+        },
+        fn() {
+            console.log('fn')
+        }
       }
     })
   </script>

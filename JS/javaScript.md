@@ -103,112 +103,6 @@
   >
   >在会话历史中向前移动一页。它与使用`delta`参数为1时调用 `history.go(delta)`的效果相同。
 
-- [ ] 传参
-
-  > 1、传入参数的为基本类型
-  >
-  > ```js
-  > // 不会修改原来的值，故不会改变全局变量a的值
-  > function test(a){
-  > 	a = a + 10
-  > }
-  > var a = 10
-  > test(a)
-  > console.log(a) // 10
-  > ```
-  >
-  > 2、传入参数的为引用类型
-  >
-  > ```js
-  > // 传入内存地址，对形参的修改，相当于对原值的修改
-  > let obj = {a: 1}
-  > function fn(obj) {
-  >     obj.a = 2
-  > }
-  > fn(obj) 
-  > console.log(obj.a) // 2
-  > ```
-
-- [x] let-暂时性死区
-
-  >ES6 明确规定，如果区块中存在`let`和`const`命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
-  >
-  >在代码块内，使用`let`命令声明变量之前，该变量都是不可用的。这在语法上，称为**“暂时性死区”**（temporal dead zone，简称 TDZ）。
-  >
-  >```js
-  >let x = 10
-  >let foo = () => {
-  >	console.log(x)
-  >	let x = 20
-  >	x++
-  >}
-  >foo() // 报错
-  >```
-
-- [x] 函数提升、变量提升
-
-  >```js
-  >// 以下代码执行后，控制台的输出是：
-  >var a = 10;
-  >function a(){}
-  >console.log(typeof a) // number
-  >
-  >// 函数提升优先级高于变量提升，上面代码等价于
-  >function a(){}
-  >var a
-  >a = 10
-  >console.log(typeof a) // number
-  >```
-  >
-  >1、函数提升优先级高于变量提升
-  >2、变量提升，但是赋值不提升、函数表达式亦是如此
-  >
-  >```js
-  >console.log(foo)
-  >var foo = 1  //变量提升
-  >console.log(foo)
-  >foo()
-  >function foo(){ //函数提升
-  >   	console.log('函数')
-  >}
-  >```
-  >
-  >等价于
-  >
-  >```js
-  >function foo(){ //提到顶端
-  >   	console.log('函数')
-  >}
-  >var foo 
-  >console.log(foo) //输出foo这个函数，因为上面foo没有被赋值，foo还是原来的值 
-  >foo = 1;  //赋值不会提升,赋值后 foo就不再是函数类型了，而是number类型
-  >console.log(foo) //输出1
-  >foo() //这里会报错，因为foo不是函数了
-  >```
-
-- [x] 变量回收
-
-  >全局变量不会被回收
-  >
-  >闭包中的变量不会被回收
-  >
-  >```js
-  >// 下列代码存在几个变量没有被回收？
-  >var i = 1;
-  >var i = 2;
-  >var add = function() {
-  >    var i = 0;
-  >    return function()
-  >{
-  >        i++;
-  >        console.log(i);
-  >    }
-  >}();
-  >add();
-  >// 3个
-  >// 全局变量i、add、闭包中的i
-  >```
-
 - [x] iframe
 
   >https://www.cnblogs.com/Leophen/p/11403800.html
@@ -454,120 +348,6 @@
   >typeof symObj;  // "object"
   >```
 
-- [x] **Function.prototype.call()**
-
-  >`call()` 方法使用一个指定的 `this` 值和单独给出的一个或多个参数来调用一个函数。
-  >
-  >**注意：**该方法的语法和作用与 [`apply()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) 方法类似，只有一个区别，就是 `call()` 方法接受的是**一个参数列表**，而 `apply()` 方法接受的是**一个包含多个参数的数组**。
-  >
-  >```js
-  >function Product(name, price) {
-  >  	this.name = name;
-  >  	this.price = price;
-  >}
-  >
-  >function Food(name, price) {
-  >  	Product.call(this, name, price); // 当Product函数调用时，call中的第一个参数this指向的是Food，call改变了Product函数中this的指向，使指向Food，实现了Food继承Product中的name和price
-  >  	this.category = 'food';
-  >}
-  >
-  >console.log(new Food('cheese', 5).name);
-  >// expected output: "cheese"
-  >```
-  >
-  >语法：
-  >
-  >```js
-  >function.call(thisArg, arg1, arg2, ...)
-  >```
-  >
-  >参数：
-  >
-  >**thisArg**：**可选的。在 *`function`* 函数运行时使用的 `this` 值。**请注意，`this`可能不是该方法看到的实际值：如果这个函数处于[非严格模式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)下，则**指定为 `null` 或 `undefined` 时会自动替换为指向全局对象**，原始值会被包装。
-  >
-  >**arg1, arg2, ...**：指定的参数列表。
-  >
-  >返回值：
-  >
-  >使用调用者提供的 `this` 值和参数调用该函数的返回值。若该方法没有返回值，则返回 `undefined`。
-  >
-  >描述：
-  >
-  >`call()` 允许为不同的对象分配和调用属于一个对象的函数/方法。
-  >
-  >`call()` 提供新的 **this** 值给当前调用的函数/方法。你可以使用 `call` 来实现继承：写一个方法，然后让另外一个新的对象来继承它（而不是在新对象中再写一次这个方法）。
-  >
-  >
-  >
-  >**使用`call`方法调用匿名函数**
-  >
-  >在下例中的 `for` 循环体内，我们创建了一个匿名函数，然后通过调用该函数的 `call` 方法，**将每个数组元素作为指定的 `this` 值**执行了那个匿名函数。这个匿名函数的主要目的是给每个数组元素对象添加一个 `print` 方法，这个 `print` 方法可以打印出各元素在数组中的正确索引号。当然，这里不是必须得让数组元素作为 `this` 值传入那个匿名函数（普通参数就可以），目的是为了演示 `call` 的用法。
-  >
-  >```js
-  >var animals = [
-  >  { species: 'Lion', name: 'King' },
-  >  { species: 'Whale', name: 'Fail' }
-  >];
-  >
-  >for (var i = 0; i < animals.length; i++) {
-  >  	(function(i) { // 匿名函数只接受1个参数
-  >          this.print = function() {
-  >          	console.log('#' + i + ' ' + this.species + ': ' + this.name);
-  >       }
-  >       this.print();
-  >     }).call(animals[i], i); // animals[i]即数组的每一项作为this,匿名函数在调用时，animals[i]即为匿名函数中的this
-  > }
-  >```
-  >
-  >
-  >
-  >**使用`call`方法调用函数并且指定上下文的`this`**
-  >
-  >在下面的例子中，当调用 `greet` 方法的时候，该方法的`this`值会绑定到 `obj` 对象。
-  >
-  >```js
-  >function greet() {
-  > var reply = [this.animal, 'typically sleep between', this.sleepDuration].join(' ');
-  >  console.log(reply);
-  > }
-  >
-  >var obj = {
-  > animal: 'cats', sleepDuration: '12 and 16 hours'
-  > };
-  >
-  >greet.call(obj);  // cats typically sleep between 12 and 16 hours
-  >```
-  >
-  >
-  >
-  >**使用`call`方法调用函数并且不指定第一个参数**
-  >
-  >在下面的例子中，我们调用了 `display` 方法，但并没有传递它的第一个参数。**如果没有传递第一个参数，`this` 的值将会被绑定为全局对象。**
-  >
-  >```js
-  >var sData = 'Wisen';
-  >
-  >function display() {
-  > console.log('sData value is %s ', this.sData);
-  > }
-  >
-  >display.call();  // sData value is Wisen
-  >```
-  >
-  >**注意：**在严格模式下，`this` 的值将会是 `undefined`。见下文。
-  >
-  >```js
-  >'use strict';
-  >
-  >var sData = 'Wisen';
-  >
-  >function display() {
-  > console.log('sData value is %s ', this.sData);
-  > }
-  >
-  >display.call(); // 报错Cannot read the property of 'sData' of undefined
-  >```
-  
 - [x] **toString**
 
   >**1、Object.prototype.toString()**
@@ -720,15 +500,15 @@
   >
   >这段代码永远会得到 `false`（`!mycar` 将在 `instanceof` 之前被处理，所以你总是在验证一个布尔值是否是 `Car` 的一个实例）。
   
-- [x] continue
+- [x] **continue**
 
-  **continue 声明**终止当前循环或标记循环的当前迭代中的语句执行，并在下一次迭代时**继续执行**循环。
+  continue 声明终止当前循环或标记循环的当前迭代中的语句执行，并在下一次迭代时**继续执行**循环。
 
-- [x] break
+- [x] **break**
 
-  **break 语句**中止当前循环，[`switch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch)语句或[`label`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label) 语句，并把程序控制流转到紧接着被中止语句后面的语句。
+  break 语句中止当前循环，[`switch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch)语句或[`label`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label) 语句，并把程序控制流转到紧接着被中止语句后面的语句。
   
-- [x] 闭包
+- [x] **闭包**
 
   一个函数和对其周围状态（**lexical environment，词法环境**）的引用捆绑在一起（或者说函数被引用包围），这样的组合就是**闭包**（**closure**）。也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域。在 JavaScript 中，每当创建一个函数，闭包就会在函数创建的同时被创建出来。
 
@@ -736,9 +516,9 @@
 
   词法（lexical）一词指的是，**词法作用域根据源代码中声明变量的位置来确定该变量在何处可用**。
 
-- [x] 原始数据
+- [x] **原始数据**
 
-  **基本类型**（基本数值、基本数据类型）是一种既非[对象](https://developer.mozilla.org/zh-CN/docs/Glossary/Object)也无[方法](https://developer.mozilla.org/zh-CN/docs/Glossary/Method)的数据。在 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) 中，共有7种基本类型：[string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)，[number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number)，[bigint](https://developer.mozilla.org/zh-CN/docs/Glossary/BigInt)，[boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean)，[null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null)，[undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/undefined)，[symbol](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol) ([ECMAScript](https://developer.mozilla.org/zh-CN/docs/Glossary/ECMAScript) 2016新增)。
+  基本类型（基本数值、基本数据类型）是一种既非[对象](https://developer.mozilla.org/zh-CN/docs/Glossary/Object)也无[方法](https://developer.mozilla.org/zh-CN/docs/Glossary/Method)的数据。在 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) 中，共有7种基本类型：[string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)，[number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number)，[bigint](https://developer.mozilla.org/zh-CN/docs/Glossary/BigInt)，[boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean)，[null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null)，[undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/undefined)，[symbol](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol) ([ECMAScript](https://developer.mozilla.org/zh-CN/docs/Glossary/ECMAScript) 2016新增)。
 
   多数情况下，基本类型直接代表了最底层的语言实现。
 
@@ -806,11 +586,7 @@
   
   这就是为什么说**所有基本类型的值都是无法改变的**。
   
-- [x] Function.length
-
-  `length` 属性指明函数的形参个数。
-  
-- [x] isNaN()
+- [x] **isNaN()**
 
   `isNaN()` 函数用来确定一个值是否为[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 。注：`isNaN`函数内包含一些非常有趣的[规则](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN#Description)；你也可以使用 ECMAScript 2015 中定义的 [`Number.isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) 来判断。
 
@@ -866,11 +642,25 @@
                     // 转换成数值失败， 返回NaN
   ```
 
-- [ ] 
+- [x] **内存**
 
+  JavaScript内部，所有数字都是以64位浮点数形式储存，即使整数也是如此
 
+  Javascript中，由于其变量内容不同，变量被分为基本数据类型变量和引用数据类型变量。基本类型变量用八字节内存，存储基本数据类型(数值、布尔值、null和未定义,string)的值，引用类型变量则只保存对对象、数组和函数等引用类型的值的引用(即内存地址)。
 
+   JS中的数字是不分类型的，也就是没有byte/int/float/double等的差异。
 
+  1字节=8位(1 byte = 8bit)
+
+  **bit**   电脑记忆体中最小的单位，在二进位电脑系统中，每一bit 可以代表0 或 1 的数位讯号。 
+
+  **1 Byte = 8 Bits**
+
+  **1 KB = 1024 Bytes**
+
+  **1 MB = 1024 KB**
+
+  **1 GB = 1024 MB**
 
 
 
