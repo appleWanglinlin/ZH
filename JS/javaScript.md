@@ -202,12 +202,15 @@
 
   >type
   >
-  >><script type="text/module">
-  >>类型属性为`module`，代码会被视为JavaScript模块
-  >>
-  >><script type="text/babel">
-  >>类型属性为`babel`，是对该type的内容块做了单独解析
+  >```html
+  ><script type="text/module">
+  >// 类型属性为`module`，代码会被视为JavaScript模块
+  >```
   >
+  >```html
+  ><script type="text/babel">
+  >// 类型属性为`babel`，是对该type的内容块做了单独解析
+  >```
   
 - [x] **noscript标签**
 
@@ -400,7 +403,7 @@
   >```js
   >2.toString()
   >// 报错VM180:1 Uncaught SyntaxError: Invalid or unexpected token
-  >// JS引擎不知道这里的 . 是小数点还是调用toString方法，于是解析成（2.）toString，就报错了
+  >// JS引擎不知道这里的 . 是小数点还是调用toString方法，于是解析成(2.)toString，就报错了
   >
   >2..toString()
   >// "2",相当于(2.0).toString()
@@ -646,7 +649,7 @@
 
   JavaScript内部，所有数字都是以64位浮点数形式储存，即使整数也是如此
 
-  Javascript中，由于其变量内容不同，变量被分为基本数据类型变量和引用数据类型变量。基本类型变量用八字节内存，存储基本数据类型(数值、布尔值、null和未定义,string)的值，引用类型变量则只保存对对象、数组和函数等引用类型的值的引用(即内存地址)。
+  Javascript中，由于其变量内容不同，变量被分为基本数据类型变量和引用数据类型变量。基本类型变量用八字节内存，存储基本数据类型的值，引用类型变量则只保存对对象、数组和函数等引用类型的值的引用(即内存地址)。
 
    JS中的数字是不分类型的，也就是没有byte/int/float/double等的差异。
 

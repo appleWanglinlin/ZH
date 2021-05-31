@@ -49,16 +49,16 @@
   >
   >```js
   >var animals = [
-  >{ species: 'Lion', name: 'King' },
-  >{ species: 'Whale', name: 'Fail' }
+  >	{ species: 'Lion', name: 'King' },
+  >	{ species: 'Whale', name: 'Fail' }
   >];
   >
   >for (var i = 0; i < animals.length; i++) {
-  >	(function(i) { // 匿名函数只接受1个参数
-  >     this.print = function() {
-  >     	console.log('#' + i + ' ' + this.species + ': ' + this.name);
-  >  }
-  >  this.print();
+  >    (function(i) { // 匿名函数只接受1个参数
+  >             this.print = function() {
+  >             console.log('#' + i + ' ' + this.species + ': ' + this.name);
+  >      }
+  >  	this.print();
   >}).call(animals[i], i); // animals[i]即数组的每一项作为this,匿名函数在调用时，animals[i]即为匿名函数中的this
   >}
   >```
