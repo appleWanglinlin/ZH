@@ -669,7 +669,7 @@
 
 - [x] **Boolean**
 
-  **`Boolean`**对象是一个布尔值的对象包装器。
+  **`Boolean`对象**是一个布尔值的对象包装器。
 
   如果需要，作为第一个参数传递的值将转换为布尔值。如果省略或值`0`，`-0`，[`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)，`false`，[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)，[`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)，或空字符串（`""`），该对象具有的初始值`false`。所有其他值，包括任何对象，空数组（`[]`）或字符串`"false"`，都会创建一个初始值为`true`的对象。
 
