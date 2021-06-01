@@ -26,6 +26,8 @@
 
   >学习 JavaScript 语言，你会发现它有两种格式的模块。一种是 ES6 模块，简称 ESM；另一种是 Node.js 专用的 CommonJS 模块，简称 CJS。这两种模块不兼容。ES6 模块和 CommonJS 模块有很大的差异。语法上面，CommonJS 模块使用`require()`加载和`module.exports`输出，ES6 模块使用`import`和`export`。用法上面，**`require()`是同步加载**，后面的代码必须等待这个命令执行完，才会执行。**`import`命令则是异步加载**，或者更准确地说，ES6 模块有一个独立的静态解析阶段，依赖关系的分析是在那个阶段完成的，最底层的模块第一个执行。
 
+- [x] [浏览器加载 CommonJS 模块的原理与实现](http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html)
+
 - [x] for...in
 
   >**`for...in`语句**以**任意顺序**遍历一个对象的除[Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)以外的[可枚举](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)属性。
@@ -191,13 +193,13 @@
   >>获取一个元素的scrollTop、scrollLeft、scrollWidth、offsetTop、offsetLeft、offsetWidth、offsetHeight之类的属性，浏览器为了保证值的正确也会回流取得最新的值
   >
   >重绘：当页面中元素改变颜色等不影响其他元素的属性时，称为重绘。
-  
+
 - [ ] **babel**
 
   >babel是javaScript编辑器。Babel是一个工具链，主要用于在当前和较旧的浏览器或环境中将ECMAScript 2015+代码转换为JavaScript的向后兼容版本。
   >
   >为了兼容不支持 ES6 的浏览器，所以需要 babel 编译。为了兼容不支持 module 的浏览器，所以需要 webpack 打包。
-  
+
 - [ ] **script标签属性**
 
   >type
@@ -211,11 +213,11 @@
   ><script type="text/babel">
   >// 类型属性为`babel`，是对该type的内容块做了单独解析
   >```
-  
+
 - [x] **noscript标签**
 
   > 如果页面上的脚本类型不受支持或者当前在浏览器中关闭了脚本，则在 **HTML <noscript> 元素**中定义脚本未被执行时的替代内容。
-  
+
 - [x] **use strict**
 
   >严格模式，严格模式下禁止this关键字指向全局对象
@@ -502,7 +504,7 @@
   >```
   >
   >这段代码永远会得到 `false`（`!mycar` 将在 `instanceof` 之前被处理，所以你总是在验证一个布尔值是否是 `Car` 的一个实例）。
-  
+
 - [x] **continue**
 
   continue 声明终止当前循环或标记循环的当前迭代中的语句执行，并在下一次迭代时**继续执行**循环。
@@ -510,7 +512,7 @@
 - [x] **break**
 
   break 语句中止当前循环，[`switch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch)语句或[`label`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label) 语句，并把程序控制流转到紧接着被中止语句后面的语句。
-  
+
 - [x] **闭包**
 
   一个函数和对其周围状态（**lexical environment，词法环境**）的引用捆绑在一起（或者说函数被引用包围），这样的组合就是**闭包**（**closure**）。也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域。在 JavaScript 中，每当创建一个函数，闭包就会在函数创建的同时被创建出来。
@@ -578,7 +580,7 @@
   ```
 
   你是否认为会得到`7`，而不是`5`？如果是，请看看代码是如何运行的：
-  
+
   - `addTwo`和`addTwo_v2`函数调用时，JavaScript会检查标识符`foo`的值，从而准确无误的找到第一行实例化变量的声明语句。
   - 找到以后，JavaScript将其作为参数传递给函数的形参。
   - 在执行函数体内语句之前，**JavaScript会将传递进来的参数（基本类型的值）复制一份**，**创建一个本地副本。这个副本只存在于该函数的作用域中**，我们能够通过指定在函数中的标识符访问到它（`addTwo`中的`num`，`addTwo_v2`中的`foo`）。
@@ -586,9 +588,9 @@
     - 第一个函数中，创建了本地`num`参数，`num`的值加2，但这个值并不是原来的`foo`的值。
     - 第二个函数中，创建了本地参数`foo`，并将它的值加2，这个值不是外部foo的值。在这种情况下，外部的`foo`变量不能以**任何**方式被访问到（疑问：因为没形成闭包吗？）。这是因为JavaScript的词法作用域（lexical scoping）所导致的变量覆盖，本地的变量`foo`覆盖了外部的变量`foo`。欲知详情，请参阅[闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)。
   - 综上所述，函数中的任何操作都**不会**影响到最初的`foo`，我们操作的只不过是它的**副本**。
-  
+
   这就是为什么说**所有基本类型的值都是无法改变的**。
-  
+
 - [x] **isNaN()**
 
   `isNaN()` 函数用来确定一个值是否为[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 。注：`isNaN`函数内包含一些非常有趣的[规则](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN#Description)；你也可以使用 ECMAScript 2015 中定义的 [`Number.isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) 来判断。
@@ -664,6 +666,69 @@
   **1 MB = 1024 KB**
 
   **1 GB = 1024 MB**
+
+- [x] **Boolean**
+
+  **`Boolean`**对象是一个布尔值的对象包装器。
+
+  如果需要，作为第一个参数传递的值将转换为布尔值。如果省略或值`0`，`-0`，[`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)，`false`，[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)，[`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)，或空字符串（`""`），该对象具有的初始值`false`。所有其他值，包括任何对象，空数组（`[]`）或字符串`"false"`，都会创建一个初始值为`true`的对象。
+
+  注意不要将**基本类型中的布尔值** `true` 和 `false` 与值为 `true` 和 `false` 的 **`Boolean` 对象**弄混了。
+
+  其值不是[`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)或[`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)的任何对象（包括其值为`false`的布尔对象）在传递给条件语句时都将计算为`true`。 例如，以下[`if`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/if...else)语句中的条件评估为`true`：
+
+  ```js
+  var x = new Boolean(false);
+  var x = new Boolean(0);
+  var x = new Boolean();
+  if (x) {
+    // 这里的代码会被执行,x是boolean对象
+    console.log('x', x)
+  }
+  ```
+
+- [x] [JavaScript实现继承](https://www.cnblogs.com/Leophen/p/11401734.html)
+
+  共6种方式：原型链继承、借用构造函数继承、组合继承、原型式继承、寄生式继承、寄生组合式继承。
+
+- [x] [Browser对象](https://www.w3cschool.cn/jsref/n2z4120o.html)
+
+  window、Navigator、Screen、History、Location
+
+- [x] javascript中实现跨域的方式总结
+
+  https://www.nowcoder.com/test/question/done?tid=44650982&qid=55059#summary
+
+  - 第一种方式：jsonp请求；jsonp的原理是利用<script>标签的跨域特性，可以不受限制地从其他域中加载资源，类似的标签还有<img>.
+  - 第二种方式：document.domain；这种方式用在主域名相同子域名不同的跨域访问中
+  - 第三种方式：window.name；window的name属性有个特征：在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。
+  - 第四种方式：window.postMessage；window.postMessages是html5中实现跨域访问的一种新方式，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源。
+  - 第五种方式：CORS；CORS背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是应该失败。
+  - 第六种方式：Web Sockets；web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web sockt协议。
+
+  JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它
+
+  的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支
+
+  持；并且在请求完毕后可以通过调用callback的方式回传结果。
+
+  JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域
+
+  HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
+
+- [ ] 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

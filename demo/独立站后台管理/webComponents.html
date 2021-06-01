@@ -100,13 +100,11 @@
   }
   window.onscroll = debounce()
 
-  function list() {
-    console.log(arguments)
-    return Array.prototype.slice.call(arguments);
+  // 0,1,1,2,3,5,8,13
+  function fn(n) {
+    if (n === 0 || n === 1) return n
+    return fn(n - 1) + fn(n - 2)
   }
-
-  var list1 = list(1, 2, 3); // [1, 2, 3]
-
 </script>
 </body>
 </html>
