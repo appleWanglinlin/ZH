@@ -722,32 +722,21 @@
 
   ```js
 console.log(Math.max(1, 3, 2)); // 3
-  
-const array1 = [1, 3, 2];
+  const array1 = [1, 3, 2];
   console.log(Math.max(...array1)) // 3
-
   Math.max.apply(null, array1); // 3
-```
+  ```
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+- [x] **Math.round()**
 
+  ```js
+  Math.round(1.5) // 2
+  Math.round(-1.5) // -1
+  ```
 
+- [x] javascript全局函数
 
+  decodeURI()、decodeURIcomponent()、 encodeURI、encodeURIcomponent()、escape()、eval()、isFinite()、isNAN()、 Number()、parseFloat()、parseInt()、String()、unescape()
 
-
-
-
-
-
-
+  js的全局属性：Infinity、NAN、undefined
 
