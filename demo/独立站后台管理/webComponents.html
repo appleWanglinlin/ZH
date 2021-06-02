@@ -109,35 +109,11 @@
   }
   window.onscroll = debounce()
 
-  function curryIt(fn) {
-    let length = fn.length
-    let args = []
-    return result = function(arg) {
-        args.push(arg)
-        length--
-        if (length <=0) {
-            return fn.apply(this,args)
-            // return fn(args)
-        } else {
-            return result
-        }
-    }
+  function matchesPattern(str) {
+    let reg = /^\d{3}-\d{3}-\d{4}$/
+    return reg.test(str)
   }
-  let fn = function(a,b,c) {
-    return a + b + c
-  }
-  console.log(fn(1,2,3))
-
-  let a = curryIt(fn)
-  console.log('a', a)
-
-  let b = a(1)
-  console.log('b', b)
-
-  let c = b(2)
-  console.log('c ', c )
-
-  console.log(c(3))
+  console.log(matchesPattern('a123-123-1234b'))
 </script>
 </body>
 </html>
