@@ -71,6 +71,15 @@
     <button class="button">Follow John</button>
   </div>
 </template>
+<div class="div">
+  <div class="div1">
+    <div id="oNode1">oNode1</div>
+  </div>
+  <div class="div2">
+    <div id="oNode2">oNode2</div>
+  </div>
+</div>
+
 <script>
   class UserCard extends HTMLElement {
     constructor() {
@@ -100,11 +109,35 @@
   }
   window.onscroll = debounce()
 
-  // 0,1,1,2,3,5,8,13
-  function fn(n) {
-    if (n === 0 || n === 1) return n
-    return fn(n - 1) + fn(n - 2)
+  function curryIt(fn) {
+    let length = fn.length
+    let args = []
+    return result = function(arg) {
+        args.push(arg)
+        length--
+        if (length <=0) {
+            return fn.apply(this,args)
+            // return fn(args)
+        } else {
+            return result
+        }
+    }
   }
+  let fn = function(a,b,c) {
+    return a + b + c
+  }
+  console.log(fn(1,2,3))
+
+  let a = curryIt(fn)
+  console.log('a', a)
+
+  let b = a(1)
+  console.log('b', b)
+
+  let c = b(2)
+  console.log('c ', c )
+
+  console.log(c(3))
 </script>
 </body>
 </html>
