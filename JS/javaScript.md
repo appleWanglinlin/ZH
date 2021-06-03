@@ -716,18 +716,18 @@
 
   HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
 
-- [x] **Math.max()**
+- [x] Math.max()
 
   `Math.max()` 函数返回一组数中的最大值。
 
   ```js
-console.log(Math.max(1, 3, 2)); // 3
+  console.log(Math.max(1, 3, 2)); // 3
   const array1 = [1, 3, 2];
   console.log(Math.max(...array1)) // 3
   Math.max.apply(null, array1); // 3
   ```
-  
-- [x] **Math.round()**
+
+- [x] Math.round()
 
   ```js
   Math.round(1.5) // 2
