@@ -109,11 +109,21 @@
   }
   window.onscroll = debounce()
 
-  function matchesPattern(str) {
-    let reg = /^\d{3}-\d{3}-\d{4}$/
-    return reg.test(str)
+  function multiply (a, b) {
+      a += ''
+      b += ''
+      // 获取a、b小数位
+      const f1 = a.indexOf('.') !== -1 ? a.length - (a.indexOf('.') + 1) : 0
+      const f2 = b.indexOf('.') !== -1 ? b.length - (b.indexOf('.') + 1) : 0
+      const f = Math.max(f1, f2)
+      // 方法一：
+      const r = Math.pow(10, f)
+      return (a * r * b * r) / (r * r) // 返回Number类型
+      
+      // 方法二：
+      // return parseFloat(a * b).toFixed(f) // 返回String类型
   }
-  console.log(matchesPattern('a123-123-1234b'))
+  console.log(multiply(3, 0.0001))
 </script>
 </body>
 </html>
