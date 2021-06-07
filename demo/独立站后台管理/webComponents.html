@@ -13,7 +13,6 @@
   name="User Name"
   email="yourmail@some-email.com"
 ></user-card> -->
-  
 <template id="userCardTemplate">
   <style>
    :host {
@@ -99,24 +98,12 @@
   }
   window.onscroll = debounce()
 
-  function rgb2hex(sRGB) {
-    let reg = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/
-    let arr = sRGB.match(reg)
-    console.log(arr)
-    if (!arr) return sRGB
-    let res = '#'
-    for(let i = 1; i <= 3; i++) {
-      let v = Number(arr[i])
-      if (v >= 0 && v <= 255) {
-        v = v < 16 ? '0' + v.toString(16) : v.toString(16)
-        res += v
-      } else {
-        return sRGB
-      }
-    }
-    return res
-  }
-  console.log(rgb2hex('rgb(17,123,16)'))
+function isUSD(str) {
+  let reg = /^\$([1-9]|[1-9]\d{1,2})(,\d{3})*(\.\d{2})?$/
+  return reg.test(str)
+  // console.log(reg.test(str))
+}
+isUSD('$34,344.3')
 </script>
 </body>
 </html>

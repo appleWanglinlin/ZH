@@ -756,4 +756,8 @@
   decodeURI()、decodeURIcomponent()、 encodeURI、encodeURIcomponent()、escape()、eval()、isFinite()、isNAN()、 Number()、parseFloat()、parseInt()、String()、unescape()
 
   js的全局属性：Infinity、NAN、undefined
+  
+- [ ] 作用域链
+
+  with、try catch、eval可以改变作用域链
 
