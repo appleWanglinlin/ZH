@@ -699,22 +699,39 @@
 
   https://www.nowcoder.com/test/question/done?tid=44650982&qid=55059#summary
 
-  - 第一种方式：jsonp请求；jsonp的原理是利用<script>标签的跨域特性，可以不受限制地从其他域中加载资源，类似的标签还有<img>.
-  - 第二种方式：document.domain；这种方式用在主域名相同子域名不同的跨域访问中
-  - 第三种方式：window.name；window的name属性有个特征：在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。
-  - 第四种方式：window.postMessage；window.postMessages是html5中实现跨域访问的一种新方式，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源。
-  - 第五种方式：CORS；CORS背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是应该失败。
-  - 第六种方式：Web Sockets；web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web sockt协议。
+  - 第一种方式：jsonp请求
 
-  JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它
+    jsonp的原理是利用<script>标签的跨域特性，可以不受限制地从其他域中加载资源，类似的标签还有`<img>`
 
-  的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支
+    JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它
 
-  持；并且在请求完毕后可以通过调用callback的方式回传结果。
+    的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支
 
-  JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域
+    持；并且在请求完毕后可以通过调用callback的方式回传结果。
 
-  HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
+    JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域
+
+    HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。
+
+  - 第二种方式：document.domain
+
+    这种方式用在主域名相同子域名不同的跨域访问中
+
+  - 第三种方式：window.name
+
+    window的name属性有个特征：在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。
+
+  - 第四种方式：window.postMessage
+
+    window.postMessages是html5中实现跨域访问的一种新方式，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源。
+
+  - 第五种方式：CORS
+
+    CORS背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是应该失败。
+
+  - 第六种方式：Web Sockets
+
+    web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web sockt协议。
 
 - [x] Math.max()
 
