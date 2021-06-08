@@ -98,12 +98,25 @@
   }
   window.onscroll = debounce()
 
-function isUSD(str) {
-  let reg = /^\$([1-9]|[1-9]\d{1,2})(,\d{3})*(\.\d{2})?$/
-  return reg.test(str)
-  // console.log(reg.test(str))
+Array.prototype.uniq = function () {
+  let obj = {}
+  let arr = []
+  for(const v of this) {
+    if (Object.prototype.toString.call(v) === '[object Object]') {
+      obj[JSON.stringify(v)] = v
+    } else {
+      obj['-' + v] = v
+    }
+  }
+  console.log(obj)
+  for(const key in obj) {
+    arr.push(obj[key])
+  }
+  return arr
 }
-isUSD('$34,344.3')
+let arr = [true, false, null, undefined, NaN, 0, 1, {}, {}, {a: 1}, {a: 1}, [], [], function(){}, function(){}, 'a', 'a', NaN]
+//  [true, false, null, undefined, NaN, 0, 1, {…}, "a"]
+console.log(arr.uniq())
 </script>
 </body>
 </html>
