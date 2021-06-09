@@ -6,13 +6,11 @@
   <title>JS Bin</title>
 </head>
 <body>
-  <!-- <iframe src="javascript: alert('iframe')"></iframe> -->
-  <!-- <img src='' onerror="alert('img')" /> -->
-<!-- <user-card
+<user-card
   image="https://semantic-ui.com/images/avatar2/large/kristy.png"
   name="User Name"
   email="yourmail@some-email.com"
-></user-card> -->
+></user-card>
 <template id="userCardTemplate">
   <style>
    :host {
@@ -62,7 +60,6 @@
      text-transform: uppercase;
    }
   </style>
-  
   <img class="image">
   <div class="container">
     <p class="name"></p>
@@ -70,7 +67,6 @@
     <button class="button">Follow John</button>
   </div>
 </template>
-
 <script>
   class UserCard extends HTMLElement {
     constructor() {
@@ -87,36 +83,6 @@
     }
   }
   window.customElements.define('user-card', UserCard);
-
-  function debounce(fn, delay) {
-    let a = 1
-    return function() {
-      if (a) {
-        a++
-      }
-    }
-  }
-  window.onscroll = debounce()
-
-Array.prototype.uniq = function () {
-  let obj = {}
-  let arr = []
-  for(const v of this) {
-    if (Object.prototype.toString.call(v) === '[object Object]') {
-      obj[JSON.stringify(v)] = v
-    } else {
-      obj['-' + v] = v
-    }
-  }
-  console.log(obj)
-  for(const key in obj) {
-    arr.push(obj[key])
-  }
-  return arr
-}
-let arr = [true, false, null, undefined, NaN, 0, 1, {}, {}, {a: 1}, {a: 1}, [], [], function(){}, function(){}, 'a', 'a', NaN]
-//  [true, false, null, undefined, NaN, 0, 1, {…}, "a"]
-console.log(arr.uniq())
 </script>
 </body>
 </html>
