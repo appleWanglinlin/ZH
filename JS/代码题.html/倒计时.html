@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倒计时</title>
+  <style>
+    .hide{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="jsCountdown">
+    <span>01天</span>
+    <span>02:</span>
+    <span>03:</span>
+    <span>04</span>
+  </div>
+</body>
+<script>
+  // 秒转天时分秒
+  function second(second) {
+    let day = Math.floor(second / 60 / 60 / 24)
+    let hour = Math.floor(second / 60 / 60 % 24)
+    let min = Math.floor(second / 60 % 60)
+    let s = Math.floor(second % 60)
+    return {
+      day: day,
+      hour: hour,
+      min: min,
+      second: s
+    }
+  }
+  let data = second(3601)
+
+  function render(data) {
+    let spans = document.getElementById('jsCountdown').children
+    function fn(num) {
+      return num < 10 ? '0' + num : num
+    }
+    if (!data.day) {
+      spans[0].className = 'hide'
+    } else {
+      spans[0].innerText = fn(data.day) + '天'
+    }
+    spans[1].innerText = fn(data.hour) + ':'
+    spans[2].innerText = fn(data.min) + ':'
+    spans[3].innerText = fn(data.second)
+  }
+  render(data)
+</script>
+</html>
