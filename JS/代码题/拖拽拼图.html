@@ -39,20 +39,23 @@
     #src-1{
       top:50px;
       left:10px;
-      background-color: red;
+      border: 1px dotted #000;
+      /* background-color: red; */
       z-index: 100;
     }
     #src-2{
       top:150px;
       left:10px;
-      background-color: yellow;
+      border: 1px dotted #000;
+      /* background-color: yellow; */
       z-index: 100;
 
     }
     #src-3{
       top:250px;
       left:10px;
-      background-color: green;
+      border: 1px dotted #000;
+      /* background-color: green; */
       z-index: 100;
     }
     #dest-1{
@@ -109,7 +112,24 @@
   // document.body.onmouseup
   // document.body.onmouseleave
   function drag() {
-
+    let draggables = document.getElementsByClassName('src')
+    let droppables = document.getElementsByClassName('dest')
+    for(const draggable of draggables) {
+      draggable.setAttribute('draggable', true)
+      draggable.addEventListener('dragstart', dragstart)
+      draggable.addEventListener('dragend', dragend)
+    }
+    function dragstart(e) {
+      console.log('dragstart', e.target.innerText)
+      setTimeout(() => {
+        e.target.style.display = 'none'
+      })
+    }
+    function dragend(e) {
+      console.log('dragend', e.target.innerText)
+      e.target.style.display = 'block'
+    }
+    console.log(draggables)
   }
 </script>
 </html>

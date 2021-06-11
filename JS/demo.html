@@ -1,90 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>购物车</title>
-  <style>
-    body,html{
-      padding: 0;
-      margin: 0;
-      font-size: 14px;
-      color: #000000;
-    }
-    table{
-      border-collapse: collapse;
-      width: 100%;
-      table-layout: fixed;
-    }
-    thead{
-      background: #3d444c;
-      color: #ffffff;
-    }
-    td,th{
-      border: 1px solid #e1e1e1;
-      padding: 0;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <table id="jsTrolley">
-    <thead><tr><th>名称</th><th>价格</th><th>操作</th></tr></thead>
-    <tbody>
-        <tr><td>产品1</td><td>10.00</td><td><a href="javascript:void(0);">删除</a></td></tr>
-        <tr><td>产品2</td><td>30.20</td><td><a href="javascript:void(0);">删除</a></td></tr>
-        <tr><td>产品3</td><td>20.50</td><td><a href="javascript:void(0);">删除</a></td></tr>
-    </tbody>
-    <tfoot><tr><th>总计</th><td colspan="2">60.70(3件商品)</td></tr></tfoot>
-  </table>
-</body>
-<script>
-let items = [
-  {name: '产品A', price: 1.10},
-  {name: '产品B', price: 2.00},
-  {name: '产品C', price: 3.00}
-]
-function add(items) {
-  let tbody = document.getElementsByTagName('tbody')[0]
-  for(const item of items) {
-    let tr = document.createElement('tr')
-    tr.innerHTML = `<td>${item.name}</td><td>${item.price.toFixed(2)}</td><td><a href="javascript:void(0);">删除</a></td>`
-    tbody.appendChild(tr)
+<html lang=en>
+<title>Examples of DataTransfer.{dropEffect,effectAllowed} properties</title>
+<meta content="width=device-width">
+<style>
+  div {
+    margin: 0em;
+    padding: 2em;
   }
-  getTotal()
+  #source {
+    color: blue;
+    border: 1px solid black;
+  }
+  #target {
+    border: 1px solid black;
+  }
+</style>
+<script>
+function dragstart_handler(ev) {
+ console.log("dragStart: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+ // 将这个元素的id添加到drag载荷中，
+ // 以便drop事件知道将哪个元素添加到其树中。
+ ev.dataTransfer.setData("text", ev.target.id);
+ ev.dataTransfer.effectAllowed = "move";
 }
-add(items)
 
-function bind() {
-  let tbody = document.getElementsByTagName('tbody')[0]
-  tbody.addEventListener('click', function(e) {
-    let el = e.target
-    if (el.tagName.toLowerCase() === 'a') {
-      let tr = el.parentNode.parentNode
-      tbody.removeChild(tr)
-      getTotal()
-    }
-  })
+function drop_handler(ev) {
+ console.log("drop: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+ ev.preventDefault();
+ // 得到目标的id并且将移动的元素添加到目标DOM中
+ var data = ev.dataTransfer.getData("text");
+ ev.target.appendChild(document.getElementById(data));
 }
-bind()
 
-function getTotal() {
-  let tbody = document.getElementsByTagName('tbody')[0]
-  let tr_list = tbody.getElementsByTagName('tr')
-  let tfoot = document.getElementsByTagName('tfoot')[0]
-  let td_total = tfoot.children[0].children[1]
-  let total = 0
-  tr_list = Array.from(tr_list)
-  tr_list.forEach((item, i) => {
-    let tds = item.getElementsByTagName('td')
-    let price = tds[1].innerText
-    total += Number(price.trim())
-  })
-  total = total.toFixed(2)
-  td_total.innerText = `${total}(${tr_list.length}件商品)`
+function dragover_handler(ev) {
+ console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+ ev.preventDefault();
+ // 设置 dropEffect 为 move
+ ev.dataTransfer.dropEffect = "move"
 }
 </script>
+<body>
+<h1>Examples <code>DataTransfer</code>.{<code>dropEffect</code>, <code>effectAllowed</code>} properties</h1>
+ <div>
+   <p id="source" ondragstart="dragstart_handler(event);" draggable="true">
+     Select this element, drag it to the Drop Zone and then release the selection to move the element.</p>
+ </div>
+ <div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">Drop Zone</div>
+</body>
 </html>

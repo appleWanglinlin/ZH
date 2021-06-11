@@ -1,3 +1,27 @@
+- [x] **Node.js**
+
+  **Node.js是一个开源与跨平台的JavaScript运行时环境。Node.js在浏览器外运行V8 JavaScript引擎（Google Chrome的内核）。这使Node.js表现的非常出色。**
+
+  **Node.js具有独特的优势，因为为浏览器编写JavaScript的数百万前端开发者现在除了客户端代码以外还可以编写服务器端代码，而无需学习完全不同的语言。**
+  
+  在Node.js中，可以毫无疑问地使用新的ECMAScript标准，因为不必等待所有用户更新其浏览器，你可以通过更改Node.js版本来决定要使用的ECMAScript版本，并且还可以通过带有标志的Node.js来启用特定的实验中的特性。
+  
+- [x] **webpack**
+
+  https://webpack.docschina.org/concepts/why-webpack/
+
+  Node.js是一个JavaScript运行时，可以在浏览器环境之外的计算机和服务器中使用。**webpack运行在Node.js中**
+  
+- [x] **npm**
+
+  **npm是随同Node.js一起安装的包管理工具**，能解决Node.js代码部署上的很多问题，常见的使用场景有以下几种：
+
+  - 允许用户从NPM服务器下载别人编写的第三方包到本地使用
+  - 允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用
+  - 允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用
+
+- [ ] 
+
 - [x] javaScript模块规范
 
   http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html
