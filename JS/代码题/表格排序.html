@@ -48,7 +48,8 @@
   </table>
 </body>
 <script>
-  function sort(type, order) {
+  // 换数值不换结构
+  function sort1(type, order) {
     let tr_list = document.getElementById('jsList').getElementsByTagName('tr')
     tr_list = Array.from(tr_list)
     let id_list = [], price_list = [], sales_list = []
@@ -65,6 +66,19 @@
       item.children[td_index].innerText = arr[index]
     })
   }
-  sort('price', 'asc')
+  // 换结构
+  function sort(type, order) {
+    let tbody = document.getElementById('jsList')
+    let tr_list = tbody.getElementsByTagName('tr')
+    tr_list = Array.from(tr_list)
+    let index = type === 'id' ? 0 : (type === 'price' ? 1 : 2)
+    tr_list.sort((a, b) => {
+      return order === 'asc' ? a.children[index].innerText - b.children[index].innerText : b.children[index].innerText - a.children[index].innerText
+    })
+    tr_list.forEach(item => {
+      tbody.appendChild(item)
+    })
+  }
+  sort('sales', 'asc')
 </script>
 </html>
