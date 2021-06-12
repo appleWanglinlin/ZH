@@ -118,21 +118,25 @@
     let dragged = null
     for(const draggable of draggables) {
       draggable.onmousedown = function(e) {
-        let pageX = e.pageX
-        let pageY = e.pageY
-        let offsetTop = e.target.offsetTop
-        let offsetLeft = e.target.offsetLeft
-        e.target.style.top = (((pageX - offsetTop) / 2) + offsetTop) + 'px'
-        e.target.style.left = (((pageY - offsetLeft) / 2) + offsetLeft) + 'px'
-        console.dir(e)
-        console.dir(e.target)
-        console.log('top', e.target.style.top)
-        console.log('left', e.target.style.left)
-
+        // e.target.style.top = pageY + 'px'
+        // e.target.style.left = pageX + 'px'
+        // console.dir(e)
+        // console.dir(e.target)
+        // console.log('top', e.target.style.top)
+        // console.log('left', e.target.style.left)
+        document.onmousemove = function(e) {
+          let pageX = e.pageX
+          let pageY = e.pageY
+          let offsetTop = e.target.offsetTop
+          let offsetLeft = e.target.offsetLeft
+          e.target.style.top = (((pageY - offsetTop) / 2) + offsetTop) + 'px'
+          e.target.style.left = (((pageX - offsetLeft) / 2) + offsetLeft) + 'px'
+        }
+        document.onmouseup = function(e) {
+        
+        }
       }
     }
-    
-    
   }
 </script>
 </html>
