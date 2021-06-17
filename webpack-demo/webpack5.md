@@ -41,7 +41,7 @@
 >
 >  为了在 JavaScript 模块中 `import` 一个 CSS 文件，你需要安装 [style-loader](https://webpack.docschina.org/loaders/style-loader) 和 [css-loader](https://webpack.docschina.org/loaders/css-loader)，并在 [`module` 配置](https://webpack.docschina.org/configuration/module) 中添加这些 loader：
 >
->  ```js
+>  ```bash
 >  npm install --save-dev style-loader css-loader
 >  ```
 >
@@ -94,7 +94,7 @@
 >
 >  此外，可以加载的有用资源还有数据，如JSON文件，CSV、TSV和XML。类似于Node.js，JSON支持实际上是内置的，也就是说`import Data from './data.json'`默认将正常运行。要导入CSV、TSV和XML，你可以使用csv-loader和xml-loader。
 >
->  ```js
+>  ```bash
 >  npm install --save-dev csv-loader xml-loader
 >  ```
 >
@@ -164,17 +164,16 @@
 > output: {
 >   filename: '[name].bundle.js',
 >   path: path.resolve(__dirname, 'dist'),
-> + clean: true
+> + clean: true1
 > }
 >  ```
 >
 >- mainifest
 >
->  ```js
->  你可能会很感兴趣，webpack 和 webpack 插件似乎“知道”应该生成哪些文件。答案是，webpack 通过 manifest，可以追踪所有模块到输出 bundle 之间的映射。如果你想要知道如何以其他方式来控制 webpack [`输出`](https://webpack.docschina.org/configuration/output)，了解 manifest 是个好的开始。
->  
->  通过 [`WebpackManifestPlugin`](https://github.com/shellscape/webpack-manifest-plugin) 插件，可以将 manifest 数据提取为一个 json 文件以供使用。
->  ```
+>   你可能会很感兴趣，webpack 和 webpack 插件似乎“知道”应该生成哪些文件。答案是，webpack 通过 manifest，可以追踪所有模块到输出 bundle 之间的映射。如果你想要知道如何以其他方式来控制 webpack [`输出`](https://webpack.docschina.org/configuration/output)，了解 manifest 是个好的开始。
+> 
+>    通过 [`WebpackManifestPlugin`](https://github.com/shellscape/webpack-manifest-plugin) 插件，可以将 manifest 数据提取为一个 json 文件以供使用。
+> 
 
 #### 开发环境
 
@@ -182,27 +181,27 @@
 >
 >- 使用source map
 >
->  当 webpack 打包源代码时，可能会很难追踪到 error(错误) 和 warning(警告) 在源代码中的原始位置。例如，如果将三个源文件（`a.js`, `b.js` 和 `c.js`）打包到一个 bundle（`bundle.js`）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会直接指向到 `bundle.js`。你可能需要准确地知道错误来自于哪个源文件，所以这种提示这通常不会提供太多帮助。
+> 当 webpack 打包源代码时，可能会很难追踪到 error(错误) 和 warning(警告) 在源代码中的原始位置。例如，如果将三个源文件（`a.js`, `b.js` 和 `c.js`）打包到一个 bundle（`bundle.js`）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会直接指向到 `bundle.js`。你可能需要准确地知道错误来自于哪个源文件，所以这种提示这通常不会提供太多帮助。
 >
->  为了更容易地追踪 error 和 warning，JavaScript 提供了 [source maps](http://blog.teamtreehouse.com/introduction-source-maps) 功能，可以将编译后的代码映射回原始源代码。如果一个错误来自于 `b.js`，source map 就会明确的告诉你。
+> 为了更容易地追踪 error 和 warning，JavaScript 提供了 [source maps](http://blog.teamtreehouse.com/introduction-source-maps) 功能，可以将编译后的代码映射回原始源代码。如果一个错误来自于 `b.js`，source map 就会明确的告诉你。
 >
->  source map 有许多 [可用选项](https://webpack.docschina.org/configuration/devtool)，请务必仔细阅读它们，以便可以根据需要进行配置。
+> source map 有许多 [可用选项](https://webpack.docschina.org/configuration/devtool)，请务必仔细阅读它们，以便可以根据需要进行配置。
 >
->  对于本指南，我们将使用 `inline-source-map` 选项，这有助于解释说明示例意图（此配置仅用于示例，不要用于生产环境）：
+> 对于本指南，我们将使用 `inline-source-map` 选项，这有助于解释说明示例意图（此配置仅用于示例，不要用于生产环境）：
 >
 >  ```diff
->   const path = require('path');
->   const HtmlWebpackPlugin = require('html-webpack-plugin');
+> const path = require('path');
+> const HtmlWebpackPlugin = require('html-webpack-plugin');
 >  
->   module.exports = {
->     mode: 'development',
+> module.exports = {
+> 	mode: 'development',
 >     entry: {
->       index: './src/index.js',
->       print: './src/print.js',
+>         index: './src/index.js',
+>         print: './src/print.js',
 >     },
->  +  devtool: 'inline-source-map'
->     ...
->   };
+> +   devtool: 'inline-source-map'
+> ...
+> };
 >  ```
 >
 >- 选择一个开发工具
@@ -314,39 +313,213 @@
 
 #### 代码分离
 
->代码分离是 webpack 中最引人注目的特性之一。此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。
+>**代码分离是 webpack 中最引人注目的特性之一**。**此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。**
 >
 >常用的代码分离方法有三种：
 >
->- **入口起点**：使用 [`entry`](https://webpack.docschina.org/configuration/entry-context) 配置手动地分离代码。
->- **防止重复**：使用 [Entry dependencies](https://webpack.docschina.org/configuration/entry-context/#dependencies) 或者 [`SplitChunksPlugin`](https://webpack.docschina.org/plugins/split-chunks-plugin) 去重和分离 chunk。
->- **动态导入**：通过模块的内联函数调用来分离代码。
+>- **入口起点**：使用 [`entry`](https://webpack.docschina.org/configuration/entry-context) 配置手动地**分离**代码。
+>- **防止重复**：使用 [Entry dependencies](https://webpack.docschina.org/configuration/entry-context/#dependencies) 或者 [`SplitChunksPlugin`](https://webpack.docschina.org/plugins/split-chunks-plugin) **去重和分离** chunk。
+>- **动态导入**：通过模块的内联函数调用来**分离**代码。
 >
 >**入口起点**
 >
 >>这是迄今为止最简单直观的分离代码的方式。不过，这种方式手动配置较多，并有一些隐患，我们将会解决这些问题。
->>
->>```js
+>
+>>```diff
 >>entry: {
->>  index: './src/index.js',
->>  print: './src/print.js'
+>>    index: './src/index.js',
+>>    print: './src/print.js'
 >>},
 >>output: {
->>  filename: '[name].bundle.js',
->>  path: path.resolve(__dirname, 'dist'),
+>>    filename: '[name].bundle.js',
+>>    path: path.resolve(__dirname, 'dist'),
 >>}
 >>```
->>
+>
 >>正如前面提到的，这种方式存在一些隐患：
->>
->>- 如果入口 chunk 之间包含一些重复的模块（如index.js和print.js引入了相同的内容），那些重复模块都会被引入到各个 bundle 中（index.bundle .js和print.bundle .js文件）。
+>
+>>- 如果入口 chunk 之间包含一些重复的模块（如index.js和print.js引入了相同的内容），那些重复模块都会被引入到各个 bundle 中（即index.bundle.js和print.bundle.js文件）。
 >>- 这种方法不够灵活，并且不能动态地将核心应用程序逻辑中的代码拆分出来。
->>
->>尽管可以在 webpack 中允许每个页面使用多入口，**应尽可能避免使用多入口的入口**：`entry: { page: ['./analytics', './app'] }`。如此，在使用 `async` 脚本标签时，会有更好的优化以及一致的执行顺序。
-
-
-
-
+>
+>##### 防止重复
+>
+>- 去重
+>
+>  配置 [`dependOn` option](https://webpack.docschina.org/configuration/entry-context/#dependencies) 选项，这样可以在多个 chunk 之间**共享模块**：
+>
+>  ```diff
+>  // webpack.config.js
+>  // index.js和print.js引入了相同的lodash模块
+>  const path = require('path');
+>  
+>   module.exports = {
+>     mode: 'development',
+>     entry: {
+>  -    index: './src/index.js',
+>  -    another: './src/another-module.js',
+>  +    index: {
+>  +      import: './src/index.js',
+>  +      dependOn: 'shared',
+>  +    },
+>  +    another: {
+>  +      import: './src/another-module.js',
+>  +      dependOn: 'shared',
+>  +    },
+>  +    shared: 'lodash',
+>     },
+>     output: {
+>       filename: '[name].bundle.js',
+>       path: path.resolve(__dirname, 'dist'),
+>     },
+>   };
+>  ```
+>
+>  如果我们要在一个 HTML 页面上使用多个入口时，还需设置 `optimization.runtimeChunk: 'single'`，否则还会遇到[这里](https://bundlers.tooling.report/code-splitting/multi-entry/)所述的麻烦。
+>
+>  ```diff
+>  const path = require('path');
+>  
+>   module.exports = {
+>     mode: 'development',
+>     entry: {
+>       index: {
+>         import: './src/index.js',
+>         dependOn: 'shared',
+>       },
+>       another: {
+>         import: './src/another-module.js',
+>         dependOn: 'shared',
+>       },
+>       shared: 'lodash',
+>     },
+>     output: {
+>       filename: '[name].bundle.js',
+>       path: path.resolve(__dirname, 'dist'),
+>     },
+>  +  optimization: {
+>  +    runtimeChunk: 'single',
+>  +  },
+>   };
+>  ```
+>
+>  构建结果：除了生成 `shared.bundle.js`，`index.bundle.js` 和 `another.bundle.js` 之外，还生成了一个 `runtime.bundle.js` 文件。
+>
+>  尽管可以在 webpack 中允许每个页面使用多入口，**应尽可能避免使用多入口的入口**：`entry: { page: ['./analytics', './app'] }`。如此，在使用 `async` 脚本标签时，会有更好的优化以及一致的执行顺序。
+>
+>- 分离
+>
+>  [`SplitChunksPlugin`](https://webpack.docschina.org/plugins/split-chunks-plugin) 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。让我们使用这个插件，将之前的示例中重复的 `lodash` 模块去除：
+>
+>  ```diff
+>  const path = require('path');
+>  
+>    module.exports = {
+>      mode: 'development',
+>      entry: {
+>        index: './src/index.js',
+>        another: './src/another-module.js',
+>      },
+>      output: {
+>        filename: '[name].bundle.js',
+>        path: path.resolve(__dirname, 'dist'),
+>      },
+>  +   optimization: {
+>  +     splitChunks: {
+>  +       chunks: 'all',
+>  +     },
+>  +   },
+>    };
+>  ```
+>
+>  构建结果：`index.bundle.js` 和 `another.bundle.js` 中已经移除了重复的依赖模块。需要注意的是，插件将 `lodash` 分离到单独的 chunk，并且将其从 main bundle 中移除，减轻了大小。
+>
+>  以下是由社区提供，一些对于代码分离很有帮助的 plugin 和 loader：
+>
+>  - [`mini-css-extract-plugin`](https://webpack.docschina.org/guides/code-splitting/plugins/mini-css-extract-plugin): 用于将 CSS 从主应用程序中分离
+>
+>##### 动态导入
+>
+>当涉及到动态代码拆分时，webpack 提供了两个类似的技术。第一种，也是推荐选择的方式是，使用符合 [ECMAScript 提案](https://github.com/tc39/proposal-dynamic-import) 的 [`import()` 语法](https://webpack.docschina.org/api/module-methods/#import-1) 来实现动态导入。第二种，则是 webpack 的遗留功能，使用 webpack 特定的 [`require.ensure`](https://webpack.docschina.org/api/module-methods/#requireensure)。让我们先尝试使用第一种……
+>
+>`import()` 调用会在内部用到 [promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)。如果在旧版本浏览器中（例如，IE 11）使用 `import()`，记得使用一个 polyfill 库（例如 [es6-promise](https://github.com/stefanpenner/es6-promise) 或 [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)），来 shim `Promise`。
+>
+>现在，我们不再使用 statically import(静态导入) `lodash`，而是通过 dynamic import(动态导入) 来分离出一个 chunk：
+>
+>```diff
+>// src/index.js
+>- import _ from 'lodash';
+>function getComponent() {
+>  return import('lodash').then(({ default: _ }) => {
+>    const element = document.createElement('div');
+>    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+>    return element;
+>  }).catch(error => 'An error occurred while loading the component')
+>}
+>getComponent().then(component => {
+>  document.body.appendChild(component);
+>})
+>```
+>
+>我们之所以需要 `default`，是因为 webpack 4 在导入 CommonJS 模块时，将不再解析为 `module.exports` 的值，而是为 CommonJS 模块创建一个 artificial namespace 对象，更多有关背后原因的信息，请阅读 [webpack 4: import() and CommonJs](https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655)。
+>
+>由于 `import()` 会返回一个 promise，因此它可以和 [`async` 函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)一起使用。下面是如何通过 async 函数简化代码：
+>
+>```js
+>// src/index.js
+>async function getComponent() {
+>  const element = document.createElement('div')
+>  const { default: _ } = await import('lodash')
+>  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+>  return element
+>}
+>getComponent().then(component => {
+>  document.body.appendChild(component);
+>})
+>```
+>
+>在稍后示例中，可能会根据计算后的变量(computed variable)导入特定模块时，可以通过向 `import()` 传入一个 [动态表达式](https://webpack.docschina.org/api/module-methods/#dynamic-expressions-in-import)。
+>
+>##### 预获取/预加载模块
+>
+>webpack v4.6.0+ 增加了对预获取和预加载的支持。
+>
+>在声明 import 时，使用下面这些内置指令，可以让 webpack 输出 "resource hint(资源提示)"，来告知浏览器：
+>
+>- **prefetch**(预获取)：将来某些导航下可能需要的资源
+>- **preload**(预加载)：当前导航下可能需要资源
+>
+>```js
+>import(/* webpackPrefetch: true */ './path/to/LoginModal.js')
+>```
+>
+>这会生成 `<link rel="prefetch" href="login-modal-chunk.js">` 并追加到页面头部，指示着浏览器在闲置时间预取 `login-modal-chunk.js` 文件。
+>
+>只要父 chunk 完成加载，webpack 就会添加 prefetch hint(预取提示)。
+>
+>与 prefetch 指令相比，preload 指令有许多不同之处：
+>
+>- preload chunk 会在父 chunk 加载时，以并行方式开始加载。prefetch chunk 会在父 chunk 加载结束后开始加载。
+>- preload chunk 具有中等优先级，并立即下载。prefetch chunk 在浏览器闲置时下载。
+>- preload chunk 会在父 chunk 中立即请求，用于当下时刻。prefetch chunk 会用于未来的某个时刻。
+>- 浏览器支持程度不同。
+>
+>```js
+>import(/* webpackPreload: true */ 'ChartingLibrary');
+>```
+>
+>在页面中使用 `ChartComponent` 时，在请求 ChartComponent.js 的同时，还会通过 `<link rel="preload">` 请求 charting-library-chunk。假定 page-chunk 体积很小，很快就被加载好，页面此时就会显示 `LoadingIndicator(加载进度条)` ，等到 `charting-library-chunk` 请求完成，LoadingIndicator 组件才消失。启动仅需要很少的加载时间，因为只进行单次往返，而不是两次往返。尤其是在高延迟环境下
+>
+>不正确地使用 `webpackPreload` 会有损性能，请谨慎使用。
+>
+>##### bundle分析
+>
+>一旦开始分离代码，一件很有帮助的事情是，分析输出结果来检查模块在何处结束。 [官方分析工具](https://github.com/webpack/analyse) 是一个不错的开始。还有一些其他社区支持的可选项：
+>
+>- [webpack-chart](https://alexkuz.github.io/webpack-chart/): webpack stats 可交互饼图。
+>- [webpack-visualizer](https://chrisbateman.github.io/webpack-visualizer/): 可视化并分析你的 bundle，检查哪些模块占用空间，哪些可能是重复使用的。
+>- [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)：一个 plugin 和 CLI 工具，它将 bundle 内容展示为一个便捷的、交互式、可缩放的树状图形式。
+>- [webpack bundle optimize helper](https://webpack.jakoblind.no/optimize)：这个工具会分析你的 bundle，并提供可操作的改进措施，以减少 bundle 的大小。
+>- [bundle-stats](https://github.com/bundle-stats/bundle-stats)：生成一个 bundle 报告（bundle 大小、资源、模块），并比较不同构建之间的结果
 
 
 

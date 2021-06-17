@@ -3,12 +3,7 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   entry: {
-    index: {
-      import: './src/index.js',
-    },
-    print: {
-      import: './src/print.js',
-    },
+    index: './src/index.js'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -24,11 +19,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
-  optimization: {
-     splitChunks: {
-       chunks: 'all',
-     },
-   },
   module: {
     rules: [
       {
