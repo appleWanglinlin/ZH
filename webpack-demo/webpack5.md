@@ -160,11 +160,11 @@
 >
 >  通常比较推荐的做法是，在每次构建前清理 `/dist` 文件夹，这样只会生成用到的文件。让我们使用 [`output.clean`](https://webpack.docschina.org/configuration/output/#outputclean) 配置项实现这个需求。
 >
->  ```js
+>  ```diff
 >  output: {
 >      filename: '[name].bundle.js',
 >      path: path.resolve(__dirname, 'dist'),
->      clean: true
+>   +  clean: true
 >  }
 >  ```
 >
