@@ -72,7 +72,7 @@
   </style>
 </head>
 <body>
-  <div class="main">
+  <div class="main" style="display: block;">
     <div class="balls red">
         <span>红球</span>
         <div class="balls-wp">
@@ -135,27 +135,109 @@
 </div>
 </body>
 <script>
-  randomFn()
   function randomFn() {
-    let red_balls = document.querySelectorAll('.balls-wp')[0].children
-    let blue_balls = document.querySelectorAll('.balls-wp')[1].children
-    red_balls = Array.from(red_balls)
-    blue_balls = Array.from(blue_balls)
-    let red_arr = red_balls.map(e => e.innerText)
-    let blue_arr = blue_balls.map(e => e.innerText)
+    let red_balls = document.querySelectorAll('.balls-wp')[0]
+    let blue_balls = document.querySelectorAll('.balls-wp')[1]
     function randomBall(min, max) {
-      min = Math.ceil()
-      max = Math.floor()
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
+    let arr = []
     for(let i = 0;i < 6; i++) {
-      console.log(randomBall(1,31))
+      let flag = true
+      while(flag) {
+        let num = randomBall(1,33)
+        flag = arr.includes(num)
+        if (!flag) {
+          arr.push(num)
+        }
+      }
     }
-    console.log('red_balls', red_balls)
-    console.log('blue_balls', blue_balls)
-    console.log('red_arr', red_arr)
-    console.log('blue_arr', blue_arr)
-
+    arr.sort((a, b) => b - a).forEach((v, i) => {
+      let e = red_balls.children[arr[i] - 1 + i]
+      e.className = 'active'
+      red_balls.insertBefore(e, red_balls.children[0])
+    })
+    let bule_num = randomBall(1,16)
+    blue_balls.children[bule_num - 1].className = 'active'
+    blue_balls.insertBefore(blue_balls.children[bule_num - 1], blue_balls.firstChild)
+    arr = arr.sort((a, b) => a- b).map(v => v < 10 ? '0' + v : v)
+    bule_num = bule_num < 10 ? '0' + bule_num : bule_num
+    return arr.join(',') + '|' + bule_num
   }
+  console.log(randomFn())
+  // console.log('testArrSort', arr, flag)
+function fn() {
+    var flag = false;
+    try {
+        var testArrSort = function (arr) {
+            var flag = false;
+            var c = false
+            try {
+                flag = arr.join(',') === arr.sort(function (a, b) {
+                    return a - b
+                }).join(',');
+                c = arr.join(',') === arr.sort(function (a, b) {
+                    return a - b
+                }).join(',');
+            } catch (e) {}
+            console.log('c', c)
+            console.log('testArrSort', arr, flag)
+            return flag;
+        };
+        var testArrRange = function (arr, min, max) {
+            var flag = false;
+            try {
+                var error = false;
+                for (var i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    error = error || !(item >= min && item <= max && (item >= 10 || /^0[1-9]$/.test(item)));
+                }
+                flag = !error;
+            } catch (e) {}
+            console.log('testArrSort', arr, flag)
+            return flag;
+        };
+        var getPageResult = function () {
+            var result = {};
+            var red = [];
+            var blue = [];
+            [].slice.call(document.querySelectorAll('.red b'), 0, 6).forEach(function (el) {
+                var t = el.innerText;
+                el.classList.contains('active') && t >= 1 && t <= 33 && red.indexOf(t) < 0 && red.push(t);
+            });
+            [].slice.call(document.querySelectorAll('.blue b'), 0, 1).forEach(function (el) {
+                var t = el.innerText;
+                el.classList.contains('active') && t >= 1 && t <= 16 && blue.indexOf(t) < 0 && blue.push(t);
+            });
+            result.red = red;
+            result.blue = blue;
+            result.str = red.slice(0).join(',') + '|' + blue.slice(0).join(',');
+            return result;
+        };
+        var testCaseOne = function () {
+            var error = true;
+            randomFn();
+            var result = getPageResult();
+            var red = result.red.slice(0);
+            var blue = result.blue.slice(0);
+            error = !(red.length === 6 && testArrSort(red) && testArrRange(red, 1, 33) && blue.length === 1 &&
+                testArrSort(blue) && testArrRange(blue, 1, 16));
+            return error;
+        };
+        var testCase = function (n) {
+            var error = false;
+            for (var i = 0; i < n; i++) {
+                if (testCaseOne()) {
+                    error = true;
+                    break;
+                }
+            }
+            return error;
+        };
+        flag = !testCase(1000);
+    } catch (e) {}
+    return flag;
+}
+// console.log(fn())
 </script>
 </html>
