@@ -131,21 +131,21 @@
 >  const path = require('path');
 > +const HtmlWebpackPlugin = require('html-webpack-plugin');
 >  
->   module.exports = {
->     entry: {
->       index: './src/index.js',
->       print: './src/print.js',
->     },
->  +  plugins: [
->  +    new HtmlWebpackPlugin({
->  +      title: '管理输出',
->  +    }),
->  +  ],
->     output: {
->       filename: '[name].bundle.js',
->       path: path.resolve(__dirname, 'dist'),
->     },
->   };
+>  module.exports = {
+>    entry: {
+>      index: './src/index.js',
+>      print: './src/print.js',
+>    },
+> +  plugins: [
+> +    new HtmlWebpackPlugin({
+> +      title: '管理输出',
+> +    }),
+> +  ],
+>    output: {
+>      filename: '[name].bundle.js',
+>      path: path.resolve(__dirname, 'dist'),
+>    },
+>  };
 >  ```
 >
 >  在我们构建之前，你应该了解，虽然在 `dist/` 文件夹我们已经有了 `index.html` 这个文件，然而 `HtmlWebpackPlugin` 还是会默认生成它自己的 `index.html` 文件。也就是说，它会用新生成的 `index.html` 文件，替换我们的原有文件，所有的 bundle 会自动添加到 html 中（下面代码中的index.bundle.js和print.bundle.js）
@@ -161,11 +161,11 @@
 >  通常比较推荐的做法是，在每次构建前清理 `/dist` 文件夹，这样只会生成用到的文件。让我们使用 [`output.clean`](https://webpack.docschina.org/configuration/output/#outputclean) 配置项实现这个需求。
 >
 >  ```diff
->  output: {
->      filename: '[name].bundle.js',
->      path: path.resolve(__dirname, 'dist'),
->   +  clean: true
->  }
+> output: {
+>   filename: '[name].bundle.js',
+>   path: path.resolve(__dirname, 'dist'),
+> + clean: true
+> }
 >  ```
 >
 >- mainifest
