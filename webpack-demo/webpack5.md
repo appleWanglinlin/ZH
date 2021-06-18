@@ -341,103 +341,103 @@
 >>- 如果入口 chunk 之间包含一些重复的模块（如index.js和print.js引入了相同的内容），那些重复模块都会被引入到各个 bundle 中（即index.bundle.js和print.bundle.js文件）。
 >>- 这种方法不够灵活，并且不能动态地将核心应用程序逻辑中的代码拆分出来。
 >
->##### 防止重复
+>**防止重复**
 >
 >- 去重
 >
->  配置 [`dependOn` option](https://webpack.docschina.org/configuration/entry-context/#dependencies) 选项，这样可以在多个 chunk 之间**共享模块**：
+> 配置 [`dependOn` option](https://webpack.docschina.org/configuration/entry-context/#dependencies) 选项，这样可以在多个 chunk 之间**共享模块**：
 >
->  ```diff
->  // webpack.config.js
->  // index.js和print.js引入了相同的lodash模块
->  const path = require('path');
->  
->   module.exports = {
->     mode: 'development',
->     entry: {
->  -    index: './src/index.js',
->  -    another: './src/another-module.js',
->  +    index: {
->  +      import: './src/index.js',
->  +      dependOn: 'shared',
->  +    },
->  +    another: {
->  +      import: './src/another-module.js',
->  +      dependOn: 'shared',
->  +    },
->  +    shared: 'lodash',
->     },
->     output: {
->       filename: '[name].bundle.js',
->       path: path.resolve(__dirname, 'dist'),
->     },
->   };
->  ```
+> ```diff
+> // webpack.config.js
+> // index.js和print.js引入了相同的lodash模块
+> const path = require('path');
 >
->  如果我们要在一个 HTML 页面上使用多个入口时，还需设置 `optimization.runtimeChunk: 'single'`，否则还会遇到[这里](https://bundlers.tooling.report/code-splitting/multi-entry/)所述的麻烦。
+>  module.exports = {
+>    mode: 'development',
+>    entry: {
+> -    index: './src/index.js',
+> -    another: './src/another-module.js',
+> +    index: {
+> +      import: './src/index.js',
+> +      dependOn: 'shared',
+> +    },
+> +    another: {
+> +      import: './src/another-module.js',
+> +      dependOn: 'shared',
+> +    },
+> +    shared: 'lodash',
+>    },
+>    output: {
+>      filename: '[name].bundle.js',
+>      path: path.resolve(__dirname, 'dist'),
+>    },
+>  };
+> ```
 >
->  ```diff
->  const path = require('path');
->  
->   module.exports = {
->     mode: 'development',
->     entry: {
->       index: {
->         import: './src/index.js',
->         dependOn: 'shared',
->       },
->       another: {
->         import: './src/another-module.js',
->         dependOn: 'shared',
->       },
->       shared: 'lodash',
->     },
->     output: {
->       filename: '[name].bundle.js',
->       path: path.resolve(__dirname, 'dist'),
->     },
->  +  optimization: {
->  +    runtimeChunk: 'single',
->  +  },
->   };
->  ```
+> 如果我们要在一个 HTML 页面上使用多个入口时，还需设置 `optimization.runtimeChunk: 'single'`，否则还会遇到[这里](https://bundlers.tooling.report/code-splitting/multi-entry/)所述的麻烦。
 >
->  构建结果：除了生成 `shared.bundle.js`，`index.bundle.js` 和 `another.bundle.js` 之外，还生成了一个 `runtime.bundle.js` 文件。
+> ```diff
+> const path = require('path');
 >
->  尽管可以在 webpack 中允许每个页面使用多入口，**应尽可能避免使用多入口的入口**：`entry: { page: ['./analytics', './app'] }`。如此，在使用 `async` 脚本标签时，会有更好的优化以及一致的执行顺序。
+>  module.exports = {
+>    mode: 'development',
+>    entry: {
+>      index: {
+>        import: './src/index.js',
+>        dependOn: 'shared',
+>      },
+>      another: {
+>        import: './src/another-module.js',
+>        dependOn: 'shared',
+>      },
+>      shared: 'lodash',
+>    },
+>    output: {
+>      filename: '[name].bundle.js',
+>      path: path.resolve(__dirname, 'dist'),
+>    },
+> +  optimization: {
+> +    runtimeChunk: 'single',
+> +  },
+>  };
+> ```
+>
+> 构建结果：除了生成 `shared.bundle.js`，`index.bundle.js` 和 `another.bundle.js` 之外，还生成了一个 `runtime.bundle.js` 文件。
+>
+> 尽管可以在 webpack 中允许每个页面使用多入口，**应尽可能避免使用多入口的入口**：`entry: { page: ['./analytics', './app'] }`。如此，在使用 `async` 脚本标签时，会有更好的优化以及一致的执行顺序。
 >
 >- 分离
 >
->  [`SplitChunksPlugin`](https://webpack.docschina.org/plugins/split-chunks-plugin) 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。让我们使用这个插件，将之前的示例中重复的 `lodash` 模块去除：
+> [`SplitChunksPlugin`](https://webpack.docschina.org/plugins/split-chunks-plugin) 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。让我们使用这个插件，将之前的示例中重复的 `lodash` 模块去除：
 >
->  ```diff
->  const path = require('path');
->  
->    module.exports = {
->      mode: 'development',
->      entry: {
->        index: './src/index.js',
->        another: './src/another-module.js',
->      },
->      output: {
->        filename: '[name].bundle.js',
->        path: path.resolve(__dirname, 'dist'),
->      },
->  +   optimization: {
->  +     splitChunks: {
->  +       chunks: 'all',
->  +     },
->  +   },
->    };
->  ```
+> ```diff
+> const path = require('path');
 >
->  构建结果：`index.bundle.js` 和 `another.bundle.js` 中已经移除了重复的依赖模块。需要注意的是，插件将 `lodash` 分离到单独的 chunk，并且将其从 main bundle 中移除，减轻了大小。
+>   module.exports = {
+>     mode: 'development',
+>     entry: {
+>       index: './src/index.js',
+>       another: './src/another-module.js',
+>     },
+>     output: {
+>       filename: '[name].bundle.js',
+>       path: path.resolve(__dirname, 'dist'),
+>     },
+> +   optimization: {
+> +     splitChunks: {
+> +       chunks: 'all',
+> +     },
+> +   },
+>   };
+> ```
 >
->  以下是由社区提供，一些对于代码分离很有帮助的 plugin 和 loader：
+> 构建结果：`index.bundle.js` 和 `another.bundle.js` 中已经移除了重复的依赖模块。需要注意的是，插件将 `lodash` 分离到单独的 chunk，并且将其从 main bundle 中移除，减轻了大小。
 >
->  - [`mini-css-extract-plugin`](https://webpack.docschina.org/guides/code-splitting/plugins/mini-css-extract-plugin): 用于将 CSS 从主应用程序中分离
+> 以下是由社区提供，一些对于代码分离很有帮助的 plugin 和 loader：
 >
->##### 动态导入
+> - [`mini-css-extract-plugin`](https://webpack.docschina.org/guides/code-splitting/plugins/mini-css-extract-plugin): 用于将 CSS 从主应用程序中分离
+>
+>**动态导入**
 >
 >当涉及到动态代码拆分时，webpack 提供了两个类似的技术。第一种，也是推荐选择的方式是，使用符合 [ECMAScript 提案](https://github.com/tc39/proposal-dynamic-import) 的 [`import()` 语法](https://webpack.docschina.org/api/module-methods/#import-1) 来实现动态导入。第二种，则是 webpack 的遗留功能，使用 webpack 特定的 [`require.ensure`](https://webpack.docschina.org/api/module-methods/#requireensure)。让我们先尝试使用第一种……
 >
@@ -449,14 +449,14 @@
 >// src/index.js
 >- import _ from 'lodash';
 >function getComponent() {
->  return import('lodash').then(({ default: _ }) => {
->    const element = document.createElement('div');
->    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
->    return element;
->  }).catch(error => 'An error occurred while loading the component')
+> return import('lodash').then(({ default: _ }) => {
+>   const element = document.createElement('div');
+>   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+>   return element;
+> }).catch(error => 'An error occurred while loading the component')
 >}
 >getComponent().then(component => {
->  document.body.appendChild(component);
+> document.body.appendChild(component);
 >})
 >```
 >
@@ -467,19 +467,19 @@
 >```js
 >// src/index.js
 >async function getComponent() {
->  const element = document.createElement('div')
->  const { default: _ } = await import('lodash')
->  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
->  return element
+> const element = document.createElement('div')
+> const { default: _ } = await import('lodash')
+> element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+> return element
 >}
 >getComponent().then(component => {
->  document.body.appendChild(component);
+> document.body.appendChild(component);
 >})
 >```
 >
 >在稍后示例中，可能会根据计算后的变量(computed variable)导入特定模块时，可以通过向 `import()` 传入一个 [动态表达式](https://webpack.docschina.org/api/module-methods/#dynamic-expressions-in-import)。
 >
->##### 预获取/预加载模块
+>**预获取/预加载模块**
 >
 >webpack v4.6.0+ 增加了对预获取和预加载的支持。
 >
@@ -504,6 +504,7 @@
 >- 浏览器支持程度不同。
 >
 >```js
+>// ChartComponent.js
 >import(/* webpackPreload: true */ 'ChartingLibrary');
 >```
 >
@@ -511,7 +512,7 @@
 >
 >不正确地使用 `webpackPreload` 会有损性能，请谨慎使用。
 >
->##### bundle分析
+>**bundle分析**
 >
 >一旦开始分离代码，一件很有帮助的事情是，分析输出结果来检查模块在何处结束。 [官方分析工具](https://github.com/webpack/analyse) 是一个不错的开始。还有一些其他社区支持的可选项：
 >
