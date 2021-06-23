@@ -4,15 +4,21 @@ module.exports = {
   entry: {
     index: './src/index.js'
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Caching'
     })
   ],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[contenthash].js', 
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
+    pathinfo: false
   },
   optimization: {
     moduleIds: 'deterministic',
@@ -31,6 +37,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
         use: ['style-loader', 'css-loader']
       },
       {

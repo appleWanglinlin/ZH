@@ -1,9 +1,15 @@
 import _ from 'lodash'
-// import Print from './print'
+import Print from './print'
 function component() {
   const element = document.createElement('div')
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-  // element.onclick = Print.bind(null, 'hello webpack!!')
+  element.onclick = Print.bind(null, 'hello webpack!!')
   return element
 }
 document.body.appendChild(component());
+if (module.hot) {
+  module.hot.accept('./print.js', function() {
+    console.log('hot')
+    printMe()
+  })
+}

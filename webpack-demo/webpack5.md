@@ -9,25 +9,33 @@
 >在安装一个 package，而此 package 要打包到生产环境 bundle 中时，你应该使用 `npm install --save`。如果你在安装一个用于开发环境的 package 时（例如，linter, 测试库等），你应该使用 `npm install --save-dev`。
 >
 >>`npm list -g --depth 0`：查看npm全局安装过的包
->>
+>
 >>`npm init -y`：-y 的含义：yes的意思，在init的时候省去了敲回车的步骤，生成的默认的package.json
 >
 >Node 8.2/npm 5.2.0 以上版本提供的 `npx` 命令，可以运行在初次安装的 webpack package 中的 webpack 二进制文件（即 `./node_modules/.bin/webpack`）
 >
->>举个例子： 
->>
+>想要运行本地安装的 webpack，你可以通过 `node_modules/.bin/webpack` 来访问它的二进制版本。另外，如果你使用的是 npm v5.2.0 或更高版本，则可以运行 `npx webpack` 来执行。
+>
+>举个例子： 
+>
 >>```js
 >>npm i webpack -D      //非全局安装
 >>//如果要执行 webpack 的命令
 >>./node_modules/.bin/webpack -v
 >>```
->>
->>有了 npx 之后
->>
+>
+>有了 npx 之后
+>
 >>```js
 >>npm i webpack -D    //非全局安装
->>npx webpack -v 
+>>npx webpack -v
 >>```
+>
+>```bash
+>npm install --global webpack // 全局安装
+>```
+>
+>**不推荐** 全局安装 webpack。这会将你项目中的 webpack 锁定到指定版本，并且在使用不同的 webpack 版本的项目中， 可能会导致构建失败。
 >
 >[ES2015](https://babeljs.io/learn-es2015/) 中的 [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 和 [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) 语句已经被标准化。虽然大多数浏览器还无法支持它们，但是 webpack 却能够提供开箱即用般的支持。事实上，webpack 在幕后会将代码 “**转译**”，以便旧版本浏览器可以执行。注意，webpack 不会更改代码中除 `import` 和 `export` 语句以外的部分。如果你在使用其它 [ES2015 特性](http://es6-features.org/)，请确保你在 webpack [loader 系统](https://webpack.docschina.org/concepts/loaders/) 中使用了一个像是 [Babel](https://babel.docschina.org/) 或 [Bublé](https://buble.surge.sh/guide/) 的 [transpiler(转译器)](https://webpack.docschina.org/loaders/#transpiling)
 
