@@ -62,21 +62,33 @@
   </div>
 </body>
 <script>
-  const items = ['北京大学','清华大学','上海交通大学','复旦大学','浙江大学','武汉大学','华中科技大学']
+  // 【北大】可匹配【北京大学】正则思路: /北.*大.*/
+  // .表示除换行符以外的所有字符, *表示一次或多次匹配
+  // const items = ['北京大学','清华大学','上海交通大学','复旦大学','浙江大学','武汉大学','华中科技大学']
+  const items = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '10', '110']
   const input = document.getElementsByClassName('js-input')[0]
   let value = ''
   input.addEventListener('input', function(e) {
     suggest(items)
   })
   function suggest(items) {
-    const ul = document.getElementsByClassName('js-suggest')[0].firstElementChild
+    const suggest = document.getElementsByClassName('js-suggest')[0]
+    const ul = suggest.firstElementChild
     let value = document.getElementsByClassName('js-input')[0].value.trim()
     if (!value) {
       ul.innerHTML = ''
-      return false
+      return suggest.classList.add('hide')
     }
-    const reg = new RegExp(`${value}`)
-    console.log('reg', reg)
+    let regStr = ''
+    const escapeCharacter = '$()[]{}.?+*|\\^' // 需要转义的字符
+    for(let v of value) {
+      if(escapeCharacter.indexOf(v) === -1) {
+        regStr += `${v}.*?`
+      } else {
+        regStr += `\\${v}.*?`
+      }
+    }
+    const reg = new RegExp(`${regStr}`)
     let str = ''
     items.forEach((item, index) => {
       if (reg.test(item)) {
@@ -84,6 +96,11 @@
       }
     })
     ul.innerHTML = str
+    if (str) {
+      suggest.classList.remove('hide')
+    } else {
+      suggest.classList.add('hide')
+    }
   }
 </script>
 </html>
