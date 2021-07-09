@@ -67,7 +67,7 @@
   </div>
 </body>
 <script>
-  const str = '我不惧怕未来的一切挑战\n   --   Apple'
+  let str = '我不惧怕未来的一切挑战\n   --   Apple'
   output(str)
   function output(str) {
     const content = document.querySelector('.content')
@@ -76,32 +76,29 @@
       if (content.children[0] === blink) {
         break
       }
-      content.removeChild(content.firstElementChild)
+      content.removeChild(content.children[0])
     }
     let i = 0
     let timer = setInterval(() => {
       if (i === str.length) return clearInterval(timer)
-      let v = str[i]
-      if (v === '\n') {
+      if (str[i] === '\n') {
         const br = document.createElement('br')
         content.insertBefore(br, blink)
       } else {
-        const span = document.createElement('span')
-        const random = Math.floor(Math.random() * 24 + 1)
-        span.className = `word color${random}`
-        if (v === '<') {
-          v = '&lt;'
-        } else if (v === '>') {
-          v = '&gt;'
-        } else if(v === ' ') {
-          v = '&nbsp;'
+        if (str[i] === '<') {
+          str[i] = '&lt'
+        } else if (str[i] === '>') {
+          str[i] = '&gt'
+        } else if (str[i] === ' ') {
+          str[i] = '&nbsp'
         }
-        span.innerHTML = v
+        const span = document.createElement('span')
+        span.className = `word color${Math.floor(Math.random() * 24 + 1)}`
+        span.innerHTML = str[i]
         content.insertBefore(span, blink)
       }
       i++
     }, 200)
   }
-  
 </script>
 </html>
