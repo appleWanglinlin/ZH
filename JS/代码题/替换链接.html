@@ -13,20 +13,30 @@
 </head>
 <body>
   <div id="jsContainer">
-    这里会给出一段随机文本，可能包含一些链接，比如https://www.baidu.com，或者 www.baidu.com?from=onlineExam，如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。
+    这里会给出一段随机文本，可能包含一些链接，比如
+    http://www.baidu.com
+    http://www.baidu.com/#
+    https://www.baidu.com
+    www.baidu.com?id=1
+    www.baidu.com?sku-id=1
+    www.baidu.com?id=1&name=1
+    www.baidu.com/id/2
+    www.baidu.com/sku-id/2
+    如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。
   </div>
 </body>
 <script>
   function link() {
-    let div = document.getElementById('jsContainer')
-    let str = div.innerText
-    let reg = /(http:\/\/)?(https:\/\/)?www\.[\w=\?&\.#]+/g
-    let res = str.replace(reg, function(match, p1, p2) {
+    const container = document.getElementById('jsContainer')
+    const str = container.innerText
+    // let reg = /(http:\/\/)?(https:\/\/)?www\.[\w-\.\/\?%\&=#]+/g
+    // 转义字符即反斜杠
+    const reg = /(http:\/\/)?(https:\/\/)?www\.[^\s]+/g
+    container.innerHTML = str.replace(reg, function(match, p1, p2) {
       let url = match
-      if (!(p1 || p2)) url = 'http://' + match
-      return `<a href="${url}" target="_blank">${match}</a>`
+      if (!(p1 || p2)) url = `http://${match}`
+      return `<a href="${url}" target="_blank">${match}</a><br><br>`
     })
-    div.innerHTML = res
   }
   link()
 </script>
