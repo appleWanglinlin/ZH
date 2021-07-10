@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动控制</title>
+  <style>
+    table.game {
+        font-size: 14px;
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+    table.game td {
+        border: 1px solid #e1e1e1;
+        padding: 0;
+        height: 30px;
+        text-align: center;
+    }
+    table.game td.current{
+        background: #1890ff;
+    }
+  </style>
+</head>
+<body>
+  <div id="jsContainer">
+    <table class="game">
+        <tbody>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td class="current"></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  bind()
+  function bind() {
+    document.onkeydown = event => {
+        if (!event) return;
+        var code = event.keyCode || '';
+        if (!{'37': 1, '38': 1, '39': 1, '40': 1}[code]) return;
+        event.preventDefault && event.preventDefault();
+        //TODO: 请实现按键控制
+        // 上(键值38)下(键值40)左(键值37)右(键值39)
+        const trList = document.getElementsByTagName('tr')
+        const rowNum = trList.length // 行数
+        const ctd = document.querySelector('.current')
+        const ctr = ctd.parentNode
+        const columnNum = ctr.children.length // 列数
+        let tdIndex = 0, trIndex = 0
+        for(let i = 0; i < ctr.children.length; i++) {
+          if (ctr.children[i] === ctd) {
+            tdIndex = i
+            break
+          }
+        }
+        for(let i = 0; i < trList.length; i++) {
+          if (trList[i] === ctr) {
+            trIndex = i
+            break
+          }
+        }
+        ctd.className = ''
+        if (code === 38) { // 上
+          if (trIndex === 0) trIndex = rowNum
+          trList[trIndex - 1].children[tdIndex].className = 'current'
+        } else if (code === 40) { // 下
+          if (trIndex === rowNum - 1) trIndex = -1
+          trList[trIndex + 1].children[tdIndex].className = 'current'
+        } else if (code === 37) { // 左
+          if (tdIndex === 0) tdIndex = columnNum
+          trList[trIndex].children[tdIndex - 1].className = 'current'
+        } else if (code === 39) { // 右
+          if (tdIndex === columnNum - 1) tdIndex = -1
+          trList[trIndex].children[tdIndex + 1].className = 'current'
+        }
+    };
+  }
+</script>
+</html>
