@@ -15,23 +15,86 @@
 <body>
   <div id="jsContainer">
     <ul class="js-test" id="jsParent">
-        <li data-index="0">1</li>
-        <li data-index="1">2</li>
+      <li data-index="0">1</li>
+      <li data-index="1">2</li>
     </ul>
     <span style="font-weight: bold;">3</span>
     4
   </div>
 </body>
 <script>
-  dom2json()
+  // console.log(dom2json())
   function dom2json() {
     const container = document.getElementById('jsContainer')
-    console.dir(container)
-    // for(let node of container) {
-    //   if (node.nodeType === 1 || node.nodeType === 3) {
-    //     console.dir(node)
-    //   }
-    // }
+    let domObj = {
+      tag: container.localName,
+      attributes: getAttributes(container),
+      children: []
+    }
+    function getAttributes(node) {
+      const attributes = {}
+      if (node.attributes) {
+        for (const v of node.attributes) {
+          attributes[v.nodeName] = v.nodeValue
+        }
+      }
+      return attributes
+    }
+    fn(domObj, container.childNodes)
+    function fn(domObj, childNodes) {
+      for(let node of childNodes) {
+        let obj = {
+          tag: node.localName,
+          attributes: getAttributes(node),
+          children: []
+        }
+        if (node.nodeType === 1) {
+          domObj.children.push(obj)
+        } else if (node.nodeType === 3) {
+          obj = {
+            tag: node.nodeName.replace(/#/, ''),
+            content: node.textContent.trim()
+          }
+          if (obj.content) domObj.children.push(obj)
+        } 
+        if (node.childNodes.length) fn(obj, node.childNodes)
+      }
+    }
+    return domObj
   }
+  test()
+  function test() {
+    var el = document.getElementById('jsContainer');
+    (el || {}).innerHTML = '<em class="a1" data-class="a2"></em>';
+    var data = dom2json();
+    var result = isSame(data, {
+        tag: 'div',
+        attributes: {
+            id: 'jsContainer'
+        },
+        children: [{
+            tag: 'em',
+            attributes: {
+                class: 'a1',
+                'data-class': 'a2'
+            },
+            children: []
+        }]
+    });
+    console.log(result);
+    return result;
+
+    function isSame(o1, o2) {
+        var type1 = ({}).toString.call(o1);
+        var type2 = ({}).toString.call(o2);
+        if (type1 !== type2) return;
+        if (type1 === '[object Array]') return o1.join('T_T') === o2.join('T_T');
+        if (type1 === '[object String]') return o1 === o2;
+        var key1 = Object.keys(o1).sort((a, b) => a > b ? 1 : a === b ? 0 : -1);
+        var key2 = Object.keys(o2).sort((a, b) => a > b ? 1 : a === b ? 0 : -1);
+        if (key1.length !== key2.length) return false;
+        return key1.every(key => isSame(o1[key], o2[key]));
+    }
+}
 </script>
 </html>
