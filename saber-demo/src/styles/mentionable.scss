@@ -1,0 +1,22 @@
+.vue-popover-theme{
+  border: 1px #ccc solid;
+  background-color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 99999 !important;
+  .mention-item {
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+  .mention-selected {
+      background: #ddd;
+    }
+}
+
+.mentionable {
+  .v-popover.popper {
+      left: 220px !important;
+      top: -15px !important;
+  }
+
+}

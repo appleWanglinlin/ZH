@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.png" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      html,body,#app {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .zh-home {
+        background-color: #303133;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ccc;
+        font-size: 12px;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .lds-dual-ring {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 4px solid #ccc;
+        border-color: #ccc transparent #ccc transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      <strong>很抱歉，如果没有 JavaScript 支持，系统将不能正常工作。请启用浏览器的 JavaScript 然后继续。</strong>
+    </noscript>
+    <div id="app">
+      <div class="zh-home">
+        <div>
+          <div class="lds-dual-ring"></div>
+          <p>正在加载资源中... <span id="progress" style="display:none;"></p>
+          <p id="res"></p>
+          <pre id="error"></pre>
+        </div>
+      </div>
+    </div>
+    
+    <link href="//at.alicdn.com/t/font_2450732_75qk709epna.css" type="text/css" rel="stylesheet" />
+    <script src="//at.alicdn.com/t/font_2648400_swpv9bmjaqh.js"></script>
+
+    <!-- built files will be auto injected -->
+    <% JSON.parse(VUE_APP_LIBS).forEach(item => { %>
+      <script src="<%= BASE_URL %>cdn/libs/<%=item%>" charset="utf-8"></script>
+    <% }) %>
+
+    <script src="<%= BASE_URL %>cdn/avue/2.6.1/avue.min.js" charset="utf-8"></script>
+
+    <% if(process.env.NODE_ENV === 'production') { %>
+    <script>
+; (function () {
+  const progressEl = document.getElementById('progress')
+  const errorEl = document.getElementById('error')
+  const errors = []
+
+  function updateStatus(a, b) {
+    progressEl.textContent = ['(', a, '/', b, ')'].join('')
+  }
+
+  function load(type, src, cb) {
+    const el = document.createElement(type)
+    el.onload = cb
+    el.onerror = function () {
+      errors.push(src + ' 加载失败')
+      errorEl.textContent = errors.join('\n')
+    }
+    if (type === 'link') {
+      el.rel = 'stylesheet'
+      el.href = src
+      document.head.appendChild(el)
+    } else {
+      el.src = src
+      document.body.appendChild(el)
+    }
+  }
+
+  axios.get('/asserts.json?' + Date.now()).then(function(res) {
+    const data = res.data
+    window.version = data.version
+    document.getElementById('res').textContent = '资源版本：' + data.version
+    let total = data.css.length + data.js.length, count = 0
+    updateStatus(0, total)
+    progressEl.style.display = 'inline'
+    ;[{ type: 'link', list: data.css }, { type: 'script', list: data.js }].forEach(function (a) {
+      a.list.forEach(function (b) {
+        load(a.type, b, function () {
+          updateStatus(++count, total)
+        })
+      })
+    })
+  }).catch(function(err){
+    errorEl.textContent = '获取资源失败'
+    throw err
+  })
+})();
+    </script>
+    <% } %>
+    
+    <link rel="stylesheet" href="<%= BASE_URL %>cdn/avue/2.6.1/index.css" />
+  </body>
+</html>

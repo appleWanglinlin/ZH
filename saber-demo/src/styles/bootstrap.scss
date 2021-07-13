@@ -1,0 +1,22 @@
+@import './element-var.scss';
+
+$primary:       $--color-primary !default;
+$secondary:     $--color-text-regular !default;
+$success:       $--color-success !default;
+$info:          $--color-info !default;
+$warning:       $--color-warning !default;
+$danger:        $--color-danger !default;
+// $light:         $gray-100 !default;
+// $dark:          $gray-900 !default;
+$text-muted:    #999;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+
+// Utilities
+
+@import "~bootstrap/scss/utilities/api";
+@import "~bootstrap/scss/helpers/text-truncation";

@@ -1,0 +1,120 @@
+:root {
+  --side-background: #333;
+  --side-foreground: rgba(255,255,255,0.7);
+  --side-background-hover: #555;
+  --side-foreground-focus: #fff;
+  --side-background-active: #444;
+}
+
+$side-menu-popup-bg: #fff;
+$side-menu-popup-bg-hover: #eee;
+$side-menu-popup-bg-active: #ccc;
+$side-menu-popup-color: #666;
+$side-menu-popup-color-active: #000;
+
+.el-menu--popup {
+  max-width: 620px;
+}
+
+.top-logo {
+  background-color: var(--side-logo-background, var(--side-background));
+  color: var(--side-foreground-focus);
+  transition: width 0.01s ease-in;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.aside-menu {
+  background-color: var(--side-background);
+  transition: width 0.01s ease-in;
+  .el-submenu__title, .el-menu-item {
+    color: var(--side-foreground);
+    &:hover {
+      background-color: var(--side-background-hover);
+    }
+    &:focus, &.is-active {
+      background: transparent;
+      color: var(--side-foreground-focus);
+      font-weight: 700;
+    }
+    &.is-active {
+      background-color: var(--side-background-active);
+    }
+    .el-submenu__icon-arrow {
+      color: var(--side-foreground);  
+    }
+  }
+  .el-submenu.is-active,
+  .el-submenu.is-collapse-active{
+    &>.el-submenu__title{
+      color: var(--side-foreground-focus);
+      &>i{
+       color: var(--side-foreground-focus);
+      }
+    }
+  }
+  .el-scrollbar__view {
+    height: 100%;
+  }
+
+  .is-collapse-active .el-submenu__title{
+    background-color: var(--side-background-active);
+  }
+  
+  .el-menu--horizontal {
+    border-bottom: none !important;
+  }
+  
+  .el-menu {
+    border-right: none !important;
+    .abbr {
+      display: none;
+    }
+    &.el-menu--collapse {
+      .el-menu--display ,
+      .el-menu--display + .el-submenu__icon-arrow {
+        display: none;
+      }
+      .el-submenu__title {
+        padding: 0!important;
+        justify-content: center;
+      }
+      .abbr {
+        display: inline;
+      }
+    }
+  }
+  .no-menu {
+    color: var(--side-foreground)
+  }
+}
+
+.popup-menu {
+  border: 1px solid #ddd;
+  border-left-width: 0;
+  .el-menu {
+    margin: 0;
+    padding: 0;
+    box-shadow: 2px 0 10px 0px rgb(0 0 0 / 30%);
+  }
+}
+
+.main-container {
+  background-color: #f0f2f5;
+}
+.layout-container {
+  height: calc(100% - 41px);
+}
+
+.basic-container {
+  padding: 7px 7px 0;
+  margin: 0;
+  height: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  overflow: auto;
+  &--block {
+    height: 100%;
+  }
+  min-width: 970px;
+}

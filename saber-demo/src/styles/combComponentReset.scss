@@ -1,0 +1,71 @@
+
+$form-readonly-color: #fff;
+.el-form {
+  $formItemBottomSpace: 3px;
+  &.form-col {
+    .el-col{
+      margin-bottom: 0;
+    }
+  }
+  &.no-message {
+    .el-form-item {
+      margin-bottom: $formItemBottomSpace;
+    }
+    .el-form-item__error {
+      display: none;
+    }
+  }
+  // 表单只读样式 el-form组件添加类名form-readonly
+  &.form-readonly {
+    .el-input.is-disabled .el-input__inner,
+    .el-textarea.is-disabled .el-textarea__inner {
+      background-color: $form-readonly-color;
+      color: $--color-text-regular;
+      // 只读时，将placeholder的颜色设置为背景色
+      &::-webkit-input-placeholder {
+        color: $form-readonly-color;
+      }
+      &::-moz-placeholder {
+        color: $form-readonly-color;
+      }
+      &:-ms-input-placeholder {
+        color: $form-readonly-color;
+      }
+    }
+    .el-radio__input.is-disabled + span.el-radio__label {
+      color: $--color-text-regular;
+    }
+    .el-switch.is-disabled {
+      opacity: 1;
+    }
+    .el-textarea__inner, .el-input__inner {
+      cursor: text !important;
+    }
+    @extend .el-form, .no-message;
+  }
+  .g-table.el-table {
+    line-height: normal;
+  }
+}
+
+.g-table.el-table {
+  thead th {
+    background-color: #f7f7f7;
+    padding: 4px 0;
+  }
+  .el-button--text {
+    font-size: $--size-base;
+    padding: 0.25rem;
+  }
+  &.g-table-dense {
+    td .cell {
+      line-height: 16px;
+    }
+    th, td {
+      padding: 3px 0;
+    }
+  }
+  .el-table-column--selection .el-checkbox:last-of-type {
+    margin-right: 0;
+  }
+}

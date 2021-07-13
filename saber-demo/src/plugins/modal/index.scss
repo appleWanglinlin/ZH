@@ -1,0 +1,27 @@
+
+.el-dialog__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .custom-modal {
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+    max-height: calc(100% - 50px);
+    max-width: calc(100% - 50px);
+    .el-dialog__body {
+      padding: 0;
+      flex: 1;
+      overflow: auto;
+    }
+    .el-dialog__header{
+      border-bottom: 1px #eee solid;
+      padding: 10px 30px 10px 15px;
+      .el-dialog__title {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }  
+}

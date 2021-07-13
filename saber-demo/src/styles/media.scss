@@ -1,0 +1,101 @@
+$siderWidth: 200px;
+$siderWidthCollapse: 64px;
+
+.zh-container {
+  .aside-menu, .site-logo {
+    width: $siderWidth!important;
+  }
+
+  .aside-menu-toggle-btn i {
+    transition: transform 0.3s;
+  }
+
+  &.aside-collapse {
+    .aside-menu, .site-logo {
+      width: $siderWidthCollapse!important;
+    }
+    .aside-menu-toggle-btn i {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .aside-menu-toggle-btn {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-header {
+    justify-content: flex-end;
+    .header-search {
+      display: none !important;
+    }
+  }
+}
+
+.login-logo {
+  transition: all .3s;
+}
+
+.avue-view {
+  // padding: 0 10px !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 992px) {
+  // ele的自适应
+  .el-dialog,
+  .el-message-box {
+    width: 98% !important;
+  }
+  //登录页面
+  .login-left {
+    display: none !important;
+  }
+  .login-logo {
+    padding-top: 30px !important;
+    margin-left: -30px;
+  }
+  .login-weaper {
+    margin: 0 auto;
+    width: 96% !important;
+  }
+  .login-border {
+    border-radius: 5px;
+    padding: 40px;
+    margin: 0 auto;
+    float: none !important;
+    width: 100% !important;
+  }
+  .login-main {
+    width: 100% !important;
+  }
+  //主框架
+  .top-bar__item {
+    display: none;
+  }
+  .avue--collapse {
+    .avue-left,
+    .avue-logo {
+      width: $siderWidth;
+      left: 0;
+    }
+
+    .avue-main {
+      left: $siderWidth;
+      width: 100%;
+    }
+
+    .avue-header {
+      padding: 0;
+      transform: translate3d(200px, 0, 0);
+    }
+
+    .avue-shade {
+      display: block;
+    }
+  }
+}

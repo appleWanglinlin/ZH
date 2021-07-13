@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    html,body{margin:0;padding:0;}
+    html,body,#editor{height:100%;font-size: 12px;}
+    button{border:none;background:none;}
+    .w-e-toolbar .code-active,.w-e-toolbar .w-e-menu.code-active:hover{background:#99bdf3;}
+    #editor {
+      display: flex;
+      flex-direction: column;
+    }
+    .custom-container {
+      border:1px #ccc solid;
+      border-top-width: 0;
+      padding: 5px;
+      height: calc(100% - 12px);
+      outline: none;
+      resize: none;
+    }
+    .w-e-menu-tooltip.w-e-menu-tooltip-up::after{
+      top: -10px;
+      border-bottom-color:rgba(0, 0, 0, 0.73);
+      border-top-color: transparent;
+    }
+    .w-e-menu-tooltip{
+      top: 39px !important;
+    }
+    .w-e-menue-mantle {
+      display: none;
+    }
+    .el-progress-bar__outer {
+      background-color: transparent;
+    }
+    .w-e-text {
+      flex-grow: 1;
+      font-size: initial;
+      min-height: 100% !important;
+    }
+    .custom-reset {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="editor"></div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"></script>
+  <script src="./editor.js"> </script>
+</body>
+</html>

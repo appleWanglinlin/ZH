@@ -1,0 +1,11 @@
+// 配合下载插件 Path Intellisense 使用， 解决使用＠符号引入没有路径提示的问题
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

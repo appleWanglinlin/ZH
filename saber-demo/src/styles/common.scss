@@ -1,0 +1,84 @@
+// elementUI样式变量
+@import './element-var.scss';
+@import "./element-ui/index.scss";
+
+// 引入bootstrap工具类
+@import './bootstrap.scss';
+
+// 顶部进度条样式
+@import '~nprogress/nprogress.css';
+
+// ele样式覆盖
+@import './element-ui.scss';
+// 顶部右侧显示
+@import './top.scss';
+// 导航标签
+@import './tags.scss';
+// 工具类函数
+@import './mixin.scss';
+// 框架布局相关样式
+@import './layout.scss';
+// 动画
+@import './animate/vue-transition.scss';
+//适配
+@import './media.scss';
+
+// 重置组合组件的样式
+@import './combComponentReset.scss';
+
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+* {
+  outline: none;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+//滚动条样式
+@include scrollBar;
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: left;
+}
+
+//文本超出隐藏显示...
+.txt-over-ell-one {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.txt-over-ell-two {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.txt-over-ell-three {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+}
+.g-w100{
+  width: 100% !important;
+}
+@import './rewrite-elementui.scss';
+@import './rewrite-avue.scss';

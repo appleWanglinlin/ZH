@@ -1,0 +1,125 @@
+html, body {
+  font-size: 12px;
+}
+
+// placeholder
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+  font-size: $--font-size-base;
+}
+.el-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.el-button.el-button--mini {
+  height: 28px;
+}
+
+// tab
+.el-tabs {
+  .el-tabs__item {
+    font-size: $--font-size-base;
+    height: 36px;
+    line-height: 36px;
+  }
+}
+
+// 级联
+.el-cascader {
+  .el-cascader-node {
+    .el-checkbox {
+      line-height: normal;
+    }
+  }
+  &.el-cascader--mini {
+    line-height: 1;
+  }
+  // 避免级联选择后tag的高度过高导致父级元素撑开影响整体样式
+  .el-cascader__tags .el-tag {
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
+}
+
+// 表格
+.el-table {
+  font-size: $--font-size-base;
+}
+
+// menu
+.el-menu {
+  .el-submenu [class^=el-icon-] {
+    font-size: 16px;
+  }
+  .el-menu-item, .el-submenu__title {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    line-height: 44px;
+    font-size: $--font-size-base;
+  }
+}
+
+// step
+.el-step {
+  .el-step__title {
+    font-size: $--font-size-base;
+  }
+}
+
+// 修复 多选下拉 tag文本溢出
+.el-select {
+  .el-tag {
+    display: flex;
+    align-items: center;
+    .el-select__tags-text {
+      max-width: 10em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .el-tag__close {
+      top: 1px;
+      right: -3px;
+    }
+  }
+}
+
+.el-checkbox {
+  .el-checkbox__label {
+    font-size: $--font-size-base;
+  }
+  .el-checkbox__input.is-disabled {
+    &.is-checked .el-checkbox__inner::after {
+      border-color: $--color-primary;
+    }
+    &.is-indeterminate .el-checkbox__inner::before {
+      background-color: $--color-primary;
+    }
+  }
+}
+
+.el-radio {
+  .el-radio__label {
+    font-size: $--font-size-base;
+  }
+}
+
+.el-form {
+  .el-form-item__content {
+    font-size: $--font-size-base;
+  }
+
+  // 处理 label过长时显示省略号，鼠标经过时换行显示全部文本
+  &.label-ellipsis .el-form-item__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 0.5em;
+    &:hover {
+      background: #fff;
+      position: absolute;
+      overflow: initial;
+      white-space: initial;
+    }
+  }
+}
