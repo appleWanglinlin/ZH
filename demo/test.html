@@ -5,39 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <style>
-    .div {
-      height: 50px;
-      background-color: palegoldenrod;
-      transition: all .5s;
-    }
-  </style>
+  <script type="text/javascript" src="./js/webprinter_6.1.1.js"></script>
 </head>
 <body>
-  <div id="app">
-    <div class="div" :style="{ width: fold ? '64px' : '200px' }" @click="click">
-      {{ message }}
-    </div>
-  </div>
   <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!',
-        fold: false
-      },
-      methods: {
-        click() {
-          this.fold = !this.fold
-          const arr = [1,2,3]
-          for (const [i,v] of arr.entries()) {
-            console.log(i)
-            console.log(v)
-          }
-        }
-      }
-    })
+    var wp = Strato.WebPrinter.getInstance()
+    console.log('Strato', Strato)
+    console.log('wp', wp)
   </script>
 </body>
 </html>
