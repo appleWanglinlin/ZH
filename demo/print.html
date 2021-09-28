@@ -1,0 +1,209 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://get.webprinter.cn/default/6.1.1/webprinter.js"></script>
+      <script type="text/javascript" src="https://get.webprinter.cn/default/6.1.1/easyprint.js"></script>
+    </head>
+    <body>
+        <form>
+        <div id="statusText"></div>
+        <div id="tasks"></div>
+        <div>
+            打印机：
+            <select id="printers" onchange="refreshPapers()"></select>
+        </div>
+        <div>
+            纸张类型：
+            <select id="papers"></select>
+        </div>
+        <div>
+            <label><input name="content_type" value="html" type="radio" checked onclick="switchTo('html')">Html</label>
+            <label><input name="content_type" value="url" type="radio" onclick="switchTo('url')">URL</label>
+            <label><input name="content_type" value="pdf" type="radio" onclick="switchTo('pdf')">PDF</label>
+            <div>
+                <label><input type="checkbox" id="preview" checked> 打印前预览</label>
+                
+            </div>
+                <div style="display:none" id="input_html">
+                请输入内容：<br>
+                <textarea id="content_html" cols="100" rows="10"></textarea><br>
+                <input type="button" onclick="doPrint('html')" value="打印">
+            </div>
+            <div style="display:none" id="input_pdf">
+                请输入PDF Base64文本：<br>
+                <textarea id="content_pdf" cols="100" rows="10"></textarea><br>
+                <input type="button" onclick="doPrint('pdf')" value="打印">
+            </div>
+            <div style="display:none" id="input_url">
+                请输入URL：<br>
+                <input id="content_url" type="url" size="50"><br>
+                <input type="button" onclick="doPrint('url')" value="打印">
+            </div>
+        </div>
+
+        
+    </form>
+    </body>
+    <script>
+        function show(div){
+            div.style.display="block";
+        }
+        function hide(div){
+            div.style.display="none";
+        }
+        function switchTo(type){
+            var types=["html","url","pdf"];
+            for(var i=0,len=types.length;i<len;i++){
+                var thetype=types[i];
+                var div=document.getElementById("input_"+thetype);
+                if(thetype==type){
+                    show(div);
+                }else{
+                    hide(div);
+                }
+            }
+        }
+        switchTo("html");
+        function refreshTaskTable(tasks){
+			var htmls=[];
+			var taskStatusMapping={"SUBMITTED":"已接收","QUEUED":"等待处理","PRINTING":"正在打印","PRINTED":"已打印","FINISHED":"已完成","CANCELED":"已取消","ERROR":"出错"};
+			htmls.push("<table border='1'>");
+			htmls.push("<tr>");
+			htmls.push("<th>任务名称</th>");
+			htmls.push("<th>目标打印机</th>");
+			htmls.push("<th>任务状态</th>");
+			htmls.push("<th></th>");
+			htmls.push("</tr>");
+			for(var i=0,len=tasks.length;i<len;i++){
+				var task=tasks[i];
+				htmls.push("<tr>");
+				htmls.push("<td>"+task.name+"</td>");
+				htmls.push("<td>"+(task.printer||"默认")+"</td>");
+				htmls.push("<td>"+taskStatusMapping[task.status]+"</td>");
+				htmls.push("<td>"+(task.errorMessage||"")+"</td>");
+				htmls.push("</tr>");
+			}
+			htmls.push("</table>");
+			document.getElementById("tasks").innerHTML=htmls.join("\n");
+        }
+        var paperIndex={};
+        function refreshPapers(){
+            var select=document.getElementById("papers");
+            select.innerHTML="";
+            paperIndex={};
+            var printerName=document.getElementById("printers").value;
+            if(printerName==""){
+                return;
+            }
+            // 得到Strato.WebPrinter.getInstance()单例对象
+            var wp=webprinter.easy().wpInstance();
+            wp.listPapers(printerName,function(papers){
+                papers=papers||[];
+                for(var i=0,len=papers.length;i<len;i++){
+                    var paper=papers[i];
+                    paperIndex[paper.name]=paper;
+                    var option=document.createElement("option");
+                    var width=paper.w;
+                    var height=paper.h;
+                    var paperName=paper.name+"("+width+"mm x "+height+"mm)";
+                    option.value=paper.name;
+                    option.innerHTML=paperName;
+                    select.appendChild(option);
+                }
+            })
+        }
+        function getSelectedPaper(){
+            var select=document.getElementById("papers");
+            var paperName=select.value;
+            return paperIndex[paperName];
+        }
+    </script>
+    <script>
+        webprinter.easy().enableDebug();//启用调试日志，正式环境可注释
+        // webprinter.easy().constants().dump();//打印所有的常量，正式环境可注释
+        function doPrint(type){
+            var printerSelect=document.getElementById("printers");
+            var printer=printerSelect.value;
+            var selectedPaper=getSelectedPaper();
+            console.log('selectedPaper', selectedPaper)
+            // return false
+
+            // 创建页面设置(表4：Paper对象模型-纸张参数对象模型)
+            // var paper=webprinter.easy().paper().with_width(50).with_height(25);
+
+            // var paper=webprinter.easy().paper()
+
+            // if(selectedPaper){
+            //     paper.with_name(selectedPaper.name).with_width(selectedPaper.w/1000).with_height(selectedPaper.h/1000);
+            // }
+
+            // 得到easyprint的所有常量
+            var CONSTANTS=webprinter.easy().constants();
+            console.log('CONSTANTS', CONSTANTS)
+
+            // webprinter.easy().config()
+            // 创建一个打印任务设置(表3：PrinterConfig对象模型-打印参数对象模型)
+            // with_orientation() 纸张方向 PORTRAIT-纵向,LANDSCAPE-横向
+            // with_color() 彩色/黑白 COLOR-彩色,MONOCHROME-黑白
+            // with_side() ONESIDE-单面打印,DUPLEX-双面长边翻转,TUMBLE-双面短边翻转
+            // with_collate() 逐份打印 COLLATE-逐份,UNCOLLATE-非逐份
+            // with_copies() 打印份数
+            // with_paper() 纸张设置
+            // config() 打印参数
+
+            // var config=webprinter.easy().config().with_orientation(CONSTANTS.CONFIG_ORIENTATION.PORTRAIT).with_color(CONSTANTS.CONFIG_COLOR.MONOCHROME).with_side(CONSTANTS.CONFIG_SIDE.ONESIDE).with_collate(CONSTANTS.CONFIG_COLLATE.UNCOLLATE).with_copies(1).with_zero_margins().with_paper(paper);
+            
+            // var config=webprinter.easy().config().with_copies(1).with_paper(paper);
+            var config=webprinter.easy().config().with_copies(1)
+            
+            // 创建打印任务
+            var task=webprinter.easy().task().with_printer(printer).with_config(config);
+            // task.with_headers({"Cookie":document.cookie});
+            // task.with_preview(document.getElementById("preview").checked);
+            var content=document.getElementById("content_"+type).value;
+            if(type=="url"){
+                task.with_url(content);
+            }else if(type=="html"){
+                task.with_html(content);
+            }else if(type=="pdf"){
+                task.with_pdfbase64(content);
+            }
+            // 发送任务至WebPrinter
+            webprinter.easy().print(task);
+        }
+        // 监听任务列表变化情况
+        webprinter.easy().observeTasks(function(tasks){
+            refreshTaskTable(tasks);
+        })
+
+        // 监听Web页面和打印控件的连接状态
+        webprinter.easy().observeConnection(function(connected,info){ // 监听控件连接状态
+            var text=null;
+            if(connected){
+                text="WebPrinter v"+info.currentVersion+" 已连接";
+            }else{
+                text="已断开";
+            }
+            console.log('text', text)
+            document.getElementById("statusText").innerHTML=text;
+        })
+
+        // 监听打印机列表的变化
+        webprinter.easy().observePrinters(function(printers,defaultPrinter){ // 监听打印机列表
+            var select=document.getElementById("printers");
+            select.innerHTML="";
+            for(var i=0,len=printers.length;i<len;i++){
+                var printer=printers[i];
+                var option=document.createElement("option");
+                option.value=printer;
+                var html=printer;
+                if(printer==defaultPrinter){
+                    html+="[默认]";
+                    option.selected=true;
+                }
+                option.innerHTML=html;
+                select.appendChild(option);
+            }
+            refreshPapers();
+        })
+    </script>
+</html>
